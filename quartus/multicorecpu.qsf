@@ -91,3 +91,5 @@ set_global_assignment -name VHDL_FILE ../rtl/pipeline/hazard_control_unit.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/nop_adder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/bht.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_target_calc.vhd
+set_global_assignment -name MIF_FILE program.mif
+set_global_assignment -name QIP_FILE ../rtl/core/one_port_rom.qip
