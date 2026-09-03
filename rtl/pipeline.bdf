@@ -68,70 +68,6 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 2328 768 2536 944)
-	(text "DMEM" (rect 5 0 53 16)(font "Arial" ))
-	(text "dmem_block1" (rect 8 160 110 176)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "A[31..0]" (rect 0 0 57 16)(font "Arial" ))
-		(text "A[31..0]" (rect 21 27 78 43)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32)(line_width 3))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "RD2[31..0]" (rect 0 0 80 16)(font "Arial" ))
-		(text "RD2[31..0]" (rect 21 43 101 59)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "FUNCT3[2..0]" (rect 0 0 101 16)(font "Arial" ))
-		(text "FUNCT3[2..0]" (rect 21 59 122 75)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "MEMWR" (rect 0 0 63 16)(font "Arial" ))
-		(text "MEMWR" (rect 21 75 84 91)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "MEMRD" (rect 0 0 60 16)(font "Arial" ))
-		(text "MEMRD" (rect 21 91 81 107)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 0 112)
-		(input)
-		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
-		(text "CLK" (rect 21 107 52 123)(font "Arial" ))
-		(line (pt 0 112)(pt 16 112))
-	)
-	(port
-		(pt 0 128)
-		(input)
-		(text "RST" (rect 0 0 33 16)(font "Arial" ))
-		(text "RST" (rect 21 123 54 139)(font "Arial" ))
-		(line (pt 0 128)(pt 16 128))
-	)
-	(port
-		(pt 208 32)
-		(output)
-		(text "RDM[31..0]" (rect 0 0 83 16)(font "Arial" ))
-		(text "RDM[31..0]" (rect 140 27 223 43)(font "Arial" ))
-		(line (pt 208 32)(pt 192 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 192 160))
-	)
-)
-(symbol
 	(rect 3024 672 3192 816)
 	(text "busmux4to1" (rect 5 0 94 16)(font "Arial" ))
 	(text "wb_mux" (rect 8 128 69 149)(font "Intel Clear" ))
@@ -684,62 +620,6 @@ refer to the applicable agreement for further details.
 	(annotation_block (parameter)(rect 1976 728 2152 768))
 )
 (symbol
-	(rect 1984 1352 2184 1496)
-	(text "REGN" (rect 5 0 51 16)(font "Arial" ))
-	(text "EX_MEM_RD2" (rect 8 128 114 149)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 33 16)(font "Arial" ))
-		(text "RST" (rect 21 27 54 43)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
-		(text "CLK" (rect 21 43 52 59)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 21 16)(font "Arial" ))
-		(text "LD" (rect 21 59 42 75)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 51 16)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 72 91)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 93 16)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 114 107)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 94 16)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 127 27 221 43)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 1984 1312 2160 1352))
-)
-(symbol
 	(rect 1976 -128 2176 16)
 	(text "REGN" (rect 5 0 51 16)(font "Arial" ))
 	(text "EX_MEM_RD_ADDR" (rect 8 128 162 144)(font "Arial" ))
@@ -794,62 +674,6 @@ refer to the applicable agreement for further details.
 		(rectangle (rect 16 16 184 128))
 	)
 	(annotation_block (parameter)(rect 1976 -168 2145 -130))
-)
-(symbol
-	(rect 1976 -728 2176 -584)
-	(text "REGN" (rect 5 0 51 16)(font "Arial" ))
-	(text "EX_MEM_FUNCT3" (rect 8 128 144 149)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 33 16)(font "Arial" ))
-		(text "RST" (rect 21 27 54 43)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
-		(text "CLK" (rect 21 43 52 59)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 21 16)(font "Arial" ))
-		(text "LD" (rect 21 59 42 75)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 51 16)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 72 91)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 93 16)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 114 107)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 94 16)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 127 27 221 43)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"3"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 1976 -768 2145 -730))
 )
 (symbol
 	(rect 1456 616 1656 760)
@@ -1114,109 +938,9 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1976 192 2120 336)
-	(text "REG1" (rect 5 0 49 16)(font "Arial" ))
-	(text "EX_MEM_MEMRD" (rect 8 128 142 149)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 33 16)(font "Arial" ))
-		(text "RST" (rect 21 27 54 43)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
-		(text "CLK" (rect 21 43 52 59)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 21 16)(font "Arial" ))
-		(text "LD" (rect 21 59 42 75)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 51 16)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 72 91)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D" (rect 0 0 11 16)(font "Arial" ))
-		(text "D" (rect 21 91 32 107)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 144 32)
-		(output)
-		(text "Q" (rect 0 0 12 16)(font "Arial" ))
-		(text "Q" (rect 117 27 129 43)(font "Arial" ))
-		(line (pt 144 32)(pt 128 32))
-	)
-	(drawing
-		(rectangle (rect 16 16 128 128))
-	)
-)
-(symbol
 	(rect 1976 352 2120 496)
 	(text "REG1" (rect 5 0 49 16)(font "Arial" ))
 	(text "EX_MEM_REGWR" (rect 8 128 140 149)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 33 16)(font "Arial" ))
-		(text "RST" (rect 21 27 54 43)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
-		(text "CLK" (rect 21 43 52 59)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 21 16)(font "Arial" ))
-		(text "LD" (rect 21 59 42 75)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 51 16)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 72 91)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D" (rect 0 0 11 16)(font "Arial" ))
-		(text "D" (rect 21 91 32 107)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 144 32)
-		(output)
-		(text "Q" (rect 0 0 12 16)(font "Arial" ))
-		(text "Q" (rect 117 27 129 43)(font "Arial" ))
-		(line (pt 144 32)(pt 128 32))
-	)
-	(drawing
-		(rectangle (rect 16 16 128 128))
-	)
-)
-(symbol
-	(rect 1976 32 2120 176)
-	(text "REG1" (rect 5 0 49 16)(font "Arial" ))
-	(text "EX_MEM_MEMWR" (rect 8 128 147 144)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -1932,22 +1656,6 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1888 1400 1904 1432)
-	(text "VCC" (rect 0 5 15 34)(font "Arial" (font_size 6))(vertical))
-	(text "inst10" (rect 5 1 26 47)(font "Intel Clear" )(vertical)(invisible))
-	(port
-		(pt 16 16)
-		(output)
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 7 8 23 17)(font "Courier New" (bold))(vertical)(invisible))
-		(line (pt 16 16)(pt 8 16))
-	)
-	(drawing
-		(line (pt 8 24)(pt 8 8))
-	)
-	(rotate90)
-)
-(symbol
 	(rect 1864 792 1896 808)
 	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
 	(text "inst11" (rect 3 5 49 26)(font "Intel Clear" )(invisible))
@@ -1993,54 +1701,9 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1864 192 1896 208)
-	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
-	(text "inst15" (rect 3 5 49 26)(font "Intel Clear" )(invisible))
-	(port
-		(pt 16 16)
-		(output)
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(line (pt 16 16)(pt 16 8))
-	)
-	(drawing
-		(line (pt 8 8)(pt 24 8))
-	)
-)
-(symbol
-	(rect 1864 64 1896 80)
-	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
-	(text "inst16" (rect 3 5 49 26)(font "Intel Clear" )(invisible))
-	(port
-		(pt 16 16)
-		(output)
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(line (pt 16 16)(pt 16 8))
-	)
-	(drawing
-		(line (pt 8 8)(pt 24 8))
-	)
-)
-(symbol
 	(rect 1856 -96 1888 -80)
 	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
 	(text "inst17" (rect 3 5 49 26)(font "Intel Clear" )(invisible))
-	(port
-		(pt 16 16)
-		(output)
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
-		(line (pt 16 16)(pt 16 8))
-	)
-	(drawing
-		(line (pt 8 8)(pt 24 8))
-	)
-)
-(symbol
-	(rect 1856 -712 1888 -696)
-	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
-	(text "inst18" (rect 3 5 49 26)(font "Intel Clear" )(invisible))
 	(port
 		(pt 16 16)
 		(output)
@@ -3517,6 +3180,135 @@ refer to the applicable agreement for further details.
 		(line (pt 8 8)(pt 24 8))
 	)
 )
+(symbol
+	(rect 1936 136 2080 280)
+	(text "REG1" (rect 5 0 49 16)(font "Arial" ))
+	(text "EX_MEM_MEMRD" (rect 8 128 142 149)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "RST" (rect 0 0 33 16)(font "Arial" ))
+		(text "RST" (rect 21 27 54 43)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
+		(text "CLK" (rect 21 43 52 59)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "LD" (rect 0 0 21 16)(font "Arial" ))
+		(text "LD" (rect 21 59 42 75)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "FLUSH" (rect 0 0 51 16)(font "Arial" ))
+		(text "FLUSH" (rect 21 75 72 91)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "D" (rect 0 0 11 16)(font "Arial" ))
+		(text "D" (rect 21 91 32 107)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 144 32)
+		(output)
+		(text "Q" (rect 0 0 12 16)(font "Arial" ))
+		(text "Q" (rect 113 27 125 43)(font "Arial" ))
+		(line (pt 144 32)(pt 128 32))
+	)
+	(drawing
+		(rectangle (rect 16 16 128 128))
+	)
+)
+(symbol
+	(rect 1800 168 1832 184)
+	(text "VCC" (rect 7 0 36 15)(font "Arial" (font_size 6)))
+	(text "VCC_MEM_EX_MEM_MEMRD" (rect 3 5 223 26)(font "Intel Clear" )(invisible))
+	(port
+		(pt 16 16)
+		(output)
+		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 19 7 28 23)(font "Courier New" (bold))(invisible))
+		(line (pt 16 16)(pt 16 8))
+	)
+	(drawing
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
+	(rect 2328 768 2536 944)
+	(text "DMEM" (rect 5 0 53 16)(font "Arial" ))
+	(text "DMEM" (rect 8 160 57 181)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "A[31..0]" (rect 0 0 57 16)(font "Arial" ))
+		(text "A[31..0]" (rect 21 27 78 43)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "RD2[31..0]" (rect 0 0 80 16)(font "Arial" ))
+		(text "RD2[31..0]" (rect 21 43 101 59)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "FUNCT3[2..0]" (rect 0 0 101 16)(font "Arial" ))
+		(text "FUNCT3[2..0]" (rect 21 59 122 75)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "MEMWR" (rect 0 0 63 16)(font "Arial" ))
+		(text "MEMWR" (rect 21 75 84 91)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "MEMRD" (rect 0 0 60 16)(font "Arial" ))
+		(text "MEMRD" (rect 21 91 81 107)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "CLK" (rect 0 0 31 16)(font "Arial" ))
+		(text "CLK" (rect 21 107 52 123)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "RST" (rect 0 0 33 16)(font "Arial" ))
+		(text "RST" (rect 21 123 54 139)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128))
+	)
+	(port
+		(pt 208 32)
+		(output)
+		(text "RDM[31..0]" (rect 0 0 83 16)(font "Arial" ))
+		(text "RDM[31..0]" (rect 117 27 200 43)(font "Arial" ))
+		(line (pt 208 32)(pt 192 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 192 160))
+	)
+)
 (connector
 	(pt 1376 352)
 	(pt 1456 352)
@@ -3541,10 +3333,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 1600 128)
-	(pt 1976 128)
-)
-(connector
 	(text "RST" (rect 1951 -112 1980 -91)(font "Intel Clear" ))
 	(pt 1912 -96)
 	(pt 1976 -96)
@@ -3555,21 +3343,6 @@ refer to the applicable agreement for further details.
 	(pt 1976 -80)
 )
 (connector
-	(text "RST" (rect 1951 -712 1980 -691)(font "Intel Clear" ))
-	(pt 1912 -696)
-	(pt 1976 -696)
-)
-(connector
-	(text "CLK" (rect 1926 -696 1955 -675)(font "Intel Clear" ))
-	(pt 1912 -680)
-	(pt 1976 -680)
-)
-(connector
-	(pt 1656 -632)
-	(pt 1976 -632)
-	(bus)
-)
-(connector
 	(text "RST" (rect 1408 1432 1437 1453)(font "Intel Clear" ))
 	(pt 1400 1448)
 	(pt 1456 1448)
@@ -3578,32 +3351,6 @@ refer to the applicable agreement for further details.
 	(text "CLK" (rect 1408 1448 1437 1469)(font "Intel Clear" ))
 	(pt 1400 1464)
 	(pt 1456 1464)
-)
-(connector
-	(text "RST" (rect 1928 1368 1957 1389)(font "Intel Clear" ))
-	(pt 1920 1384)
-	(pt 1984 1384)
-)
-(connector
-	(text "CLK" (rect 1949 1384 1978 1405)(font "Intel Clear" ))
-	(pt 1920 1400)
-	(pt 1984 1400)
-)
-(connector
-	(text "<<__$DEF_ALIAS25964>>" (rect 1920 1432 2113 1453)(font "Intel Clear" )(invisible))
-	(pt 1656 1448)
-	(pt 1984 1448)
-	(bus)
-)
-(connector
-	(pt 2184 1384)
-	(pt 2208 1384)
-	(bus)
-)
-(connector
-	(pt 2176 -696)
-	(pt 2224 -696)
-	(bus)
 )
 (connector
 	(pt 2120 64)
@@ -3670,11 +3417,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 2192 800)
-	(pt 2192 1008)
-	(bus)
-)
-(connector
 	(text "CLK" (rect 2274 864 2303 885)(font "Intel Clear" ))
 	(pt 2264 880)
 	(pt 2328 880)
@@ -3696,11 +3438,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 2224 -696)
-	(pt 2224 832)
-	(bus)
-)
-(connector
 	(text "<<__$DEF_ALIAS31655>>" (rect 2274 816 2467 837)(font "Intel Clear" )(invisible))
 	(pt 2224 832)
 	(pt 2328 832)
@@ -3718,11 +3455,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 2256 224)
 	(pt 2256 864)
-)
-(connector
-	(text "MEMRD" (rect 2266 848 2326 869)(font "Intel Clear" ))
-	(pt 2256 864)
-	(pt 2328 864)
 )
 (connector
 	(pt 2176 800)
@@ -3753,26 +3485,6 @@ refer to the applicable agreement for further details.
 	(text "CLK" (rect 2561 520 2590 541)(font "Intel Clear" ))
 	(pt 2616 536)
 	(pt 2552 536)
-)
-(connector
-	(text "RST" (rect 1924 48 1953 69)(font "Intel Clear" ))
-	(pt 1976 64)
-	(pt 1912 64)
-)
-(connector
-	(text "CLK" (rect 1921 64 1950 85)(font "Intel Clear" ))
-	(pt 1976 80)
-	(pt 1912 80)
-)
-(connector
-	(text "RST" (rect 1924 208 1953 229)(font "Intel Clear" ))
-	(pt 1976 224)
-	(pt 1912 224)
-)
-(connector
-	(text "CLK" (rect 1921 224 1950 245)(font "Intel Clear" ))
-	(pt 1976 240)
-	(pt 1912 240)
 )
 (connector
 	(text "RST" (rect 1924 368 1953 389)(font "Intel Clear" ))
@@ -4030,18 +3742,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "ALUF_EX[31..0]" (rect 1918 848 2033 869)(font "Intel Clear" ))
-	(pt 1896 864)
-	(pt 1976 864)
-	(bus)
-)
-(connector
-	(text "ALUF_MEM[31..0]" (rect 2208 784 2341 805)(font "Intel Clear" ))
-	(pt 2192 800)
-	(pt 2328 800)
-	(bus)
-)
-(connector
 	(text "MEMQ_MEM[31..0]" (rect 2539 784 2682 805)(font "Intel Clear" ))
 	(pt 2536 800)
 	(pt 2616 800)
@@ -4140,11 +3840,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "<<__$DEF_ALIAS10419>>" (rect 1935 1400 2128 1421)(font "Intel Clear" )(invisible))
-	(pt 1904 1416)
-	(pt 1984 1416)
-)
-(connector
 	(text "<<__$DEF_ALIAS10431>>" (rect 1923 816 2116 837)(font "Intel Clear" )(invisible))
 	(pt 1976 832)
 	(pt 1880 832)
@@ -4172,24 +3867,6 @@ refer to the applicable agreement for further details.
 	(pt 1880 368)
 )
 (connector
-	(text "<<__$DEF_ALIAS10437>>" (rect 1923 240 2116 261)(font "Intel Clear" )(invisible))
-	(pt 1976 256)
-	(pt 1880 256)
-)
-(connector
-	(pt 1880 256)
-	(pt 1880 208)
-)
-(connector
-	(text "<<__$DEF_ALIAS10439>>" (rect 1923 80 2116 101)(font "Intel Clear" )(invisible))
-	(pt 1880 96)
-	(pt 1976 96)
-)
-(connector
-	(pt 1880 96)
-	(pt 1880 80)
-)
-(connector
 	(text "<<__$DEF_ALIAS10441>>" (rect 1926 -80 2119 -59)(font "Intel Clear" )(invisible))
 	(pt 1872 -64)
 	(pt 1976 -64)
@@ -4197,15 +3874,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 1872 -64)
 	(pt 1872 -80)
-)
-(connector
-	(text "<<__$DEF_ALIAS10445>>" (rect 1926 -680 2119 -659)(font "Intel Clear" )(invisible))
-	(pt 1872 -664)
-	(pt 1976 -664)
-)
-(connector
-	(pt 1872 -664)
-	(pt 1872 -696)
 )
 (connector
 	(text "<<__$DEF_ALIAS10447>>" (rect 1931 -880 2124 -859)(font "Intel Clear" )(invisible))
@@ -4425,11 +4093,6 @@ refer to the applicable agreement for further details.
 	(text "ID_EX_FLUSH" (rect 1408 -800 1511 -779)(font "Intel Clear" ))
 	(pt 1456 -784)
 	(pt 1400 -784)
-)
-(connector
-	(text "MEMRD_ID_EX" (rect 1638 272 1751 293)(font "Intel Clear" ))
-	(pt 1600 288)
-	(pt 1976 288)
 )
 (connector
 	(text "FWD1[2..0]" (rect 1036 1376 1119 1397)(font "Intel Clear" ))
@@ -5507,7 +5170,126 @@ refer to the applicable agreement for further details.
 	(pt 1336 -232)
 	(pt 1336 -240)
 )
-(junction (pt 2192 800))
+(connector
+	(pt 2328 800)
+	(pt 2200 800)
+	(bus)
+)
+(connector
+	(pt 2200 800)
+	(pt 2200 936)
+	(bus)
+)
+(connector
+	(pt 2200 936)
+	(pt 1952 936)
+	(bus)
+)
+(connector
+	(pt 1952 936)
+	(pt 1952 864)
+	(bus)
+)
+(connector
+	(pt 1896 864)
+	(pt 1952 864)
+	(bus)
+)
+(connector
+	(text "ALUF_EX[31..0]" (rect 1918 848 2033 869)(font "Intel Clear" ))
+	(pt 1952 864)
+	(pt 1976 864)
+	(bus)
+)
+(connector
+	(pt 2040 1384)
+	(pt 2208 1384)
+	(bus)
+)
+(connector
+	(pt 2040 1448)
+	(pt 2040 1384)
+	(bus)
+)
+(connector
+	(text "<<__$DEF_ALIAS25964>>" (rect 1920 1432 2113 1453)(font "Intel Clear" )(invisible))
+	(pt 1656 1448)
+	(pt 2040 1448)
+	(bus)
+)
+(connector
+	(pt 2224 832)
+	(pt 2224 -632)
+	(bus)
+)
+(connector
+	(pt 1656 -632)
+	(pt 2224 -632)
+	(bus)
+)
+(connector
+	(pt 2120 128)
+	(pt 1600 128)
+)
+(connector
+	(pt 2120 128)
+	(pt 2120 64)
+)
+(connector
+	(pt 2120 288)
+	(pt 2120 224)
+)
+(connector
+	(text "<<__$DEF_ALIAS1512>>" (rect 2266 848 2450 869)(font "Intel Clear" )(invisible))
+	(pt 2256 864)
+	(pt 2328 864)
+)
+(connector
+	(text "ALUF_MEM[31..0]" (rect 2168 879 2189 1012)(font "Intel Clear" )(vertical))
+	(pt 2192 800)
+	(pt 2192 1008)
+	(bus)
+)
+(connector
+	(text "RST" (rect 1880 144 1909 165)(font "Intel Clear" ))
+	(pt 1936 168)
+	(pt 1872 168)
+)
+(connector
+	(text "CLK" (rect 1880 160 1909 181)(font "Intel Clear" ))
+	(pt 1936 184)
+	(pt 1872 184)
+)
+(connector
+	(pt 1936 200)
+	(pt 1816 200)
+)
+(connector
+	(pt 1816 200)
+	(pt 1816 184)
+)
+(connector
+	(pt 1936 232)
+	(pt 1896 232)
+)
+(connector
+	(pt 1896 232)
+	(pt 1896 288)
+)
+(connector
+	(text "MEMRD_ID_EX" (rect 1638 272 1751 293)(font "Intel Clear" ))
+	(pt 2120 288)
+	(pt 1896 288)
+)
+(connector
+	(pt 1896 288)
+	(pt 1600 288)
+)
+(connector
+	(text "MEMRD" (rect 2106 144 2166 165)(font "Intel Clear" ))
+	(pt 2080 168)
+	(pt 2136 168)
+)
 (junction (pt 3208 704))
 (junction (pt 456 1192))
 (junction (pt 456 1208))
@@ -5523,6 +5305,8 @@ refer to the applicable agreement for further details.
 (junction (pt -592 328))
 (junction (pt -824 544))
 (junction (pt -456 240))
+(junction (pt 1952 864))
+(junction (pt 1896 288))
 (text "RST" (rect 1412 -848 1441 -827)(font "Intel Clear" ))
 (text "CLK" (rect 1409 -832 1438 -811)(font "Intel Clear" ))
 (text "FLUSH" (rect -57 -736 -7 -715)(font "Intel Clear" ))

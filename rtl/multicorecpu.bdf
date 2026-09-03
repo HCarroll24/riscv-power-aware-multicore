@@ -70,7 +70,7 @@ refer to the applicable agreement for further details.
 (symbol
 	(rect 456 168 640 264)
 	(text "pipeline" (rect 5 0 74 23)(font "Intel Clear" (font_size 8)))
-	(text "inst" (rect 8 71 35 92)(font "Intel Clear" ))
+	(text "single_core" (rect 8 71 94 92)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
