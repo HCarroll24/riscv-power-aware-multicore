@@ -61,7 +61,7 @@ BEGIN
 		address_aclr_a => "NONE",
 		clock_enable_input_a => "BYPASS",
 		clock_enable_output_a => "BYPASS",
-		init_file => "program.mif",
+		init_file => "../benchmarks/program.mif",
 		intended_device_family => "MAX 10",
 		lpm_hint => "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ROAM",
 		lpm_type => "altsyncram",
@@ -69,6 +69,7 @@ BEGIN
 		operation_mode => "ROM",
 		outdata_aclr_a => "NONE",
 		outdata_reg_a => "UNREGISTERED",
+		ram_block_type => "M9K",
 		widthad_a => 10,
 		width_a => 32,
 		width_byteena_a => 1
@@ -103,9 +104,9 @@ END SYN;
 -- Retrieval info: PRIVATE: JTAG_ENABLED NUMERIC "1"
 -- Retrieval info: PRIVATE: JTAG_ID STRING "ROAM"
 -- Retrieval info: PRIVATE: MAXIMUM_DEPTH NUMERIC "0"
--- Retrieval info: PRIVATE: MIFfilename STRING "program.mif"
+-- Retrieval info: PRIVATE: MIFfilename STRING "../benchmarks/program.mif"
 -- Retrieval info: PRIVATE: NUMWORDS_A NUMERIC "1024"
--- Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "0"
+-- Retrieval info: PRIVATE: RAM_BLOCK_TYPE NUMERIC "2"
 -- Retrieval info: PRIVATE: RegAddr NUMERIC "1"
 -- Retrieval info: PRIVATE: RegOutput NUMERIC "0"
 -- Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
@@ -118,7 +119,7 @@ END SYN;
 -- Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_OUTPUT_A STRING "BYPASS"
--- Retrieval info: CONSTANT: INIT_FILE STRING "program.mif"
+-- Retrieval info: CONSTANT: INIT_FILE STRING "../benchmarks/program.mif"
 -- Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "MAX 10"
 -- Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=YES,INSTANCE_NAME=ROAM"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "altsyncram"
@@ -126,6 +127,7 @@ END SYN;
 -- Retrieval info: CONSTANT: OPERATION_MODE STRING "ROM"
 -- Retrieval info: CONSTANT: OUTDATA_ACLR_A STRING "NONE"
 -- Retrieval info: CONSTANT: OUTDATA_REG_A STRING "UNREGISTERED"
+-- Retrieval info: CONSTANT: RAM_BLOCK_TYPE STRING "M9K"
 -- Retrieval info: CONSTANT: WIDTHAD_A NUMERIC "10"
 -- Retrieval info: CONSTANT: WIDTH_A NUMERIC "32"
 -- Retrieval info: CONSTANT: WIDTH_BYTEENA_A NUMERIC "1"
