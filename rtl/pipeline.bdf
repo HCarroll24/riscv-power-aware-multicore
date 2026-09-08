@@ -4764,11 +4764,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt -768 240)
-	(pt -1128 240)
-	(bus)
-)
-(connector
 	(text "PC4_EX[31..0]" (rect -1368 224 -1262 245)(font "Intel Clear" ))
 	(pt -1376 240)
 	(pt -1296 240)
@@ -4930,7 +4925,7 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "PREDICTOR" (rect -840 485 -819 575)(font "Intel Clear" )(vertical))
+	(text "PREDICTOR" (rect -839 486 -818 576)(font "Intel Clear" )(vertical))
 	(pt -824 416)
 	(pt -824 544)
 )
@@ -5315,12 +5310,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "PC[9..0]" (rect -441 216 -382 237)(font "Intel Clear" ))
-	(pt -456 240)
-	(pt -424 240)
-	(bus)
-)
-(connector
 	(text "PC[31..0]" (rect -567 216 -499 237)(font "Intel Clear" ))
 	(pt -592 240)
 	(pt -456 240)
@@ -5330,6 +5319,48 @@ refer to the applicable agreement for further details.
 	(text "<<__$DEF_ALIAS449>>" (rect -41 456 133 477)(font "Intel Clear" )(invisible))
 	(pt -80 472)
 	(pt -8 472)
+	(bus)
+)
+(connector
+	(pt -424 240)
+	(pt -440 240)
+	(bus)
+)
+(connector
+	(pt -440 288)
+	(pt -440 240)
+	(bus)
+)
+(connector
+	(pt -440 288)
+	(pt -560 288)
+	(bus)
+)
+(connector
+	(pt -560 352)
+	(pt -560 288)
+	(bus)
+)
+(connector
+	(pt -856 352)
+	(pt -856 240)
+	(bus)
+)
+(connector
+	(pt -768 240)
+	(pt -856 240)
+	(bus)
+)
+(connector
+	(text "PC_NEXT[31..0]" (rect -905 216 -787 237)(font "Intel Clear" ))
+	(pt -856 240)
+	(pt -1128 240)
+	(bus)
+)
+(connector
+	(text "PC_NEXT[9..0]" (rect -733 328 -625 349)(font "Intel Clear" ))
+	(pt -856 352)
+	(pt -560 352)
 	(bus)
 )
 (junction (pt 3208 704))
@@ -5348,7 +5379,7 @@ refer to the applicable agreement for further details.
 (junction (pt -824 544))
 (junction (pt 1952 864))
 (junction (pt 1896 288))
-(junction (pt -456 240))
+(junction (pt -856 240))
 (text "RST" (rect 1412 -848 1441 -827)(font "Intel Clear" ))
 (text "CLK" (rect 1409 -832 1438 -811)(font "Intel Clear" ))
 (text "FLUSH" (rect -57 -736 -7 -715)(font "Intel Clear" ))
