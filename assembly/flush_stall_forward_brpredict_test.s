@@ -42,3 +42,32 @@ _start:
     addi    x15, x0, 30     # x15 = 30
     addi    x16, x0, 12     # x16 = 12
     add     x17, x15, x16   # x17 = x15 + x16 = 42
+
+    # Test 6: Load-use hazard
+    # Uses stall
+    addi    x18, x0, 0      # x18 = 0
+    sw      x6, 0(x18)      # M[0] = 100
+    lw      x19, 0(x18)     # x19 = M[0]
+    add     x20, x19, x19   # x20 = 2 * x19, requires stall
+    
+    # Test 7: Load followed by non-dependent instruction
+    # should not stall
+    nop
+    nop
+    nop
+    nop
+    nop                     # 5 nops to clear pipeline
+    lw      x24, 0(x18)     # x24 = M[0]
+    addi    x25, 0, 42      # x25 = 42
+    add     x26, x25, x24   # x26 = x25 + x24 = 142
+
+    # Test 9: Load-use where only rs2 has hazard
+    addi    x27, x0, 7      # x27 = 7
+    lw      x28, 0(x18)     # x28 = 100
+    add     x29, x27, x28   # x29 = 107
+
+    # Clear pipeline instructions
+    nop
+    nop
+    nop
+    nop
