@@ -1,0 +1,29 @@
+WIDTH=32;
+DEPTH=1024;
+
+ADDRESS_RADIX=HEX;
+DATA_RADIX=HEX;
+
+CONTENT BEGIN
+    000  :   01000093;   -- addi x1, x0, 16
+	001  :   00100113;   -- addi x2, x0, 1
+	002  :   00000013;   -- nop
+	003  :   00000013;   -- nop
+	004  :   00000013;   -- nop
+	005  :   00000013;   -- nop
+	006  :   00114463;   -- blt x2, x1, +8      TEST A: operands 5-6 back
+	007  :   0AA00193;   -- addi x3, x0, 170    must NOT run
+	008  :   00100213;   -- addi x4, x0, 1
+	009  :   00000013;   -- nop
+	00A  :   00000013;   -- nop
+	00B  :   00000013;   -- nop
+	00C  :   00000013;   -- nop
+	00D  :   01000313;   -- addi x6, x0, 16
+	00E  :   00000393;   -- addi x7, x0, 0
+	00F  :   00138393;   -- addi x7, x7, 1
+	010  :   0063C463;   -- blt x7, x6, +8      TEST B: x6 is 3 back (rs2)
+	011  :   0AA00293;   -- addi x5, x0, 170    must NOT run
+	012  :   00100413;   -- addi x8, x0, 1
+	013  :   00000063;   -- spin
+	[014..3FF]  :   00000013;
+END;

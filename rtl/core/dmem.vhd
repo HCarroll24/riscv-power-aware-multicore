@@ -169,7 +169,7 @@ begin
 				end if;
 			
 			when B"010"	=>							--lw, full word
-				RDM_FMT	<=	RDM;
+				RDM_FMT	<=	RAM_Q;
 			
 			when B"100"	=>							-- lbu, zero extended
 				case OFFSET_R is
