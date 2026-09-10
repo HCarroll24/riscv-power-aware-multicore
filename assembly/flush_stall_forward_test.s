@@ -1,5 +1,5 @@
 /************************************************
- * filename: flush_stall_forward_brpredict_test.s
+ * filename: flush_stall_forward_test.s
  * author: carrollh@msoe.edu <Hunter Carroll>
  * date: 8 Sep 2026
  * provides:
@@ -11,6 +11,8 @@
 ************************************************/
 .global _start
 _start:
+    # Forwarding, Stalling Tests
+
     # Test 1: Basic EX/MEM Forwarding (1-cycle)
     # Forwards from Ex/Mem to next instruction
     addi    x1, x0, 10      # x1 = 10
