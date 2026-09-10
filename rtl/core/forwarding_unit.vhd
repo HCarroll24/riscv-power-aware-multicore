@@ -41,14 +41,14 @@ end entity FORWARDING_UNIT;
 architecture BEHAVIORAL of FORWARDING_UNIT is
 
 begin
-	ASEL <= 	B"100" when (OPCODE = B"1101111" or OPCODE = B"0010111" or OPCODE = B"1100011") else -- jal, B-type, and auipc
+	ASEL <= 	B"100" when (OPCODE = B"1101111" or OPCODE = B"0010111" or OPCODE = B"1100011" or OPCODE = B"0110111") else -- jal, B-type, and auipc
 				B"011" when (REGWR_EX_MEM = '1' and RD_ADDR_EX_MEM /= B"00000" and RD_ADDR_EX_MEM = RS1_ADDR) else
 				B"001" when (REGWR_MEM_WB = '1' and RD_ADDR_MEM_WB /= B"00000" and RD_ADDR_MEM_WB = RS1_ADDR and MEMRD_MEM_WB = '1') else
 				B"010" when (REGWR_MEM_WB = '1' and RD_ADDR_MEM_WB /= B"00000" and RD_ADDR_MEM_WB = RS1_ADDR and MEMRD_MEM_WB = '0') else
 				B"000" when (REGWR_WB = '1' and RD_ADDR_WB /= B"00000" and RD_ADDR_WB = RS1_ADDR) else
 				B"100";
 				
-	BSEL <= 	B"100" when (OPCODE = B"0010011") else
+	BSEL <= 	B"100" when (OPCODE /= B"0110011") else
 				B"011" when (REGWR_EX_MEM = '1' and RD_ADDR_EX_MEM /= B"00000" and RD_ADDR_EX_MEM = RS2_ADDR) else
 				B"001" when (REGWR_MEM_WB = '1' and RD_ADDR_MEM_WB /= B"00000" and RD_ADDR_MEM_WB = RS2_ADDR and MEMRD_MEM_WB = '1') else
 				B"010" when (REGWR_MEM_WB = '1' and RD_ADDR_MEM_WB /= B"00000" and RD_ADDR_MEM_WB = RS2_ADDR and MEMRD_MEM_WB = '0') else
