@@ -2,44 +2,42 @@
 -- Project:		Undergrad Research Multicore Processor
 -- Filename:	pc_sel_logic.vhd
 -- Author:		carrollh@msoe.edu <Hunter C>
--- Date:			26 March 2026
+-- Date:			15 September 2026
 -- Provides:
---   - Small combinational glue between static PCSEL 
---		 intent and dynamic branch outcome.
---   - Merges PCSEL, BR_TAKEN, and opcode context into 
---		 the mux select the PC datapath uses.
+--   - Next-pc select for the fetch-stage PCMUX (busmux4to1)
 -- **********************************************************************
 
 -- use library packages
---  std_logic_1164: 9-valued logic signal voltages 
+-- std_logic_1164: 9-valued logic signal voltages 
 library ieee;
 use ieee.std_logic_1164.all;
 
 -- Function block symbol
 --	Inputs:
---		- PCSEL[1:0]	-	pc select signal
---		- BR_TAKEN		-	branch taken signal
+--		- RST				: active-high reset
+--		- REDIRECT_EN	: EX resolved a mispredicted branch or a JALR
+--		- TARGET_VALID	: From BTC to check if target is valid
+--		- IS_JAL			: JAL is always taken
+--		- PREDICT		: from bht
 --	Outputs:
---		- SEL				-	Select signal between pcsel and br_taken
+--		- PCSEL			: PCMUX select, priority top to bottom
+--		- PREDICT_TAKEN: to ID/EX
 entity PC_SEL_LOGIC is
 port(
-	PREDICT	:	in std_logic;
-	TARGET_VALID	:	in std_logic;
-	OPCODE	:	in std_logic_vector(6 downto 0);
-	FLUSH		:	in std_logic;
-	PREDICT_EX	:	in std_logic;
-	JUMP_EX	:	in std_logic;
-	SEL		:	out std_logic_vector(1 downto 0));
+	RST				:	in		std_logic;
+	REDIRECT_EN		:	in		std_logic;
+	TARGET_VALID	:	in		std_logic;
+	IS_JAL			:	in		std_logic;
+	PREDICT			:	in		std_logic;
+	PREDICT_TAKEN	:	out 	std_logic;
+	PCSEL				:	out	std_logic_vector(1 downto 0));
 end entity PC_SEL_LOGIC;
 
+-- circuit description
 architecture BEHAVIORAL of PC_SEL_LOGIC is
-	signal IS_B_TYPE	:	std_logic;
 begin
-	IS_B_TYPE	<=	'1' when OPCODE = B"1100011" else '0';
-
-	SEL	<=	B"01" when JUMP_EX = '1' else
-				B"11" when (FLUSH = '1' and PREDICT_EX = '1') else -- recovery address
-				B"01" when (FLUSH = '1' and PREDICT_EX = '0') else
-				B"10" when (PREDICT = '1' and TARGET_VALID = '1' and IS_B_TYPE = '1') else
-				B"00";
+	PCSEL	<=	B"11" when RST													= '1' else	-- D3 ZERO32
+				B"10" when REDIRECT_EN 										= '1' else	--	D2 REDIRECT_PC
+				B"01" when (TARGET_VALID and (IS_JAL or PREDICT))	= '1' else	-- D1 BR_TARGET
+				B"00";																			-- D0 PC_PLUS4
 end architecture BEHAVIORAL;

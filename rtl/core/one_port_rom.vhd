@@ -44,6 +44,7 @@ ENTITY one_port_rom IS
 	(
 		address		: IN STD_LOGIC_VECTOR (9 DOWNTO 0);
 		clock		: IN STD_LOGIC  := '1';
+		rden		: IN STD_LOGIC  := '1';
 		q		: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
 	);
 END one_port_rom;
@@ -77,6 +78,7 @@ BEGIN
 	PORT MAP (
 		address_a => address,
 		clock0 => clock,
+		rden_a => rden,
 		q_a => sub_wire0
 	);
 
@@ -114,7 +116,7 @@ END SYN;
 -- Retrieval info: PRIVATE: UseDQRAM NUMERIC "0"
 -- Retrieval info: PRIVATE: WidthAddr NUMERIC "10"
 -- Retrieval info: PRIVATE: WidthData NUMERIC "32"
--- Retrieval info: PRIVATE: rden NUMERIC "0"
+-- Retrieval info: PRIVATE: rden NUMERIC "1"
 -- Retrieval info: LIBRARY: altera_mf altera_mf.altera_mf_components.all
 -- Retrieval info: CONSTANT: ADDRESS_ACLR_A STRING "NONE"
 -- Retrieval info: CONSTANT: CLOCK_ENABLE_INPUT_A STRING "BYPASS"
@@ -134,8 +136,10 @@ END SYN;
 -- Retrieval info: USED_PORT: address 0 0 10 0 INPUT NODEFVAL "address[9..0]"
 -- Retrieval info: USED_PORT: clock 0 0 0 0 INPUT VCC "clock"
 -- Retrieval info: USED_PORT: q 0 0 32 0 OUTPUT NODEFVAL "q[31..0]"
+-- Retrieval info: USED_PORT: rden 0 0 0 0 INPUT VCC "rden"
 -- Retrieval info: CONNECT: @address_a 0 0 10 0 address 0 0 10 0
 -- Retrieval info: CONNECT: @clock0 0 0 0 0 clock 0 0 0 0
+-- Retrieval info: CONNECT: @rden_a 0 0 0 0 rden 0 0 0 0
 -- Retrieval info: CONNECT: q 0 0 32 0 @q_a 0 0 32 0
 -- Retrieval info: GEN_FILE: TYPE_NORMAL one_port_rom.vhd TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL one_port_rom.inc FALSE

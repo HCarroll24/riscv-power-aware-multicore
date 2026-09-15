@@ -26,7 +26,8 @@ port(
 	INSTR			:	in std_logic_vector(31 downto 0);
 	PC				:	in std_logic_vector(31 downto 0);
 	FETCH_TARGET:	out std_logic_vector(31 downto 0);
-	TARGET_VALID:	out std_logic
+	TARGET_VALID:	out std_logic;
+	IS_JAL		:	out std_logic
 );
 end entity BRANCH_TARGET_CALC;
 
@@ -65,6 +66,8 @@ begin
 	-- JALR (1100111) requires rs1 and cannot be computed here
 	TARGET_VALID	<=	'1' when (OPCODE = B"1100011" or OPCODE = B"1101111") else
 							'0';
+							
+	IS_JAL		<=	'1' when OPCODE = B"1101111" else '0';
 
 	-- target = PC of this instruction + immediate
 	target_adder:	ADDER
