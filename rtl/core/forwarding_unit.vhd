@@ -32,11 +32,11 @@ port(
 	RS1_ADDR			:	in std_logic_vector(4 downto 0);
 	RS2_ADDR			:	in std_logic_vector(4 downto 0);
 	SRC2SEL			:	in std_logic;
+	RD_ADDR_ID_EX	:	in std_logic_vector(4 downto 0);
+	REGWR_ID_EX		:	in std_logic;
 	RD_ADDR_EX_MEM	:	in std_logic_vector(4 downto 0);
 	REGWR_EX_MEM	:	in std_logic;
-	RD_ADDR_MEM_WB	:	in std_logic_vector(4 downto 0);
-	REGWR_MEM_WB	:	in std_logic;
-	MEMRD_MEM_WB	:	in std_logic;
+	MEMRD_EX_MEM	:	in std_logic;
 	ASEL				:	out std_logic_vector(1 downto 0);
 	BSEL_ALU			:	out std_logic_vector(1 downto 0);
 	BSEL_DATA		:	out std_logic_vector(1 downto 0)
@@ -54,17 +54,17 @@ architecture BEHAVIORAL of FORWARDING_UNIT is
 	-- no reliance on impure=function support
 	function FWD_SEL(
 		RS				:	std_logic_vector(4 downto 0);
+		RD_ID_EX		:	std_logic_vector(4 downto 0);
+		WR_ID_EX		:	std_logic;
 		RD_EX_MEM	:	std_logic_vector(4 downto 0);
 		WR_EX_MEM	:	std_logic;
-		RD_MEM_WB	:	std_logic_vector(4 downto 0);
-		WR_MEM_WB	:	std_logic;
-		LOAD_MEM_WB	:	std_logic) return std_logic_vector is
+		LOAD_EX_MEM	:	std_logic) return std_logic_vector is
 	begin
 		-- younger instruction first
-		if WR_EX_MEM = '1' and RD_EX_MEM /= B"00000" and RD_EX_MEM = RS then
+		if WR_ID_EX = '1' and RD_ID_EX /= B"00000" and RD_ID_EX = RS then
 			return B"01";
-		elsif WR_MEM_WB = '1' and RD_MEM_WB /= B"00000" and RD_MEM_WB = RS then
-			if LOAD_MEM_WB = '1' then
+		elsif WR_EX_MEM = '1' and RD_EX_MEM /= B"00000" and RD_EX_MEM = RS then
+			if LOAD_EX_MEM = '1' then
 				return B"10";
 			else
 				return B"11";
@@ -77,10 +77,10 @@ architecture BEHAVIORAL of FORWARDING_UNIT is
 	signal RS2_FWD	:	std_logic_vector(1 downto 0);
 begin
 	-- A side: no gate needed
-	ASEL			<=	FWD_SEL(RS1_ADDR, RD_ADDR_EX_MEM, REGWR_EX_MEM, RD_ADDR_MEM_WB, REGWR_MEM_WB, MEMRD_MEM_WB);
+	ASEL			<=	FWD_SEL(RS1_ADDR, RD_ADDR_ID_EX, REGWR_ID_EX, RD_ADDR_EX_MEM, REGWR_EX_MEM, MEMRD_EX_MEM);
 	
 	-- rs2's forwarded value, used as-is by store-data path and branch comparator
-	RS2_FWD		<=	FWD_SEL(RS2_ADDR, RD_ADDR_EX_MEM, REGWR_EX_MEM, RD_ADDR_MEM_WB, REGWR_MEM_WB, MEMRD_MEM_WB);
+	RS2_FWD		<=	FWD_SEL(RS2_ADDR, RD_ADDR_ID_EX, REGWR_ID_EX, RD_ADDR_EX_MEM, REGWR_EX_MEM, MEMRD_EX_MEM);
 	BSEL_DATA	<=	RS2_FWD;
 	
 	-- B side into the ALU: suppressed when OP_B is an immediate
