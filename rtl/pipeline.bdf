@@ -2833,17 +2833,6 @@ refer to the applicable agreement for further details.
 	(pt 168 256)
 )
 (connector
-	(text "MEMRD_ID_EX" (rect 176 256 270 275)(font "Intel Clear" ))
-	(pt 264 272)
-	(pt 168 272)
-)
-(connector
-	(text "RD_ADDR_ID_EX[4..0]" (rect 176 272 315 291)(font "Intel Clear" ))
-	(pt 264 288)
-	(pt 168 288)
-	(bus)
-)
-(connector
 	(text "PC[31..0]" (rect 173 176 232 195)(font "Intel Clear" ))
 	(pt 264 192)
 	(pt 168 192)
@@ -2924,38 +2913,6 @@ refer to the applicable agreement for further details.
 	(text "TRAIN_EN" (rect -272 240 -209 259)(font "Intel Clear" ))
 	(pt -280 256)
 	(pt -216 256)
-)
-(connector
-	(text "TRAIN_PC[31..0]" (rect -272 256 -167 275)(font "Intel Clear" ))
-	(pt -280 272)
-	(pt -216 272)
-	(bus)
-)
-(connector
-	(text "TRAIN_TAKEN" (rect -272 272 -182 291)(font "Intel Clear" ))
-	(pt -280 288)
-	(pt -216 288)
-)
-(connector
-	(text "REGWR_ID_EX" (rect 176 288 268 307)(font "Intel Clear" ))
-	(pt 264 304)
-	(pt 168 304)
-)
-(connector
-	(text "RD_ADDR_EX_MEM[4..0]" (rect 128 304 286 323)(font "Intel Clear" ))
-	(pt 264 320)
-	(pt 168 320)
-	(bus)
-)
-(connector
-	(text "REGWR_EX_MEM" (rect 176 320 286 339)(font "Intel Clear" ))
-	(pt 264 336)
-	(pt 168 336)
-)
-(connector
-	(text "MEMRD_EX_MEM" (rect 168 336 281 355)(font "Intel Clear" ))
-	(pt 264 352)
-	(pt 168 352)
 )
 (connector
 	(text "EX_WB_VALUE[31..0]" (rect 144 352 282 371)(font "Intel Clear" ))
@@ -3118,12 +3075,6 @@ refer to the applicable agreement for further details.
 	(pt 1232 264)
 )
 (connector
-	(text "ID_EX_ALUSEL[2..0]" (rect 1240 272 1367 291)(font "Intel Clear" ))
-	(pt 1312 296)
-	(pt 1232 296)
-	(bus)
-)
-(connector
 	(text "ID_EX_IS_JALR" (rect 1240 256 1335 275)(font "Intel Clear" ))
 	(pt 1312 280)
 	(pt 1232 280)
@@ -3144,12 +3095,6 @@ refer to the applicable agreement for further details.
 	(text "ID_EX_PREDICT_TAKEN" (rect 1240 320 1392 339)(font "Intel Clear" ))
 	(pt 1312 344)
 	(pt 1232 344)
-)
-(connector
-	(text "ALUF_F[31..0]" (rect 1712 160 1802 179)(font "Intel Clear" ))
-	(pt 1704 184)
-	(pt 1800 184)
-	(bus)
 )
 (connector
 	(text "EX_WB_VALUE[31..0]" (rect 1712 176 1850 195)(font "Intel Clear" ))
@@ -3285,12 +3230,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 1816 16)
 	(pt 1968 16)
-)
-(connector
-	(text "ID_EX_RD[5..0]" (rect 1856 8 1951 27)(font "Intel Clear" ))
-	(pt 1848 32)
-	(pt 1968 32)
-	(bus)
 )
 (connector
 	(pt 1816 408)
@@ -3668,6 +3607,67 @@ refer to the applicable agreement for further details.
 	(text "MEM_WB_VALID" (rect 3128 664 3234 683)(font "Intel Clear" ))
 	(pt 3120 688)
 	(pt 3288 688)
+)
+(connector
+	(text "ALU_F[31..0]" (rect 1712 160 1794 179)(font "Intel Clear" ))
+	(pt 1704 184)
+	(pt 1800 184)
+	(bus)
+)
+(connector
+	(text "ID_EX_ALUSEL[3..0]" (rect 1240 272 1367 291)(font "Intel Clear" ))
+	(pt 1312 296)
+	(pt 1232 296)
+	(bus)
+)
+(connector
+	(text "ID_EX_RD[4..0]" (rect 1856 8 1951 27)(font "Intel Clear" ))
+	(pt 1848 32)
+	(pt 1968 32)
+	(bus)
+)
+(connector
+	(text "EX_MEM_RD[4..0]" (rect 168 304 282 323)(font "Intel Clear" ))
+	(pt 264 320)
+	(pt 168 320)
+	(bus)
+)
+(connector
+	(text "ID_EX_MEMRD" (rect 176 256 270 275)(font "Intel Clear" ))
+	(pt 264 272)
+	(pt 168 272)
+)
+(connector
+	(text "ID_EX_RD[4..0]" (rect 176 272 271 291)(font "Intel Clear" ))
+	(pt 264 288)
+	(pt 168 288)
+	(bus)
+)
+(connector
+	(text "ID_EX_REGWR" (rect 176 288 268 307)(font "Intel Clear" ))
+	(pt 264 304)
+	(pt 168 304)
+)
+(connector
+	(text "EX_MEM_REGWR" (rect 176 320 286 339)(font "Intel Clear" ))
+	(pt 264 336)
+	(pt 168 336)
+)
+(connector
+	(text "EX_MEM_MEMRD" (rect 168 336 281 355)(font "Intel Clear" ))
+	(pt 264 352)
+	(pt 168 352)
+)
+(connector
+	(text "ID_EX_PC[31..0]" (rect -272 256 -169 275)(font "Intel Clear" ))
+	(pt -280 272)
+	(pt -216 272)
+	(bus)
+)
+(connector
+	(text "TRAIN_TAKEN" (rect -272 272 -182 291)(font "Intel Clear" ))
+	(pt -280 288)
+	(pt -216 288)
 )
 (junction (pt 760 -1720))
 (junction (pt 760 -1544))
