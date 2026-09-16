@@ -1307,174 +1307,6 @@ refer to the applicable agreement for further details.
 	(annotation_block (parameter)(rect 856 472 1056 512))
 )
 (symbol
-	(rect 856 -352 1056 -208)
-	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
-	(text "ID_EX_RD2" (rect 8 128 85 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
-		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 18 15)(font "Arial" ))
-		(text "LD" (rect 21 59 39 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 856 -392 1056 -352))
-)
-(symbol
-	(rect 856 -568 1056 -424)
-	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
-	(text "ID_EX_RS1" (rect 8 128 84 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
-		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 18 15)(font "Arial" ))
-		(text "LD" (rect 21 59 39 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"5"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 856 -608 1054 -568))
-)
-(symbol
-	(rect 856 944 1056 1088)
-	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
-	(text "ID_EX_RS2" (rect 8 128 84 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
-		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 18 15)(font "Arial" ))
-		(text "LD" (rect 21 59 39 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"5"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 856 904 1054 944))
-)
-(symbol
 	(rect 856 -784 1056 -640)
 	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
 	(text "ID_EX_RD" (rect 8 128 77 143)(font "Arial" ))
@@ -1697,56 +1529,6 @@ refer to the applicable agreement for further details.
 		(rectangle (rect 16 16 184 128))
 	)
 	(annotation_block (parameter)(rect 856 -1256 1054 -1216))
-)
-(symbol
-	(rect 856 -1432 1000 -1288)
-	(text "REG1" (rect 5 0 43 15)(font "Arial" ))
-	(text "ID_EX_SRC2SEL" (rect 8 128 122 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
-		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 18 15)(font "Arial" ))
-		(text "LD" (rect 21 59 39 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D" (rect 0 0 10 15)(font "Arial" ))
-		(text "D" (rect 21 91 31 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 144 32)
-		(output)
-		(text "Q" (rect 0 0 10 15)(font "Arial" ))
-		(text "Q" (rect 115 27 125 42)(font "Arial" ))
-		(line (pt 144 32)(pt 128 32))
-	)
-	(drawing
-		(rectangle (rect 16 16 128 128))
-	)
 )
 (symbol
 	(rect 856 1336 1000 1480)
@@ -2466,6 +2248,62 @@ refer to the applicable agreement for further details.
 		(rectangle (rect 16 16 368 304))
 	)
 )
+(symbol
+	(rect 856 -352 1056 -208)
+	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
+	(text "ID_EX_STORE_DATA" (rect 8 128 148 143)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "RST" (rect 0 0 28 15)(font "Arial" ))
+		(text "RST" (rect 21 27 49 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
+		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "LD" (rect 0 0 18 15)(font "Arial" ))
+		(text "LD" (rect 21 59 39 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
+		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
+		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 200 32)
+		(output)
+		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
+		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
+		(line (pt 200 32)(pt 184 32)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 184 128))
+	)
+	(annotation_block (parameter)(rect 856 -392 1056 -352))
+)
 (connector
 	(text "RST" (rect 1951 -112 1975 -93)(font "Intel Clear" ))
 	(pt 1912 -96)
@@ -3016,24 +2854,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "RD2[31..0]" (rect 784 -272 851 -253)(font "Intel Clear" ))
-	(pt 856 -256)
-	(pt 776 -256)
-	(bus)
-)
-(connector
-	(text "RS1[4..0]" (rect 784 -488 841 -469)(font "Intel Clear" ))
-	(pt 856 -472)
-	(pt 776 -472)
-	(bus)
-)
-(connector
-	(text "RS2[4..0]" (rect 784 1024 841 1043)(font "Intel Clear" ))
-	(pt 856 1040)
-	(pt 776 1040)
-	(bus)
-)
-(connector
 	(text "RD[4..0]" (rect 784 -704 834 -685)(font "Intel Clear" ))
 	(pt 856 -688)
 	(pt 776 -688)
@@ -3056,11 +2876,6 @@ refer to the applicable agreement for further details.
 	(pt 856 -1120)
 	(pt 776 -1120)
 	(bus)
-)
-(connector
-	(text "SRC2SEL" (rect 784 -1352 841 -1333)(font "Intel Clear" ))
-	(pt 856 -1336)
-	(pt 776 -1336)
 )
 (connector
 	(text "BRANCH" (rect 784 1416 838 1435)(font "Intel Clear" ))
@@ -3107,16 +2922,6 @@ refer to the applicable agreement for further details.
 	(pt 776 -1560)
 )
 (connector
-	(text "RST" (rect 784 -1416 808 -1397)(font "Intel Clear" ))
-	(pt 856 -1400)
-	(pt 776 -1400)
-)
-(connector
-	(text "CLK" (rect 784 -1400 809 -1381)(font "Intel Clear" ))
-	(pt 856 -1384)
-	(pt 776 -1384)
-)
-(connector
 	(text "RST" (rect 784 -1200 808 -1181)(font "Intel Clear" ))
 	(pt 856 -1184)
 	(pt 776 -1184)
@@ -3155,16 +2960,6 @@ refer to the applicable agreement for further details.
 	(text "CLK" (rect 784 -752 809 -733)(font "Intel Clear" ))
 	(pt 856 -736)
 	(pt 776 -736)
-)
-(connector
-	(text "RST" (rect 784 -552 808 -533)(font "Intel Clear" ))
-	(pt 856 -536)
-	(pt 776 -536)
-)
-(connector
-	(text "CLK" (rect 784 -536 809 -517)(font "Intel Clear" ))
-	(pt 856 -520)
-	(pt 776 -520)
 )
 (connector
 	(text "RST" (rect 784 -336 808 -317)(font "Intel Clear" ))
@@ -3225,16 +3020,6 @@ refer to the applicable agreement for further details.
 	(text "CLK" (rect 784 760 809 779)(font "Intel Clear" ))
 	(pt 856 776)
 	(pt 776 776)
-)
-(connector
-	(text "RST" (rect 784 960 808 979)(font "Intel Clear" ))
-	(pt 856 976)
-	(pt 776 976)
-)
-(connector
-	(text "CLK" (rect 784 976 809 995)(font "Intel Clear" ))
-	(pt 856 992)
-	(pt 776 992)
 )
 (connector
 	(text "RST" (rect 784 1176 808 1195)(font "Intel Clear" ))
@@ -3307,11 +3092,6 @@ refer to the applicable agreement for further details.
 	(pt 776 -1528)
 )
 (connector
-	(text "BUBBLE" (rect 784 -1368 833 -1349)(font "Intel Clear" ))
-	(pt 856 -1352)
-	(pt 776 -1352)
-)
-(connector
 	(text "BUBBLE" (rect 784 -1152 833 -1133)(font "Intel Clear" ))
 	(pt 856 -1136)
 	(pt 776 -1136)
@@ -3325,11 +3105,6 @@ refer to the applicable agreement for further details.
 	(text "BUBBLE" (rect 784 -720 833 -701)(font "Intel Clear" ))
 	(pt 856 -704)
 	(pt 776 -704)
-)
-(connector
-	(text "BUBBLE" (rect 784 -504 833 -485)(font "Intel Clear" ))
-	(pt 856 -488)
-	(pt 776 -488)
 )
 (connector
 	(text "BUBBLE" (rect 784 -288 833 -269)(font "Intel Clear" ))
@@ -3355,11 +3130,6 @@ refer to the applicable agreement for further details.
 	(text "BUBBLE" (rect 784 792 833 811)(font "Intel Clear" ))
 	(pt 856 808)
 	(pt 776 808)
-)
-(connector
-	(text "BUBBLE" (rect 784 1008 833 1027)(font "Intel Clear" ))
-	(pt 856 1024)
-	(pt 776 1024)
 )
 (connector
 	(text "BUBBLE" (rect 784 1224 833 1243)(font "Intel Clear" ))
@@ -3417,19 +3187,7 @@ refer to the applicable agreement for further details.
 	(pt 760 -1544)
 )
 (connector
-	(pt 856 -1368)
-	(pt 760 -1368)
-)
-(connector
-	(pt 760 -1544)
-	(pt 760 -1368)
-)
-(connector
 	(pt 856 -1152)
-	(pt 760 -1152)
-)
-(connector
-	(pt 760 -1368)
 	(pt 760 -1152)
 )
 (connector
@@ -3449,19 +3207,7 @@ refer to the applicable agreement for further details.
 	(pt 760 -720)
 )
 (connector
-	(pt 856 -504)
-	(pt 760 -504)
-)
-(connector
-	(pt 760 -720)
-	(pt 760 -504)
-)
-(connector
 	(pt 856 -288)
-	(pt 760 -288)
-)
-(connector
-	(pt 760 -504)
 	(pt 760 -288)
 )
 (connector
@@ -3505,19 +3251,7 @@ refer to the applicable agreement for further details.
 	(pt 760 792)
 )
 (connector
-	(pt 856 1008)
-	(pt 760 1008)
-)
-(connector
-	(pt 760 792)
-	(pt 760 1008)
-)
-(connector
 	(pt 856 1224)
-	(pt 760 1224)
-)
-(connector
-	(pt 760 1008)
 	(pt 760 1224)
 )
 (connector
@@ -3810,23 +3544,38 @@ refer to the applicable agreement for further details.
 	(pt 168 400)
 	(bus)
 )
+(connector
+	(pt 760 -720)
+	(pt 760 -288)
+)
+(connector
+	(text "STORE_DATA[31..0]" (rect 784 -272 912 -253)(font "Intel Clear" ))
+	(pt 856 -256)
+	(pt 776 -256)
+	(bus)
+)
+(connector
+	(pt 760 792)
+	(pt 760 1224)
+)
+(connector
+	(pt 760 -1544)
+	(pt 760 -1152)
+)
 (junction (pt 3208 704))
 (junction (pt 1952 864))
 (junction (pt 1896 288))
 (junction (pt 760 -1720))
 (junction (pt 760 -1544))
-(junction (pt 760 -1368))
 (junction (pt 760 -1152))
 (junction (pt 760 -936))
 (junction (pt 760 -720))
-(junction (pt 760 -504))
 (junction (pt 760 -288))
 (junction (pt 760 -72))
 (junction (pt 760 144))
 (junction (pt 760 360))
 (junction (pt 760 576))
 (junction (pt 760 792))
-(junction (pt 760 1008))
 (junction (pt 760 1224))
 (junction (pt 760 1400))
 (junction (pt 760 1576))
