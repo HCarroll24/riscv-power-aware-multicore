@@ -1987,62 +1987,6 @@ refer to the applicable agreement for further details.
 	(annotation_block (parameter)(rect 2976 -168 3176 -128))
 )
 (symbol
-	(rect 2976 304 3176 448)
-	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
-	(text "MEMWB_RD" (rect 8 128 85 147)(font "Intel Clear" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
-		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "LD" (rect 0 0 18 15)(font "Arial" ))
-		(text "LD" (rect 21 59 39 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
-		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 200 32)
-		(output)
-		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
-		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
-		(line (pt 200 32)(pt 184 32)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 184 128))
-	)
-	(annotation_block (parameter)(rect 2976 264 3176 304))
-)
-(symbol
 	(rect 2976 -344 3120 -200)
 	(text "REG1" (rect 5 0 43 15)(font "Arial" ))
 	(text "MEMWB_REGWR" (rect 8 128 115 147)(font "Intel Clear" ))
@@ -2255,6 +2199,62 @@ refer to the applicable agreement for further details.
 		(line (pt 16 16)(pt 24 8))
 		(line (pt 8 8)(pt 24 8))
 	)
+)
+(symbol
+	(rect 2976 304 3176 448)
+	(text "REGN" (rect 5 0 46 15)(font "Arial" ))
+	(text "MEMWB_RD" (rect 8 128 85 147)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "RST" (rect 0 0 28 15)(font "Arial" ))
+		(text "RST" (rect 21 27 49 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "CLK" (rect 0 0 28 15)(font "Arial" ))
+		(text "CLK" (rect 21 43 49 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "LD" (rect 0 0 18 15)(font "Arial" ))
+		(text "LD" (rect 21 59 39 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "FLUSH" (rect 0 0 47 15)(font "Arial" ))
+		(text "FLUSH" (rect 21 75 68 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "D[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
+		(text "D[width-1..0]" (rect 21 91 101 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 200 32)
+		(output)
+		(text "Q[width-1..0]" (rect 0 0 80 15)(font "Arial" ))
+		(text "Q[width-1..0]" (rect 112 27 192 42)(font "Arial" ))
+		(line (pt 200 32)(pt 184 32)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"5"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 184 128))
+	)
+	(annotation_block (parameter)(rect 2976 264 3174 304))
 )
 (connector
 	(text "STALL" (rect 656 128 696 147)(font "Intel Clear" ))
@@ -2822,17 +2822,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "RD_ADDR_WB[4..0]" (rect 176 224 298 243)(font "Intel Clear" ))
-	(pt 264 240)
-	(pt 168 240)
-	(bus)
-)
-(connector
-	(text "REGWR_WB" (rect 176 240 251 259)(font "Intel Clear" ))
-	(pt 264 256)
-	(pt 168 256)
-)
-(connector
 	(text "PC[31..0]" (rect 173 176 232 195)(font "Intel Clear" ))
 	(pt 264 192)
 	(pt 168 192)
@@ -2908,11 +2897,6 @@ refer to the applicable agreement for further details.
 	(pt -280 240)
 	(pt -216 240)
 	(bus)
-)
-(connector
-	(text "TRAIN_EN" (rect -272 240 -209 259)(font "Intel Clear" ))
-	(pt -280 256)
-	(pt -216 256)
 )
 (connector
 	(text "EX_WB_VALUE[31..0]" (rect 144 352 282 371)(font "Intel Clear" ))
@@ -3668,6 +3652,22 @@ refer to the applicable agreement for further details.
 	(text "TRAIN_TAKEN" (rect -272 272 -182 291)(font "Intel Clear" ))
 	(pt -280 288)
 	(pt -216 288)
+)
+(connector
+	(text "ID_EX_BRANCH" (rect -304 240 -205 259)(font "Intel Clear" ))
+	(pt -216 256)
+	(pt -280 256)
+)
+(connector
+	(text "MEM_WB_RD[4..0]" (rect 176 224 294 243)(font "Intel Clear" ))
+	(pt 264 240)
+	(pt 168 240)
+	(bus)
+)
+(connector
+	(text "MEM_WB_REGWR" (rect 176 240 290 259)(font "Intel Clear" ))
+	(pt 264 256)
+	(pt 168 256)
 )
 (junction (pt 760 -1720))
 (junction (pt 760 -1544))

@@ -405,54 +405,6 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 696 96 808 184)
-	(text "BUSMUX" (rect 28 0 115 19)(font "Arial" (font_size 10)))
-	(text "WBVAL_MUX" (rect 3 77 98 93)(font "Arial" (font_size 8)))
-	(port
-		(pt 0 64)
-		(input)
-		(text "datab[WIDTH-1..0]" (rect 6 51 132 67)(font "Arial" (font_size 8)))
-		(text "datab[]" (rect 6 51 53 67)(font "Arial" (font_size 8)))
-		(line (pt 0 64)(pt 44 64)(line_width 3))
-	)
-	(port
-		(pt 56 88)
-		(input)
-		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
-		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
-		(line (pt 56 88)(pt 56 72))
-	)
-	(port
-		(pt 0 32)
-		(input)
-		(text "dataa[WIDTH-1..0]" (rect 6 19 132 35)(font "Arial" (font_size 8)))
-		(text "dataa[]" (rect 6 19 53 35)(font "Arial" (font_size 8)))
-		(line (pt 0 32)(pt 44 32)(line_width 3))
-	)
-	(port
-		(pt 112 48)
-		(output)
-		(text "result[WIDTH-1..0]" (rect 75 35 201 51)(font "Arial" (font_size 8)))
-		(text "result[]" (rect 75 35 122 51)(font "Arial" (font_size 8)))
-		(line (pt 68 48)(pt 112 48)(line_width 3))
-	)
-	(parameter
-		"WIDTH"
-		"32"
-		"Width of I/O, any integer > 0"
-		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
-	)
-	(drawing
-		(text "0" (rect 52 31 59 44)(font "Arial" (font_size 6)))
-		(text "1" (rect 52 55 59 68)(font "Arial" (font_size 6)))
-		(line (pt 68 64)(pt 68 32))
-		(line (pt 44 80)(pt 44 16))
-		(line (pt 44 16)(pt 68 32))
-		(line (pt 44 80)(pt 68 64))
-	)
-	(annotation_block (parameter)(rect 696 56 836 96))
-)
-(symbol
 	(rect 728 288 792 336)
 	(text "XOR" (rect 1 0 26 13)(font "Arial" (font_size 6)))
 	(text "MISP_XOR" (rect 3 37 73 52)(font "Arial" ))
@@ -549,6 +501,71 @@ refer to the applicable agreement for further details.
 		(arc (pt 7 29)(pt 7 19)(rect -14 8 19 41))
 		(arc (pt 49 24)(pt 25 13)(rect -6 13 57 76))
 		(arc (pt 25 35)(pt 49 24)(rect -6 -27 57 36))
+	)
+)
+(symbol
+	(rect 696 128 808 216)
+	(text "BUSMUX" (rect 28 0 115 19)(font "Arial" (font_size 10)))
+	(text "WBVAL_MUX" (rect 3 77 98 93)(font "Arial" (font_size 8)))
+	(port
+		(pt 0 64)
+		(input)
+		(text "datab[WIDTH-1..0]" (rect 6 51 132 67)(font "Arial" (font_size 8)))
+		(text "datab[]" (rect 6 51 53 67)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 44 64)(line_width 3))
+	)
+	(port
+		(pt 56 88)
+		(input)
+		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
+		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
+		(line (pt 56 88)(pt 56 72))
+	)
+	(port
+		(pt 0 32)
+		(input)
+		(text "dataa[WIDTH-1..0]" (rect 6 19 132 35)(font "Arial" (font_size 8)))
+		(text "dataa[]" (rect 6 19 53 35)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 44 32)(line_width 3))
+	)
+	(port
+		(pt 112 48)
+		(output)
+		(text "result[WIDTH-1..0]" (rect 75 35 201 51)(font "Arial" (font_size 8)))
+		(text "result[]" (rect 75 35 122 51)(font "Arial" (font_size 8)))
+		(line (pt 68 48)(pt 112 48)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		""
+		"Width of I/O, any integer > 0"
+		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
+	)
+	(drawing
+		(text "0" (rect 52 31 59 44)(font "Arial" (font_size 6)))
+		(text "1" (rect 52 55 59 68)(font "Arial" (font_size 6)))
+		(line (pt 68 64)(pt 68 32))
+		(line (pt 44 80)(pt 44 16))
+		(line (pt 44 16)(pt 68 32))
+		(line (pt 44 80)(pt 68 64))
+	)
+	(annotation_block (parameter)(rect 808 88 952 128))
+)
+(symbol
+	(rect 1008 576 1040 608)
+	(text "GND" (rect 8 16 33 29)(font "Arial" (font_size 6)))
+	(text "inst" (rect 3 21 26 36)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
 	)
 )
 (connector
@@ -698,26 +715,9 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "ID_EX_PC_PLUS4[31..0]" (rect 568 112 720 131)(font "Intel Clear" ))
-	(pt 696 128)
-	(pt 592 128)
-	(bus)
-)
-(connector
-	(text "ID_EX_WD4SEL[1]" (rect 727 140 746 256)(font "Intel Clear" )(vertical))
-	(pt 752 184)
-	(pt 752 256)
-)
-(connector
 	(text "ID_EX_IS_JALR" (rect 1064 320 1159 339)(font "Intel Clear" ))
 	(pt 1144 336)
 	(pt 1056 336)
-)
-(connector
-	(text "ALU_F[31..0]" (rect 617 144 699 163)(font "Intel Clear" ))
-	(pt 560 160)
-	(pt 696 160)
-	(bus)
 )
 (connector
 	(text "ID_EX_IS_JALR, BR_TAKEN" (rect 536 472 707 491)(font "Intel Clear" ))
@@ -772,8 +772,34 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "EX_WB_VALUE[31..0]" (rect 816 128 954 147)(font "Intel Clear" ))
-	(pt 808 144)
-	(pt 880 144)
+	(text "ALU_F[31..0]" (rect 577 144 659 163)(font "Intel Clear" ))
+	(pt 560 160)
+	(pt 696 160)
 	(bus)
+)
+(connector
+	(text "ID_EX_PC_PLUS4[31..0]" (rect 568 176 720 195)(font "Intel Clear" ))
+	(pt 696 192)
+	(pt 592 192)
+	(bus)
+)
+(connector
+	(text "ID_EX_WD4SEL[1]" (rect 727 180 746 296)(font "Intel Clear" )(vertical))
+	(pt 752 264)
+	(pt 752 224)
+)
+(connector
+	(text "EX_WB_VALUE[31..0]" (rect 816 160 954 179)(font "Intel Clear" ))
+	(pt 808 176)
+	(pt 880 176)
+	(bus)
+)
+(connector
+	(pt 1024 544)
+	(pt 1096 544)
+)
+(connector
+	(text "ZERO_BIT" (rect 1000 507 1019 569)(font "Intel Clear" )(vertical))
+	(pt 1024 576)
+	(pt 1024 544)
 )
