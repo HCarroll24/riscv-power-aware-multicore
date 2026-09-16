@@ -72,6 +72,11 @@ architecture BEHAVIORAL of REGFILE is
 	signal X30	: std_logic_vector(31 downto 0);
 	signal X31	: std_logic_vector(31 downto 0);
 	
+	-- write-first bypass: the read muxes drive
+	-- output ports choose between them and WD3
+	signal RD1_INT, RD2_INT	:	std_logic_vector(31 downto 0);
+	signal BYP1, BYP2			:	std_logic;
+	
 begin
 	-- X0 is hardwired to 0
 	X0 <= X"00000000";
@@ -79,75 +84,81 @@ begin
 	-- READ PORT 1
 	-- Selects one of the registers based on A1
 	with A1 select
-	RD1 <= X0  when B"00000",
-			 X1  when B"00001",
-			 X2  when B"00010",
-			 X3  when B"00011",
-			 X4  when B"00100",
-			 X5  when B"00101",
-			 X6  when B"00110",
-			 X7  when B"00111",
-			 X8  when B"01000",
-			 X9  when B"01001",
-			 X10 when B"01010",
-			 X11 when B"01011",
-			 X12 when B"01100",
-			 X13 when B"01101",
-			 X14 when B"01110",
-			 X15 when B"01111",
-			 X16 when B"10000",
-			 X17 when B"10001",
-			 X18 when B"10010",
-			 X19 when B"10011",
-			 X20 when B"10100",
-			 X21 when B"10101",
-			 X22 when B"10110",
-			 X23 when B"10111",
-			 X24 when B"11000",
-			 X25 when B"11001",
-			 X26 when B"11010",
-			 X27 when B"11011",
-			 X28 when B"11100",
-			 X29 when B"11101",
-			 X30 when B"11110",
-			 X31 when others;
+	RD1_INT <= 	X0  when B"00000",
+					X1  when B"00001",
+					X2  when B"00010",
+					X3  when B"00011",
+					X4  when B"00100",
+					X5  when B"00101",
+					X6  when B"00110",
+					X7  when B"00111",
+					X8  when B"01000",
+					X9  when B"01001",
+					X10 when B"01010",
+					X11 when B"01011",
+					X12 when B"01100",
+					X13 when B"01101",
+					X14 when B"01110",
+					X15 when B"01111",
+					X16 when B"10000",
+					X17 when B"10001",
+					X18 when B"10010",
+					X19 when B"10011",
+					X20 when B"10100",
+					X21 when B"10101",
+					X22 when B"10110",
+					X23 when B"10111",
+					X24 when B"11000",
+					X25 when B"11001",
+					X26 when B"11010",
+					X27 when B"11011",
+					X28 when B"11100",
+					X29 when B"11101",
+					X30 when B"11110",
+					X31 when others;
 			 
 	-- READ PORT 2 (rs2)
 	-- identical to RD1 but with A2 driven
 	with A2 select
-	RD2 <= X0  when B"00000",
-			 X1  when B"00001",
-			 X2  when B"00010",
-			 X3  when B"00011",
-			 X4  when B"00100",
-			 X5  when B"00101",
-			 X6  when B"00110",
-			 X7  when B"00111",
-			 X8  when B"01000",
-			 X9  when B"01001",
-			 X10 when B"01010",
-			 X11 when B"01011",
-			 X12 when B"01100",
-			 X13 when B"01101",
-			 X14 when B"01110",
-			 X15 when B"01111",
-			 X16 when B"10000",
-			 X17 when B"10001",
-			 X18 when B"10010",
-			 X19 when B"10011",
-			 X20 when B"10100",
-			 X21 when B"10101",
-			 X22 when B"10110",
-			 X23 when B"10111",
-			 X24 when B"11000",
-			 X25 when B"11001",
-			 X26 when B"11010",
-			 X27 when B"11011",
-			 X28 when B"11100",
-			 X29 when B"11101",
-			 X30 when B"11110",
-			 X31 when others;
+	RD2_INT <= 	X0  when B"00000",
+				X1  when B"00001",
+				X2  when B"00010",
+				X3  when B"00011",
+				X4  when B"00100",
+				X5  when B"00101",
+				X6  when B"00110",
+				X7  when B"00111",
+				X8  when B"01000",
+				X9  when B"01001",
+				X10 when B"01010",
+				X11 when B"01011",
+				X12 when B"01100",
+				X13 when B"01101",
+				X14 when B"01110",
+				X15 when B"01111",
+				X16 when B"10000",
+				X17 when B"10001",
+				X18 when B"10010",
+				X19 when B"10011",
+				X20 when B"10100",
+				X21 when B"10101",
+				X22 when B"10110",
+				X23 when B"10111",
+				X24 when B"11000",
+				X25 when B"11001",
+				X26 when B"11010",
+				X27 when B"11011",
+				X28 when B"11100",
+				X29 when B"11101",
+				X30 when B"11110",
+				X31 when others;
 			 
+	-- WRITE-FIRST BYPASS (read-during-write)
+	-- x0 has no write process, write to x0 is discarded
+	-- bypass discarded too
+	BYP1	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A1) else '0';
+	BYP2	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A2) else '0';
+	
 	-- WRITE PORT (individual per register)
 	-- RST = '1' clears all writable registers t0 zero
 	-- REGWR = '1' for synchronous load for active-low
