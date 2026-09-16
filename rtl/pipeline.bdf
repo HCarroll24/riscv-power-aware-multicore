@@ -53,22 +53,6 @@ refer to the applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 3736 256 3912 272)
-	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
-	(text "PC[31..0]" (rect 90 0 149 15)(font "Arial" ))
-	(pt 0 8)
-	(drawing
-		(line (pt 0 8)(pt 52 8))
-		(line (pt 52 4)(pt 78 4))
-		(line (pt 52 12)(pt 78 12))
-		(line (pt 52 12)(pt 52 4))
-		(line (pt 78 4)(pt 82 8))
-		(line (pt 82 8)(pt 78 12))
-		(line (pt 78 12)(pt 82 8))
-	)
-)
-(pin
-	(output)
 	(rect 3736 288 3915 304)
 	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
 	(text "IBUS[31..0]" (rect 90 0 160 19)(font "Intel Clear" ))
@@ -149,9 +133,9 @@ refer to the applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 3736 352 3932 368)
+	(rect 3736 352 3912 368)
 	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
-	(text "FUNCT3[2..0]" (rect 90 0 176 19)(font "Intel Clear" ))
+	(text "WD3[31..0]" (rect 90 0 160 15)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -2256,6 +2240,54 @@ refer to the applicable agreement for further details.
 	)
 	(annotation_block (parameter)(rect 2976 264 3174 304))
 )
+(symbol
+	(rect 3448 272 3560 360)
+	(text "BUSMUX" (rect 28 0 115 19)(font "Arial" (font_size 10)))
+	(text "WB_MUX" (rect 3 77 69 93)(font "Arial" (font_size 8)))
+	(port
+		(pt 0 64)
+		(input)
+		(text "datab[WIDTH-1..0]" (rect 6 51 132 67)(font "Arial" (font_size 8)))
+		(text "datab[]" (rect 6 51 53 67)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 44 64)(line_width 3))
+	)
+	(port
+		(pt 56 88)
+		(input)
+		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
+		(text "sel" (rect 59 70 79 86)(font "Arial" (font_size 8)))
+		(line (pt 56 88)(pt 56 72))
+	)
+	(port
+		(pt 0 32)
+		(input)
+		(text "dataa[WIDTH-1..0]" (rect 6 19 132 35)(font "Arial" (font_size 8)))
+		(text "dataa[]" (rect 6 19 53 35)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 44 32)(line_width 3))
+	)
+	(port
+		(pt 112 48)
+		(output)
+		(text "result[WIDTH-1..0]" (rect 75 35 201 51)(font "Arial" (font_size 8)))
+		(text "result[]" (rect 75 35 122 51)(font "Arial" (font_size 8)))
+		(line (pt 68 48)(pt 112 48)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		"Width of I/O, any integer > 0"
+		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
+	)
+	(drawing
+		(text "0" (rect 52 31 59 44)(font "Arial" (font_size 6)))
+		(text "1" (rect 52 55 59 68)(font "Arial" (font_size 6)))
+		(line (pt 68 64)(pt 68 32))
+		(line (pt 44 80)(pt 44 16))
+		(line (pt 44 16)(pt 68 32))
+		(line (pt 44 80)(pt 68 64))
+	)
+	(annotation_block (parameter)(rect 3448 232 3588 272))
+)
 (connector
 	(text "STALL" (rect 656 128 696 147)(font "Intel Clear" ))
 	(pt 648 144)
@@ -3109,46 +3141,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "PC[31..0]" (rect 3677 240 3736 259)(font "Intel Clear" ))
-	(pt 3664 264)
-	(pt 3736 264)
-	(bus)
-)
-(connector
-	(text "IBUS[31..0]" (rect 3681 272 3751 291)(font "Intel Clear" ))
-	(pt 3664 296)
-	(pt 3736 296)
-	(bus)
-)
-(connector
-	(text "FLUSH" (rect 3695 288 3737 307)(font "Intel Clear" ))
-	(pt 3664 312)
-	(pt 3736 312)
-)
-(connector
-	(text "PCPLUS4[31..0]" (rect 3686 256 3786 275)(font "Intel Clear" ))
-	(pt 3664 280)
-	(pt 3736 280)
-	(bus)
-)
-(connector
-	(text "FETCH_TARGET[31..0]" (rect 3672 304 3815 323)(font "Intel Clear" ))
-	(pt 3664 328)
-	(pt 3736 328)
-	(bus)
-)
-(connector
-	(text "BRANCH_ID" (rect 3680 320 3754 339)(font "Intel Clear" ))
-	(pt 3672 344)
-	(pt 3736 344)
-)
-(connector
-	(text "INSTR[14..12]" (rect 3680 336 3767 355)(font "Intel Clear" ))
-	(pt 3672 360)
-	(pt 3736 360)
-	(bus)
-)
-(connector
 	(text "EX_MEM_WB_VALUE[31..0]" (rect 2169 160 2346 179)(font "Intel Clear" ))
 	(pt 2168 184)
 	(pt 2256 184)
@@ -3668,6 +3660,63 @@ refer to the applicable agreement for further details.
 	(text "MEM_WB_REGWR" (rect 176 240 290 259)(font "Intel Clear" ))
 	(pt 264 256)
 	(pt 168 256)
+)
+(connector
+	(text "MEM_WB_WB_VALUE[31..0]" (rect 3288 288 3468 307)(font "Intel Clear" ))
+	(pt 3448 304)
+	(pt 3360 304)
+	(bus)
+)
+(connector
+	(text "MEM_WB_RDM[31..0]" (rect 3328 320 3466 339)(font "Intel Clear" ))
+	(pt 3448 336)
+	(pt 3360 336)
+	(bus)
+)
+(connector
+	(text "MEM_WB_MEMRD" (rect 3480 325 3499 441)(font "Intel Clear" )(vertical))
+	(pt 3504 360)
+	(pt 3504 440)
+)
+(connector
+	(text "WB_VALUE[31..0]" (rect 3568 296 3681 315)(font "Intel Clear" ))
+	(pt 3560 320)
+	(pt 3632 320)
+	(bus)
+)
+(connector
+	(text "INSTR[31..0]" (rect 3681 272 3760 291)(font "Intel Clear" ))
+	(pt 3664 296)
+	(pt 3736 296)
+	(bus)
+)
+(connector
+	(text "BUBBLE" (rect 3695 288 3744 307)(font "Intel Clear" ))
+	(pt 3664 312)
+	(pt 3736 312)
+)
+(connector
+	(text "PC_PLUS4[31..0]" (rect 3686 256 3793 275)(font "Intel Clear" ))
+	(pt 3664 280)
+	(pt 3736 280)
+	(bus)
+)
+(connector
+	(text "BR_TARGET[31..0]" (rect 3672 304 3788 323)(font "Intel Clear" ))
+	(pt 3664 328)
+	(pt 3736 328)
+	(bus)
+)
+(connector
+	(text "WB_VALUE[31..0]" (rect 3680 336 3793 355)(font "Intel Clear" ))
+	(pt 3736 360)
+	(pt 3672 360)
+	(bus)
+)
+(connector
+	(text "BRANCH" (rect 3680 320 3734 339)(font "Intel Clear" ))
+	(pt 3672 344)
+	(pt 3736 344)
 )
 (junction (pt 760 -1720))
 (junction (pt 760 -1544))

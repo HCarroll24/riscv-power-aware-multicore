@@ -23,7 +23,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -48 200 200 216)
 	(text "INPUT" (rect 205 0 241 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_PC_PLUS4[31..0]" (rect 5 0 158 19)(font "Intel Clear" ))
+	(text "ID_EX_PC_PLUS4[31..0]" (rect 5 0 157 19)(font "Intel Clear" ))
 	(pt 248 8)
 	(drawing
 		(line (pt 164 12)(pt 189 12))
@@ -39,7 +39,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -56 216 200 232)
 	(text "INPUT" (rect 213 0 249 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_BR_TARGET[31..0]" (rect 5 0 167 19)(font "Intel Clear" ))
+	(text "ID_EX_BR_TARGET[31..0]" (rect 5 0 166 19)(font "Intel Clear" ))
 	(pt 256 8)
 	(drawing
 		(line (pt 172 12)(pt 197 12))
@@ -71,7 +71,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -24 280 200 296)
 	(text "INPUT" (rect 181 0 217 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_FUNCT3[2..0]" (rect 5 0 136 19)(font "Intel Clear" ))
+	(text "ID_EX_FUNCT3[2..0]" (rect 5 0 135 19)(font "Intel Clear" ))
 	(pt 224 8)
 	(drawing
 		(line (pt 140 12)(pt 165 12))
@@ -87,7 +87,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -32 296 200 312)
 	(text "INPUT" (rect 189 0 225 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_WD4SEL[1..0]" (rect 5 0 138 19)(font "Intel Clear" ))
+	(text "ID_EX_WD4SEL[1..0]" (rect 5 0 137 19)(font "Intel Clear" ))
 	(pt 232 8)
 	(drawing
 		(line (pt 148 12)(pt 173 12))
@@ -103,7 +103,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -24 152 200 168)
 	(text "INPUT" (rect 181 0 217 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_SRC1[31..0]" (rect 5 0 132 15)(font "Arial" ))
+	(text "ID_EX_SRC1[31..0]" (rect 5 0 131 15)(font "Arial" ))
 	(pt 224 8)
 	(drawing
 		(line (pt 140 12)(pt 165 12))
@@ -119,7 +119,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -16 168 200 184)
 	(text "INPUT" (rect 173 0 209 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_SRC2[31..0]" (rect 5 0 126 19)(font "Intel Clear" ))
+	(text "ID_EX_SRC2[31..0]" (rect 5 0 125 19)(font "Intel Clear" ))
 	(pt 216 8)
 	(drawing
 		(line (pt 132 12)(pt 157 12))
@@ -135,7 +135,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -72 184 200 200)
 	(text "INPUT" (rect 229 0 265 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_STORE_DATA[31..0]" (rect 5 0 179 19)(font "Intel Clear" ))
+	(text "ID_EX_STORE_DATA[31..0]" (rect 5 0 178 19)(font "Intel Clear" ))
 	(pt 272 8)
 	(drawing
 		(line (pt 188 12)(pt 213 12))
@@ -167,7 +167,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 0 232 200 248)
 	(text "INPUT" (rect 157 0 193 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_BRANCH" (rect 5 0 105 19)(font "Intel Clear" ))
+	(text "ID_EX_BRANCH" (rect 5 0 104 19)(font "Intel Clear" ))
 	(pt 200 8)
 	(drawing
 		(line (pt 116 12)(pt 141 12))
@@ -183,7 +183,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect -48 312 200 328)
 	(text "INPUT" (rect 205 0 241 13)(font "Arial" (font_size 6)))
-	(text "ID_EX_PREDICT_TAKEN" (rect 5 0 158 19)(font "Intel Clear" ))
+	(text "ID_EX_PREDICT_TAKEN" (rect 5 0 157 19)(font "Intel Clear" ))
 	(pt 248 8)
 	(drawing
 		(line (pt 164 12)(pt 189 12))
@@ -504,6 +504,23 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
+	(rect 1008 576 1040 608)
+	(text "GND" (rect 8 16 33 29)(font "Arial" (font_size 6)))
+	(text "inst" (rect 3 21 26 36)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
 	(rect 696 128 808 216)
 	(text "BUSMUX" (rect 28 0 115 19)(font "Arial" (font_size 10)))
 	(text "WBVAL_MUX" (rect 3 77 98 93)(font "Arial" (font_size 8)))
@@ -537,7 +554,7 @@ refer to the applicable agreement for further details.
 	)
 	(parameter
 		"WIDTH"
-		""
+		"32"
 		"Width of I/O, any integer > 0"
 		" 1" " 2" " 3" " 4" " 5" " 6" " 7" " 8" " 9" "10" "11" "12" "13" "14" "15" "16" "20" "24" "28" "32" "40" "48" "56" "64" 
 	)
@@ -549,24 +566,7 @@ refer to the applicable agreement for further details.
 		(line (pt 44 16)(pt 68 32))
 		(line (pt 44 80)(pt 68 64))
 	)
-	(annotation_block (parameter)(rect 808 88 952 128))
-)
-(symbol
-	(rect 1008 576 1040 608)
-	(text "GND" (rect 8 16 33 29)(font "Arial" (font_size 6)))
-	(text "inst" (rect 3 21 26 36)(font "Arial" )(invisible))
-	(port
-		(pt 16 0)
-		(output)
-		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
-		(text "1" (rect 18 0 26 16)(font "Courier New" (bold))(invisible))
-		(line (pt 16 8)(pt 16 0))
-	)
-	(drawing
-		(line (pt 8 8)(pt 16 16))
-		(line (pt 16 16)(pt 24 8))
-		(line (pt 8 8)(pt 24 8))
-	)
+	(annotation_block (parameter)(rect 696 88 836 128))
 )
 (connector
 	(text "ID_EX_SRC1[31..0]" (rect 201 144 321 163)(font "Intel Clear" ))
@@ -784,11 +784,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "ID_EX_WD4SEL[1]" (rect 727 180 746 296)(font "Intel Clear" )(vertical))
-	(pt 752 264)
-	(pt 752 224)
-)
-(connector
 	(text "EX_WB_VALUE[31..0]" (rect 816 160 954 179)(font "Intel Clear" ))
 	(pt 808 176)
 	(pt 880 176)
@@ -802,4 +797,9 @@ refer to the applicable agreement for further details.
 	(text "ZERO_BIT" (rect 1000 507 1019 569)(font "Intel Clear" )(vertical))
 	(pt 1024 576)
 	(pt 1024 544)
+)
+(connector
+	(text "ID_EX_WD4SEL[1]" (rect 727 172 746 288)(font "Intel Clear" )(vertical))
+	(pt 752 256)
+	(pt 752 216)
 )
