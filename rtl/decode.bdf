@@ -1731,18 +1731,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "RS1[4..0]" (rect 536 328 593 347)(font "Intel Clear" ))
-	(pt 600 344)
-	(pt 528 344)
-	(bus)
-)
-(connector
-	(text "RS2[4..0]" (rect 536 344 593 363)(font "Intel Clear" ))
-	(pt 600 360)
-	(pt 528 360)
-	(bus)
-)
-(connector
 	(pt 864 472)
 	(pt 864 360)
 	(bus)
@@ -1773,4 +1761,16 @@ refer to the applicable agreement for further details.
 	(text "USE_A2" (rect 536 416 586 435)(font "Intel Clear" ))
 	(pt 600 440)
 	(pt 528 440)
+)
+(connector
+	(text "INSTR[19..15]" (rect 536 328 623 347)(font "Intel Clear" ))
+	(pt 600 344)
+	(pt 528 344)
+	(bus)
+)
+(connector
+	(text "INSTR[24..20]" (rect 536 344 623 363)(font "Intel Clear" ))
+	(pt 600 360)
+	(pt 528 360)
+	(bus)
 )

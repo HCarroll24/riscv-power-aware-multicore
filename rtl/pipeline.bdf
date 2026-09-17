@@ -3993,12 +3993,6 @@ refer to the applicable agreement for further details.
 	(pt -216 760)
 )
 (connector
-	(text "BR_TARGER[31..0]" (rect -260 560 -144 579)(font "Intel Clear" ))
-	(pt -144 584)
-	(pt -216 584)
-	(bus)
-)
-(connector
 	(text "IF_ID_INSTR[31..0]" (rect 176 160 294 179)(font "Intel Clear" ))
 	(pt 264 176)
 	(pt 168 176)
@@ -4161,6 +4155,12 @@ refer to the applicable agreement for further details.
 	(text "REDIRECT_EN" (rect -208 720 -120 739)(font "Intel Clear" ))
 	(pt -144 744)
 	(pt -216 744)
+)
+(connector
+	(text "BR_TARGET[31..0]" (rect -260 560 -144 579)(font "Intel Clear" ))
+	(pt -144 584)
+	(pt -216 584)
+	(bus)
 )
 (junction (pt 760 -1720))
 (junction (pt 760 -1544))
