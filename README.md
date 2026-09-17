@@ -9,7 +9,7 @@ and reconfigure hardware at runtime for reduction of energy, comparing against a
 identical adaptation disables design.
 
 **Current** Working 5-stage pipeline with stall, forwarding, hazard detection,
-and a 17-entry 2-bit saturating BHT.
+and a 16-entry 2-bit saturating BHT.
 
 ---
 
