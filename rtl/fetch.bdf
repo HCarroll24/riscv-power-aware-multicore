@@ -227,6 +227,22 @@ refer to the applicable agreement for further details.
 		(line (pt 78 12)(pt 82 8))
 	)
 )
+(pin
+	(output)
+	(rect 1928 248 2104 264)
+	(text "OUTPUT" (rect 1 0 51 13)(font "Arial" (font_size 6)))
+	(text "LOAD_IF" (rect 90 0 147 15)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
 (symbol
 	(rect 624 88 776 168)
 	(text "CONST_BUS" (rect 5 0 92 15)(font "Arial" ))
@@ -294,56 +310,6 @@ refer to the applicable agreement for further details.
 	)
 	(drawing
 		(rectangle (rect 16 16 144 96))
-	)
-)
-(symbol
-	(rect 904 152 1072 296)
-	(text "busmux4to1" (rect 5 0 85 15)(font "Arial" ))
-	(text "PCMUX" (rect 8 128 57 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "D3[31..0]" (rect 0 0 57 15)(font "Arial" ))
-		(text "D3[31..0]" (rect 21 27 78 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32)(line_width 3))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "D2[31..0]" (rect 0 0 57 15)(font "Arial" ))
-		(text "D2[31..0]" (rect 21 43 78 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "D1[31..0]" (rect 0 0 57 15)(font "Arial" ))
-		(text "D1[31..0]" (rect 21 59 78 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64)(line_width 3))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "D0[31..0]" (rect 0 0 57 15)(font "Arial" ))
-		(text "D0[31..0]" (rect 21 75 78 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80)(line_width 3))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "S[1..0]" (rect 0 0 40 15)(font "Arial" ))
-		(text "S[1..0]" (rect 21 91 61 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96)(line_width 3))
-	)
-	(port
-		(pt 168 32)
-		(output)
-		(text "Y[31..0]" (rect 0 0 47 15)(font "Arial" ))
-		(text "Y[31..0]" (rect 114 27 161 42)(font "Arial" ))
-		(line (pt 168 32)(pt 152 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 152 128))
 	)
 )
 (symbol
@@ -482,64 +448,7 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 448 200 712 344)
-	(text "PC_SEL_LOGIC" (rect 5 0 112 15)(font "Arial" ))
-	(text "inst" (rect 8 128 31 143)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "RST" (rect 0 0 28 15)(font "Arial" ))
-		(text "RST" (rect 21 27 49 42)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "REDIRECT_EN" (rect 0 0 101 15)(font "Arial" ))
-		(text "REDIRECT_EN" (rect 21 43 122 58)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "TARGET_VALID" (rect 0 0 102 15)(font "Arial" ))
-		(text "TARGET_VALID" (rect 21 59 123 74)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "IS_JAL" (rect 0 0 44 15)(font "Arial" ))
-		(text "IS_JAL" (rect 21 75 65 90)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 0 96)
-		(input)
-		(text "PREDICT" (rect 0 0 62 15)(font "Arial" ))
-		(text "PREDICT" (rect 21 91 83 106)(font "Arial" ))
-		(line (pt 0 96)(pt 16 96))
-	)
-	(port
-		(pt 264 32)
-		(output)
-		(text "PREDICT_TAKEN" (rect 0 0 116 15)(font "Arial" ))
-		(text "PREDICT_TAKEN" (rect 168 27 284 42)(font "Arial" ))
-		(line (pt 264 32)(pt 248 32))
-	)
-	(port
-		(pt 264 48)
-		(output)
-		(text "PCSEL[1..0]" (rect 0 0 77 15)(font "Arial" ))
-		(text "PCSEL[1..0]" (rect 192 43 269 58)(font "Arial" ))
-		(line (pt 264 48)(pt 248 48)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 248 128))
-	)
-)
-(symbol
-	(rect 440 368 488 400)
+	(rect 440 432 488 464)
 	(text "NOT" (rect 1 0 26 13)(font "Arial" (font_size 6)))
 	(text "LOAD_GATE_NOT" (rect 3 21 117 40)(font "Intel Clear" ))
 	(port
@@ -564,7 +473,7 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 560 392 624 440)
+	(rect 560 456 624 504)
 	(text "OR2" (rect 1 0 25 13)(font "Arial" (font_size 6)))
 	(text "LOAD_GATE_OR" (rect 3 37 108 56)(font "Intel Clear" ))
 	(port
@@ -595,6 +504,32 @@ refer to the applicable agreement for further details.
 		(arc (pt 49 24)(pt 25 13)(rect -6 13 57 76))
 		(arc (pt 25 35)(pt 49 24)(rect -6 -27 57 36))
 	)
+)
+(symbol
+	(rect 1224 32 1376 112)
+	(text "CONST_BUS" (rect 5 0 92 15)(font "Arial" ))
+	(text "FOUR32" (rect 8 64 64 79)(font "Arial" ))
+	(port
+		(pt 152 32)
+		(output)
+		(text "Y[width-1..0]" (rect 0 0 77 15)(font "Arial" ))
+		(text "Y[width-1..0]" (rect 79 27 156 42)(font "Arial" ))
+		(line (pt 152 32)(pt 136 32)(line_width 3))
+	)
+	(parameter
+		"WIDTH"
+		"32"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(parameter
+		"VALUE"
+		"4"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 136 64))
+	)
+	(annotation_block (parameter)(rect 1200 -32 1398 28))
 )
 (symbol
 	(rect 1136 296 1352 424)
@@ -666,30 +601,125 @@ refer to the applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 1224 32 1376 112)
-	(text "CONST_BUS" (rect 5 0 92 15)(font "Arial" ))
-	(text "FOUR32" (rect 8 64 64 79)(font "Arial" ))
+	(rect 448 200 712 344)
+	(text "PC_SEL_LOGIC" (rect 5 0 112 15)(font "Arial" ))
+	(text "PCSEL_LOGIC" (rect 8 128 96 147)(font "Intel Clear" ))
 	(port
-		(pt 152 32)
+		(pt 0 32)
+		(input)
+		(text "RST" (rect 0 0 28 15)(font "Arial" ))
+		(text "RST" (rect 21 27 49 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "REDIRECT_EN" (rect 0 0 101 15)(font "Arial" ))
+		(text "REDIRECT_EN" (rect 21 43 122 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "STALL" (rect 0 0 42 15)(font "Arial" ))
+		(text "STALL" (rect 21 59 63 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "TARGET_VALID" (rect 0 0 102 15)(font "Arial" ))
+		(text "TARGET_VALID" (rect 21 75 123 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "IS_JAL" (rect 0 0 44 15)(font "Arial" ))
+		(text "IS_JAL" (rect 21 91 65 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "PREDICT" (rect 0 0 62 15)(font "Arial" ))
+		(text "PREDICT" (rect 21 107 83 122)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112))
+	)
+	(port
+		(pt 264 32)
 		(output)
-		(text "Y[width-1..0]" (rect 0 0 77 15)(font "Arial" ))
-		(text "Y[width-1..0]" (rect 79 27 156 42)(font "Arial" ))
-		(line (pt 152 32)(pt 136 32)(line_width 3))
+		(text "PREDICT_TAKEN" (rect 0 0 116 15)(font "Arial" ))
+		(text "PREDICT_TAKEN" (rect 145 27 261 42)(font "Arial" ))
+		(line (pt 264 32)(pt 248 32))
 	)
-	(parameter
-		"WIDTH"
-		"32"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(parameter
-		"VALUE"
-		"4"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
+	(port
+		(pt 264 48)
+		(output)
+		(text "PCSEL[2..0]" (rect 0 0 77 15)(font "Arial" ))
+		(text "PCSEL[2..0]" (rect 178 43 255 58)(font "Arial" ))
+		(line (pt 264 48)(pt 248 48)(line_width 3))
+	)
 	(drawing
-		(rectangle (rect 16 16 136 64))
+		(rectangle (rect 16 16 248 128))
 	)
-	(annotation_block (parameter)(rect 1200 -32 1398 28))
+)
+(symbol
+	(rect 904 136 1072 280)
+	(text "BUSMUX5TO1" (rect 5 0 99 15)(font "Arial" ))
+	(text "PCMUX" (rect 8 128 57 143)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "D4[31..0]" (rect 0 0 57 15)(font "Arial" ))
+		(text "D4[31..0]" (rect 21 27 78 42)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32)(line_width 3))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "D3[31..0]" (rect 0 0 57 15)(font "Arial" ))
+		(text "D3[31..0]" (rect 21 43 78 58)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 3))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "D2[31..0]" (rect 0 0 57 15)(font "Arial" ))
+		(text "D2[31..0]" (rect 21 59 78 74)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "D1[31..0]" (rect 0 0 57 15)(font "Arial" ))
+		(text "D1[31..0]" (rect 21 75 78 90)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "D0[31..0]" (rect 0 0 57 15)(font "Arial" ))
+		(text "D0[31..0]" (rect 21 91 78 106)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 3))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "S[2..0]" (rect 0 0 40 15)(font "Arial" ))
+		(text "S[2..0]" (rect 21 107 61 122)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 168 32)
+		(output)
+		(text "Y[31..0]" (rect 0 0 47 15)(font "Arial" ))
+		(text "Y[31..0]" (rect 108 27 155 42)(font "Arial" ))
+		(line (pt 168 32)(pt 152 32)(line_width 3))
+	)
+	(drawing
+		(rectangle (rect 16 16 152 128))
+	)
 )
 (connector
 	(text "REDIRECT_PC[31..0]" (rect 816 184 945 203)(font "Intel Clear" ))
@@ -707,12 +737,6 @@ refer to the applicable agreement for further details.
 	(text "BR_TARGET[31..0]" (rect 816 200 932 219)(font "Intel Clear" ))
 	(pt 904 216)
 	(pt 808 216)
-	(bus)
-)
-(connector
-	(text "PCSEL[1..0]" (rect 713 232 787 251)(font "Intel Clear" ))
-	(pt 712 248)
-	(pt 904 248)
 	(bus)
 )
 (connector
@@ -800,22 +824,6 @@ refer to the applicable agreement for further details.
 	(text "INSTR[31..0]" (rect 1463 376 1542 395)(font "Intel Clear" ))
 	(pt 1520 392)
 	(pt 1456 392)
-	(bus)
-)
-(connector
-	(pt 1104 184)
-	(pt 1104 328)
-	(bus)
-)
-(connector
-	(pt 1072 184)
-	(pt 1104 184)
-	(bus)
-)
-(connector
-	(text "NEXT_PC[31..0]" (rect 1147 168 1248 187)(font "Intel Clear" ))
-	(pt 1104 184)
-	(pt 1216 184)
 	(bus)
 )
 (connector
@@ -914,21 +922,6 @@ refer to the applicable agreement for further details.
 	(pt 344 264)
 )
 (connector
-	(text "TARGET_VALID" (rect 384 248 481 267)(font "Intel Clear" ))
-	(pt 448 264)
-	(pt 376 264)
-)
-(connector
-	(text "IS_JAL" (rect 384 264 426 283)(font "Intel Clear" ))
-	(pt 448 280)
-	(pt 376 280)
-)
-(connector
-	(text "PREDICT" (rect 384 280 439 299)(font "Intel Clear" ))
-	(pt 448 296)
-	(pt 376 296)
-)
-(connector
 	(text "TARGET_VALID" (rect 1792 392 1889 411)(font "Intel Clear" ))
 	(pt 1784 408)
 	(pt 1856 408)
@@ -948,33 +941,6 @@ refer to the applicable agreement for further details.
 	(text "PREDICT" (rect 1752 200 1807 219)(font "Intel Clear" ))
 	(pt 1744 216)
 	(pt 1800 216)
-)
-(connector
-	(text "STALL" (rect 392 368 432 387)(font "Intel Clear" ))
-	(pt 440 384)
-	(pt 384 384)
-)
-(connector
-	(pt 488 384)
-	(pt 528 384)
-)
-(connector
-	(text "RST" (rect 512 408 536 427)(font "Intel Clear" ))
-	(pt 560 424)
-	(pt 504 424)
-)
-(connector
-	(pt 528 408)
-	(pt 560 408)
-)
-(connector
-	(pt 528 384)
-	(pt 528 408)
-)
-(connector
-	(text "LOAD_IF" (rect 632 400 687 419)(font "Intel Clear" ))
-	(pt 624 416)
-	(pt 672 416)
 )
 (connector
 	(text "PC[31..0]" (rect 1386 168 1445 187)(font "Intel Clear" ))
@@ -1011,6 +977,96 @@ refer to the applicable agreement for further details.
 	(pt 1928 240)
 	(pt 1832 240)
 )
-(junction (pt 1104 184))
+(connector
+	(text "STALL" (rect 392 432 432 451)(font "Intel Clear" ))
+	(pt 440 448)
+	(pt 384 448)
+)
+(connector
+	(pt 488 448)
+	(pt 528 448)
+)
+(connector
+	(text "RST" (rect 512 472 536 491)(font "Intel Clear" ))
+	(pt 560 488)
+	(pt 504 488)
+)
+(connector
+	(pt 528 472)
+	(pt 560 472)
+)
+(connector
+	(pt 528 448)
+	(pt 528 472)
+)
+(connector
+	(text "LOAD_IF" (rect 632 464 687 483)(font "Intel Clear" ))
+	(pt 624 480)
+	(pt 672 480)
+)
+(connector
+	(text "TARGET_VALID" (rect 384 264 481 283)(font "Intel Clear" ))
+	(pt 448 280)
+	(pt 376 280)
+)
+(connector
+	(text "IS_JAL" (rect 384 280 426 299)(font "Intel Clear" ))
+	(pt 448 296)
+	(pt 376 296)
+)
+(connector
+	(text "PREDICT" (rect 384 296 439 315)(font "Intel Clear" ))
+	(pt 448 312)
+	(pt 376 312)
+)
+(connector
+	(text "STALL" (rect 384 240 424 259)(font "Intel Clear" ))
+	(pt 448 264)
+	(pt 376 264)
+)
+(connector
+	(text "PCSEL[2..0]" (rect 713 232 787 251)(font "Intel Clear" ))
+	(pt 712 248)
+	(pt 904 248)
+	(bus)
+)
+(connector
+	(text "PC[31..0]" (rect 848 144 907 163)(font "Intel Clear" ))
+	(pt 904 168)
+	(pt 840 168)
+	(bus)
+)
+(connector
+	(pt 1104 168)
+	(pt 1104 328)
+	(bus)
+)
+(connector
+	(pt 1216 184)
+	(pt 1184 184)
+	(bus)
+)
+(connector
+	(pt 1184 184)
+	(pt 1184 168)
+	(bus)
+)
+(connector
+	(pt 1072 168)
+	(pt 1104 168)
+	(bus)
+)
+(connector
+	(text "NEXT_PC[31..0]" (rect 1091 152 1192 171)(font "Intel Clear" ))
+	(pt 1104 168)
+	(pt 1184 168)
+	(bus)
+)
+(connector
+	(text "LOAD_IF" (rect 1840 232 1895 251)(font "Intel Clear" ))
+	(pt 1928 256)
+	(pt 1832 256)
+)
 (junction (pt 1408 184))
 (junction (pt 1408 248))
+(junction (pt 1104 168))

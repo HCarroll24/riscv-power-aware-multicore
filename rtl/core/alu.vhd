@@ -71,7 +71,7 @@ begin
   SLTU_VAL <= 33x"1" when (INTA < INTB) else 33x"0";
   
   -- Logic for shifts 
-  SRA_VAL <= '0' & unsigned(shift_right(signed(A), to_integer(INTB)));
+  SRA_VAL <= '0' & unsigned(shift_right(signed(A), to_integer(INTB(4 downto 0))));
   SLL_VAL <= shift_left(INTA, to_integer(INTB(4 downto 0)));
   SRL_VAL <= shift_right(INTA, to_integer(INTB(4 downto 0)));
   

@@ -208,12 +208,12 @@ begin
          MISALIGNED := (FUNCT3(1 downto 0) = B"10" and A(1 downto 0) /= B"00")
                        or (FUNCT3(1 downto 0) = B"01" and A(0) /= '0');
 
-         assert not (ACTIVE and MISALIGNED)
+         assert not (ACTIVE_BIT and MISALIGNED)
 				report "DMEM: misaligned access at 0x" & to_hstring(A) &
                    " -- folded into the containing word"
             severity error;
 
-         assert not (ACTIVE and unsigned(A(31 downto ADDR_BITS+2)) /= 0)
+         assert not (ACTIVE_BIT and unsigned(A(31 downto ADDR_BITS+2)) /= 0)
             report "DMEM: address 0x" & to_hstring(A) &
                    " above memory size -- silently aliasing"
             severity error;

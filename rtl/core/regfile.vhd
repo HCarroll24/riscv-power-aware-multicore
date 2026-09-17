@@ -28,11 +28,12 @@ use ieee.std_logic_1164.all;
 --		RD2	: 32-bit output from register specified by address A2
 entity REGFILE is 
 port(
-	A1, A2, A3	:	in std_logic_vector(4 downto 0);
-	WD3			:	in std_logic_vector(31 downto 0);
-	REGWR			: 	in std_logic;
-	RST, CLK		: 	in std_logic;
-	RD1, RD2		:	out std_logic_vector(31 downto 0)
+	A1, A2, A3		:	in std_logic_vector(4 downto 0);
+	WD3				:	in std_logic_vector(31 downto 0);
+	REGWR				: 	in std_logic;
+	USE_A1, USE_A2	:	in std_logic;
+	RST, CLK			: 	in std_logic;
+	RD1, RD2			:	out std_logic_vector(31 downto 0)
 	);
 end entity REGFILE;
 
@@ -159,8 +160,13 @@ begin
 	BYP1	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A1) else '0';
 	BYP2	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A2) else '0';
 	
-	RD1	<=	WD3 when BYP1 = '1' else RD1_INT;
-	RD2	<=	WD3 when BYP2 = '1' else RD2_INT;
+	RD1	<=	(others => '0') when USE_A1 = '0' else
+				WD3 when BYP1 = '1' else
+				RD1_INT;
+				
+	RD2	<=	(others => '0') when USE_A2 = '0' else
+				WD3 when BYP2 = '1' else
+				RD2_INT;
 	
 	-- WRITE PORT (individual per register)
 	-- RST = '1' clears all writable registers t0 zero

@@ -26,11 +26,12 @@ entity PC_SEL_LOGIC is
 port(
 	RST				:	in		std_logic;
 	REDIRECT_EN		:	in		std_logic;
+	STALL				:	in		std_logic;	
 	TARGET_VALID	:	in		std_logic;
 	IS_JAL			:	in		std_logic;
 	PREDICT			:	in		std_logic;
 	PREDICT_TAKEN	:	out 	std_logic;
-	PCSEL				:	out	std_logic_vector(1 downto 0));
+	PCSEL				:	out	std_logic_vector(2 downto 0));
 end entity PC_SEL_LOGIC;
 
 -- circuit description
@@ -39,11 +40,12 @@ architecture BEHAVIORAL of PC_SEL_LOGIC is
 begin
 	TAKE_TARGET	<=	TARGET_VALID and (IS_JAL or PREDICT);
 
-	PCSEL	<=	B"11" when RST				= '1' else	-- D3 ZERO32
-				B"10" when REDIRECT_EN 	= '1' else	--	D2 REDIRECT_PC
-				B"01" when TAKE_TARGET	= '1' else	-- D1 BR_TARGET
-				B"00";										-- D0 PC_PLUS4
+	PCSEL	<=	B"011" when RST				= '1' else	-- D3 ZERO32
+				B"010" when REDIRECT_EN 	= '1' else	--	D2 REDIRECT_PC
+				B"100" when STALL 			= '1' else	-- D4 (PC hold)
+				B"001" when TAKE_TARGET		= '1' else	-- D1 BR_TARGET
+				B"000";											-- D0 PC_PLUS4
 				
-	PREDICT_TAKEN	<=	'1' when (RST = '0' and REDIRECT_EN = '0' and TAKE_TARGET = '1') else
+	PREDICT_TAKEN	<=	'1' when (RST = '0' and REDIRECT_EN = '0' and STALL = '0' and TAKE_TARGET = '1') else
 							'0';
 end architecture BEHAVIORAL;
