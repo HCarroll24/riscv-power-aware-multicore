@@ -35,9 +35,15 @@ end entity PC_SEL_LOGIC;
 
 -- circuit description
 architecture BEHAVIORAL of PC_SEL_LOGIC is
+	signal TAKE_TARGET	:	std_logic;
 begin
-	PCSEL	<=	B"11" when RST													= '1' else	-- D3 ZERO32
-				B"10" when REDIRECT_EN 										= '1' else	--	D2 REDIRECT_PC
-				B"01" when (TARGET_VALID and (IS_JAL or PREDICT))	= '1' else	-- D1 BR_TARGET
-				B"00";																			-- D0 PC_PLUS4
+	TAKE_TARGET	<=	TARGET_VALID and (IS_JAL or PREDICT);
+
+	PCSEL	<=	B"11" when RST				= '1' else	-- D3 ZERO32
+				B"10" when REDIRECT_EN 	= '1' else	--	D2 REDIRECT_PC
+				B"01" when TAKE_TARGET	= '1' else	-- D1 BR_TARGET
+				B"00";										-- D0 PC_PLUS4
+				
+	PREDICT_TAKEN	<=	'1' when (RST = '0' and REDIRECT_EN = '0' and TAKE_TARGET = '1') else
+							'0';
 end architecture BEHAVIORAL;

@@ -159,6 +159,9 @@ begin
 	BYP1	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A1) else '0';
 	BYP2	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A2) else '0';
 	
+	RD1	<=	WD3 when BYP1 = '1' else RD1_INT;
+	RD2	<=	WD3 when BYP2 = '1' else RD2_INT;
+	
 	-- WRITE PORT (individual per register)
 	-- RST = '1' clears all writable registers t0 zero
 	-- REGWR = '1' for synchronous load for active-low

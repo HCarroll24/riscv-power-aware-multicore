@@ -151,7 +151,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 120 88 320 104)
 	(text "INPUT" (rect 157 0 193 13)(font "Arial" (font_size 6)))
-	(text "MEMRD_ID_EX" (rect 5 0 106 15)(font "Arial" ))
+	(text "MEMRD_ID_EX" (rect 5 0 105 15)(font "Arial" ))
 	(pt 200 8)
 	(drawing
 		(line (pt 116 12)(pt 141 12))
@@ -167,7 +167,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 80 104 320 120)
 	(text "INPUT" (rect 197 0 233 13)(font "Arial" (font_size 6)))
-	(text "RD_ADDR_ID_EX[4..0]" (rect 5 0 145 19)(font "Intel Clear" ))
+	(text "RD_ADDR_ID_EX[4..0]" (rect 5 0 144 19)(font "Intel Clear" ))
 	(pt 240 8)
 	(drawing
 		(line (pt 156 12)(pt 181 12))
@@ -183,7 +183,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 120 120 320 136)
 	(text "INPUT" (rect 157 0 193 13)(font "Arial" (font_size 6)))
-	(text "REGWR_ID_EX" (rect 5 0 108 15)(font "Arial" ))
+	(text "REGWR_ID_EX" (rect 5 0 107 15)(font "Arial" ))
 	(pt 200 8)
 	(drawing
 		(line (pt 116 12)(pt 141 12))
@@ -199,7 +199,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 64 136 320 152)
 	(text "INPUT" (rect 213 0 249 13)(font "Arial" (font_size 6)))
-	(text "RD_ADDR_EX_MEM[4..0]" (rect 5 0 164 19)(font "Intel Clear" ))
+	(text "RD_ADDR_EX_MEM[4..0]" (rect 5 0 163 19)(font "Intel Clear" ))
 	(pt 256 8)
 	(drawing
 		(line (pt 172 12)(pt 197 12))
@@ -215,7 +215,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 112 152 320 168)
 	(text "INPUT" (rect 165 0 201 13)(font "Arial" (font_size 6)))
-	(text "REGWR_EX_MEM" (rect 5 0 116 19)(font "Intel Clear" ))
+	(text "REGWR_EX_MEM" (rect 5 0 115 19)(font "Intel Clear" ))
 	(pt 208 8)
 	(drawing
 		(line (pt 124 12)(pt 149 12))
@@ -231,7 +231,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 112 168 320 184)
 	(text "INPUT" (rect 165 0 201 13)(font "Arial" (font_size 6)))
-	(text "MEMRD_EX_MEM" (rect 5 0 119 19)(font "Intel Clear" ))
+	(text "MEMRD_EX_MEM" (rect 5 0 118 19)(font "Intel Clear" ))
 	(pt 208 8)
 	(drawing
 		(line (pt 124 12)(pt 149 12))
@@ -247,7 +247,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 80 184 320 200)
 	(text "INPUT" (rect 197 0 233 13)(font "Arial" (font_size 6)))
-	(text "EX_WB_VALUE[31..0]" (rect 5 0 146 15)(font "Arial" ))
+	(text "EX_WB_VALUE[31..0]" (rect 5 0 145 15)(font "Arial" ))
 	(pt 240 8)
 	(drawing
 		(line (pt 156 12)(pt 181 12))
@@ -263,7 +263,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 120 200 320 216)
 	(text "INPUT" (rect 157 0 193 13)(font "Arial" (font_size 6)))
-	(text "DMEM_Q[31..0]" (rect 5 0 106 19)(font "Intel Clear" ))
+	(text "DMEM_Q[31..0]" (rect 5 0 105 19)(font "Intel Clear" ))
 	(pt 200 8)
 	(drawing
 		(line (pt 116 12)(pt 141 12))
@@ -279,7 +279,7 @@ refer to the applicable agreement for further details.
 	(input)
 	(rect 48 216 320 232)
 	(text "INPUT" (rect 229 0 265 13)(font "Arial" (font_size 6)))
-	(text "EX_MEM_WB_VALUE[31..0]" (rect 5 0 183 19)(font "Intel Clear" ))
+	(text "EX_MEM_WB_VALUE[31..0]" (rect 5 0 182 19)(font "Intel Clear" ))
 	(pt 272 8)
 	(drawing
 		(line (pt 188 12)(pt 213 12))
@@ -1176,12 +1176,6 @@ refer to the applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "RD2[31..0]" (rect 800 360 867 379)(font "Intel Clear" ))
-	(pt 792 376)
-	(pt 864 376)
-	(bus)
-)
-(connector
 	(text "RS1[4..0]" (rect 536 344 593 363)(font "Intel Clear" ))
 	(pt 600 360)
 	(pt 528 360)
@@ -1348,19 +1342,8 @@ refer to the applicable agreement for further details.
 	(pt 392 -16)
 )
 (connector
-	(text "RD1[31..0]" (rect 800 344 867 363)(font "Intel Clear" ))
-	(pt 792 360)
-	(pt 864 360)
-	(bus)
-)
-(connector
 	(pt 864 376)
 	(pt 864 472)
-	(bus)
-)
-(connector
-	(pt 864 472)
-	(pt 976 472)
 	(bus)
 )
 (connector
@@ -1382,11 +1365,6 @@ refer to the applicable agreement for further details.
 (connector
 	(pt 864 360)
 	(pt 864 296)
-	(bus)
-)
-(connector
-	(pt 864 296)
-	(pt 968 296)
 	(bus)
 )
 (connector
@@ -1531,12 +1509,6 @@ refer to the applicable agreement for further details.
 	(text "OP_A[31..0]" (rect 1448 408 1524 427)(font "Intel Clear" ))
 	(pt 1528 424)
 	(pt 1440 424)
-	(bus)
-)
-(connector
-	(text "RD2[31..0]" (rect 1448 760 1515 779)(font "Intel Clear" ))
-	(pt 1528 776)
-	(pt 1440 776)
 	(bus)
 )
 (connector
@@ -1722,5 +1694,35 @@ refer to the applicable agreement for further details.
 	(text "STORE_DATA[31..0]" (rect 1800 104 1928 123)(font "Intel Clear" ))
 	(pt 1792 120)
 	(pt 1880 120)
+	(bus)
+)
+(connector
+	(text "<<__$DEF_ALIAS105>>" (rect 800 344 951 363)(font "Intel Clear" )(invisible))
+	(pt 792 360)
+	(pt 864 360)
+	(bus)
+)
+(connector
+	(text "<<__$DEF_ALIAS107>>" (rect 800 360 951 379)(font "Intel Clear" )(invisible))
+	(pt 792 376)
+	(pt 864 376)
+	(bus)
+)
+(connector
+	(text "RD_2[31..0]" (rect 910 448 984 467)(font "Intel Clear" ))
+	(pt 864 472)
+	(pt 976 472)
+	(bus)
+)
+(connector
+	(text "RD_1[31..0]" (rect 895 272 969 291)(font "Intel Clear" ))
+	(pt 864 296)
+	(pt 968 296)
+	(bus)
+)
+(connector
+	(text "RD_2[31..0]" (rect 1448 760 1522 779)(font "Intel Clear" ))
+	(pt 1528 776)
+	(pt 1440 776)
 	(bus)
 )
