@@ -64,15 +64,12 @@ architecture INFERRED of DMEM is
 	signal FUNCT3_R : std_logic_vector(2 downto 0);
 	signal OFFSET_R : std_logic_vector(1 downto 0);
 	signal MEMRD_R	 : std_logic;
-	
-	-- simulation only misalingment flag
-	signal MISALIGNED	:	std_logic;
 begin
 	-- EX stage: word address
 	RAM_ADDR	<=	to_integer(unsigned(A(ADDR_BITS+1 downto 2)));
 	
 	-- EX stage: store byte-enable generation
-	STORE_BYTE_EN_A: process(all)
+	STORE_BYTE_EN_A: process(FUNCT3, A)
 	begin
 		case FUNCT3(1 downto 0) is
 			when B"00" => 												-- sb
@@ -105,7 +102,7 @@ begin
 	RAM_WREN	<=	MEMWR and not RST;
 	
 	-- Inferred byte-enable single port block ram
-	BLOCK_RAM: process(all)
+	BLOCK_RAM: process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if RAM_WREN = '1' then 
@@ -123,7 +120,9 @@ begin
 				end if;
 			end if;
 			
-			RAM_Q_W	<=	MEM(RAM_ADDR);
+			if MEMRD = '1' then
+				RAM_Q_W	<=	MEM(RAM_ADDR);
+			end if;
 		end if;
 	end process BLOCK_RAM;
 	
@@ -146,7 +145,7 @@ begin
 	end process SHADOW_PIPE;
 	
 	-- MEM stage: load formatting
-	LOAD_FORMAT: process(all)
+	LOAD_FORMAT: process(FUNCT3_R, OFFSET_R, RAM_Q)
 	begin
 		case FUNCT3_R is
 			when B"000" =>							-- lb, sign extended
@@ -197,27 +196,32 @@ begin
 	
 	-- MEM STAGE: OUTPUT GATE
 	RDM	<=	RDM_FMT when MEMRD_R = '1' else (others => '0');
-	
-	-- Simulation only checks
-	MISALIGNED	<=	'1' when (MEMWR = '1' or MEMRD = '1') and
-											((FUNCT3(1 downto 0) = B"10" and A(1 downto 0) /= B"00") or
-											 (FUNCT3(1 downto 0) = B"01" and A(0) /= '0')) else 
-						'0';
 						 
 	-- pragma translate_off
 	CHECKS: process(CLK)
+		variable ACTIVE_BIT	:	boolean;
+		variable MISALIGNED	:	boolean;
 	begin
 		if rising_edge(CLK) then
-			assert MISALIGNED = '0'
-				report "DMEM: misaligned access -- unsupported, folded into containing word"
-				severity error;
-			assert not ((MEMWR = '1' or MEMRD = '1') and unsigned(A(31 downto ADDR_BITS+2)) /= 0)
-				report "DMEM: address above memory size -- silently aliasing"
-				severity error;
-			assert not (MEMWR = '1' and MEMRD = '1')
-				report "DMEM: MEMWR and MEMRD asserted together"
-				severity failure;
-		end if;
+			ACTIVE_BIT := (RST = '0') and (MEMWR = '1' or MEMRD = '1');
+
+         MISALIGNED := (FUNCT3(1 downto 0) = B"10" and A(1 downto 0) /= B"00")
+                       or (FUNCT3(1 downto 0) = B"01" and A(0) /= '0');
+
+         assert not (ACTIVE_BIT and MISALIGNED)
+				report "DMEM: misaligned access at 0x" & to_hstring(A) &
+                   " -- folded into the containing word"
+            severity error;
+
+         assert not (ACTIVE_BIT and unsigned(A(31 downto ADDR_BITS+2)) /= 0)
+            report "DMEM: address 0x" & to_hstring(A) &
+                   " above memory size -- silently aliasing"
+            severity error;
+
+         assert not (MEMWR = '1' and MEMRD = '1')
+            report "DMEM: MEMWR and MEMRD asserted together"
+            severity failure;
+        end if;
 	end process CHECKS;
 	-- pragma translate_on
 	

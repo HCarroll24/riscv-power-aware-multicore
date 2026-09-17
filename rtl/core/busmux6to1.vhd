@@ -12,7 +12,7 @@ use ieee.std_logic_1164.all;
 
 entity BUSMUX6TO1 is 
 port( D5, D4, D3, D2, D1, D0: in std_logic_vector(31 downto 0);
-      S: in std_logic_vector(1 downto 0);
+      S: in std_logic_vector(2 downto 0);
       Y: out std_logic_vector(31 downto 0));
 end entity BUSMUX6TO1; 
 
