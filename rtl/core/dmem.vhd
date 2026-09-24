@@ -21,6 +21,7 @@ use ieee.numeric_std.all;
 --		MEMWR			:	Write enable
 --		CLK			:	clock signal for synchronous writes
 --		RST			:	Reset signal
+--		CE				:	Core enable signal
 -- outputs:
 --		RD				:	The data from memory for load instructions
 entity DMEM is
@@ -32,6 +33,7 @@ port(
 	MEMRD		: 	in std_logic;
 	CLK		:	in std_logic;
 	RST		:	in std_logic;
+	CE			:	in std_logic;
 	RDM		:	out std_logic_vector(31 downto 0)
 );
 end entity DMEM;
@@ -99,7 +101,7 @@ begin
 						RD2 when others;
 						
 	-- EX stage: 	write enable 	-- the one irrevocable signal
-	RAM_WREN	<=	MEMWR and not RST;
+	RAM_WREN	<=	MEMWR and CE and not RST;
 	
 	-- Inferred byte-enable single port block ram
 	BLOCK_RAM: process(CLK)
@@ -120,7 +122,7 @@ begin
 				end if;
 			end if;
 			
-			if MEMRD = '1' then
+			if MEMRD = '1' and CE = '1' then
 				RAM_Q_W	<=	MEM(RAM_ADDR);
 			end if;
 		end if;
@@ -136,7 +138,7 @@ begin
 				FUNCT3_R	<=	(others => '0');
 				OFFSET_R <= (others => '0');
 				MEMRD_R <= '0';
-			else
+			elsif CE = '1' then
 				FUNCT3_R <= FUNCT3;
 				OFFSET_R <= A(1 downto 0);
 				MEMRD_R <= MEMRD;
@@ -203,7 +205,7 @@ begin
 		variable MISALIGNED	:	boolean;
 	begin
 		if rising_edge(CLK) then
-			ACTIVE_BIT := (RST = '0') and (MEMWR = '1' or MEMRD = '1');
+			ACTIVE_BIT := (RST = '0') and (CE = '1') and (MEMWR = '1' or MEMRD = '1');
 
          MISALIGNED := (FUNCT3(1 downto 0) = B"10" and A(1 downto 0) /= B"00")
                        or (FUNCT3(1 downto 0) = B"01" and A(0) /= '0');

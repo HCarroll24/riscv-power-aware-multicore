@@ -1,8 +1,8 @@
 -- ******************************************************************
--- * Project:	   CPE1510 robot computer system
+-- * Project:	   RISC-V POWER AWARE COMPUTING
 -- * Filename:	   seg7decode.vhd
 -- * Author:	   carrollh@msoe.edu <Hunter C>
--- * Date:	   MSOE Spring Semester 2025
+-- * Date:	   MSOE Fall Semester 2026
 -- * Provides:	   A seven-segment decoder for the CPE 1510 computer
 -- ******************************************************************
 
