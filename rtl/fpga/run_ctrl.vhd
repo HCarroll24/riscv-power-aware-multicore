@@ -68,7 +68,7 @@ begin
 	with SPD_S2 select
 	TERMINAL	<=	to_unsigned(CLK_HZ / 10 - 1, 27) when B"01",	--	10 Hz
 					to_unsigned(CLK_HZ / 2 - 1, 27) when B"10",	--	2 Hz
-					to_unsigned(CLK_HZ * 2 - 1, 27) when others;	-- 0.5 Hz
+					to_unsigned(CLK_HZ * 2 - 1, 27) when others; -- 0.5 Hz
 					
 	-- counter to produce one_cycle slow tick
 	slow: process(CLK)
