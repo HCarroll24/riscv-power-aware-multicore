@@ -366,7 +366,7 @@ begin
 		end if;
 	end process;
 	
-	reg16:	process(CLK)
+	/*reg16:	process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if RST = '1' then
@@ -390,7 +390,7 @@ begin
 				end if;
 			end if;
 		end if;
-	end process;
+	end process;*/
 	
 	reg18:	process(CLK)
 	begin
@@ -431,7 +431,7 @@ begin
 		end if;
 	end process;
 	
-	reg21:	process(CLK)
+	/*reg21:	process(CLK)
 	begin
 		if rising_edge(CLK) then
 			if RST = '1' then
@@ -572,6 +572,6 @@ begin
 				end if;
 			end if;
 		end if;
-	end process;
+	end process;*/
 	
 end architecture BEHAVIORAL;
