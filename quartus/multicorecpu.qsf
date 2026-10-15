@@ -76,13 +76,11 @@ set_global_assignment -name MIF_FILE ../benchmarks/solving_issues.mif
 set_global_assignment -name MIF_FILE ../benchmarks/forward_stall_test.mif
 set_global_assignment -name MIF_FILE ../benchmarks/br_predict_test.mif
 set_global_assignment -name SDC_FILE multicorecpu.sdc
-set_global_assignment -name BDF_FILE ../rtl/decode.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/alu.vhd
 set_global_assignment -name BDF_FILE ../rtl/multicorecpu.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/regfile.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/imm_gen.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/control_unit.vhd
-set_global_assignment -name BDF_FILE ../rtl/execute.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_comp.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/dmem.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/busmux4to1.vhd
@@ -127,3 +125,5 @@ set_global_assignment -name IP_FILE single_port_rom.ip
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/fetch.vhd
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/decode.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
