@@ -1,10 +1,13 @@
 /*************************************************************************
- * File:			fetch.vhd
+ * File:			execute.vhd
  * Project:		RISC-V Power Aware
  * Author:		carrollh@msoe.edu <Hunter C>
  * Date:			14 October 2026
  * Provides:
- *		
+ *		ALU calculation from SRC1 and SRC2
+ *		BR Target piped from fetch to dtermine branch
+ *		Helps check if there is a mispredict
+ *		JALR handling
 *************************************************************************/
 library ieee;
 use ieee.std_logic_1164.all;

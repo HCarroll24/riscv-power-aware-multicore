@@ -48,7 +48,7 @@ architecture INFERRED of DMEM is
 	-- RISC-V is byte addressible and I want 32,768 bits of memory for words
 	signal MEM : MEMARRAY := (others => (others => (others => '0')));
 	attribute ramstyle : string;
-	attribute ramstyle of MEM : signal is "M9K";
+	attribute ramstyle of MEM : signal is "M20K";
 	
 	-- EX stage signals feeding into RAM
 	signal RAM_ADDR : natural range 0 to RAM_WORDS-1;

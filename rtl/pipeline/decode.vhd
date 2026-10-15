@@ -1,5 +1,5 @@
 /*************************************************************************
- * File:			fetch.vhd
+ * File:			decode.vhd
  * Project:		RISC-V Power Aware
  * Author:		carrollh@msoe.edu <Hunter C>
  * Date:			14 October 2026

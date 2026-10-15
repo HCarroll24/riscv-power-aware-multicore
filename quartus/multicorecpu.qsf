@@ -103,7 +103,6 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name VHDL_FILE ../rtl/and2_32.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/const_bus.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/rs_decode.vhd
-set_global_assignment -name BDF_FILE ../rtl/memory.bdf
 set_global_assignment -name BDF_FILE ../rtl/core/synchronizer.bdf
 set_global_assignment -name VHDL_FILE ../rtl/fpga/address_decoder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/run_ctrl.vhd
@@ -127,3 +126,4 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/decode.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/memory.vhd
