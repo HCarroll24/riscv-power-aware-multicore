@@ -129,7 +129,7 @@ begin
 			D2					=>	REDIRECT_PC,
 			D1					=>	BR_TARGET_INT,
 			D0					=>	PC_PLUS4_INT,
-			S					=>	PCSEL
+			S					=>	PCSEL,
 			Y					=>	NEXT_PC);
 	
 	-- program counter

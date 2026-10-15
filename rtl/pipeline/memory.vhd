@@ -32,7 +32,7 @@ port(
 	CLK				:	in		std_logic;
 	RST				:	in		std_logic;
 	CORE_ENABLE		:	in		std_logic;
-	RDM_MEM			:	out	std_logic_vector(31 downto 0):
+	RDM_MEM			:	out	std_logic_vector(31 downto 0));
 end entity MEMORY;
 
 -- architectural stucture of memory

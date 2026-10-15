@@ -92,8 +92,8 @@ architecture STRUCTURAL of DECODE is
 	-- control signals
 	signal SRC1SEL			:	std_logic;
 	signal SRC2SEL			:	std_logic;
-	signal IMMSRC			:	std_logic;
-	signal IMM_EXT			:	std_logic;
+	signal IMMSRC			:	std_logic_vector(2 downto 0);
+	signal IMM_EXT			:	std_logic_vector(31 downto 0);
 	
 	-- register file
 	signal RS1				:	std_logic_vector(4 downto 0);
@@ -108,7 +108,7 @@ architecture STRUCTURAL of DECODE is
 	signal OP_A				:	std_logic_vector(31 downto 0);
 	signal OP_B				:	std_logic_vector(31 downto 0);
 	signal ASEL				:	std_logic_vector(1 downto 0);
-	signal BSEL_ALU		:	std_logic_vector(1 downto 0):
+	signal BSEL_ALU		:	std_logic_vector(1 downto 0);
 	signal BSEL_DATA		:	std_logic_vector(1 downto 0);
 	
 	-- hazard/flush unit
@@ -187,7 +187,7 @@ begin
 	-- OPAMUX: '0' = rs1 data, '1' = PC
 	with SRC1SEL select
 		OP_A			<=	PC 	when '1',
-							RD_2 	when others;
+							RD_1 	when others;
 							
 	-- OPBMUX: '0' = rs2 data, '1' = imm
 	with SRC2SEL select
@@ -237,7 +237,7 @@ begin
 			D3	=>	EX_MEM_WB_VALUE,
 			D2	=>	DMEM_Q,
 			D1	=>	EX_WB_VALUE,
-			D0	=>	OP_B,
+			D0	=>	RD_2,
 			S	=>	BSEL_DATA,
 			Y	=>	STORE_DATA);
 			

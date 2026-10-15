@@ -86,7 +86,6 @@ set_global_assignment -name VHDL_FILE ../rtl/core/dmem.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/busmux4to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg32.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/adder.vhd
-set_global_assignment -name BDF_FILE ../rtl/pipeline.bdf
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/regn.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipe_control_unit.vhd
@@ -127,3 +126,4 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/decode.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/memory.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipeline.vhd

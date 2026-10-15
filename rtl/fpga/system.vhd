@@ -17,3 +17,6 @@ use ieee.numeric_std.all;
 --		sliders		:	slider switches on board
 --		btn			:	Buttons 3..1
 --		
+entity SYSTEM is
+port(
+	);

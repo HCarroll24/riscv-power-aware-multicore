@@ -80,7 +80,7 @@ begin
 	BR_COMP	:	entity work.BRANCH_COMP
 		port map(
 			RD1		=>	ID_EX_SRC1,
-			RD2		=>	ID_EX_SRC2,
+			RD2		=>	ID_EX_STORE_DATA,
 			FUNCT3	=>	ID_EX_FUNCT3,
 			BRANCH	=>	ID_EX_BRANCH,
 			BR_TAKEN	=>	BR_TAKEN);
