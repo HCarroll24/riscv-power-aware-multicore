@@ -41,7 +41,7 @@ port(
 	REDIRECT_PC		:	in 	std_logic_vector(31 downto 0);
 	TRAIN_EN			:	in 	std_logic;
 	TRAIN_PC			:	in 	std_logic_vector(31 downto 0);
-	TRAIN_TAKEN		;	in 	std_logic;
+	TRAIN_TAKEN		:	in 	std_logic;
 	CORE_EN			:	in 	std_logic;
 	PC					:	out 	std_logic_vector(31 downto 0);
 	INSTR				:	out	std_logic_vector(31 downto 0);
@@ -89,6 +89,7 @@ architecture STRUCTURAL of FETCH is
 	-- load enables
 	signal LOAD_IF_INT			:	std_logic;
 	signal LD_IF_INT				:	std_logic;
+	signal ROM_RDEN				:	std_logic;
 begin
 	-- wire renames from fetch.bdf
 	PC_EX				<=	TRAIN_PC;
@@ -100,6 +101,9 @@ begin
 	
 	-- core enable gates the pc / irom load
 	LD_IF_INT		<=	LOAD_IF_INT and CORE_EN;
+	
+	-- IROM read enable to correctly have core_en with reset
+	ROM_RDEN			<=	LD_IF_INT or RST;
 	
 	-- core enable gates BHT training
 	UPDATE_EN		<=	TRAIN_EN and CORE_EN;
@@ -121,7 +125,7 @@ begin
 	PCMUX					:	entity work.BUSMUX5TO1
 		port map(
 			D4					=>	PC_INT,
-			D3					=>	32x"0";
+			D3					=>	32x"0",
 			D2					=>	REDIRECT_PC,
 			D1					=>	BR_TARGET_INT,
 			D0					=>	PC_PLUS4_INT,
@@ -150,17 +154,21 @@ begin
 		port map(
 			address			=>	NEXT_PC(13 downto 2),
 			clock				=>	CLK,
-			rden				=>	LD_IF_INT,
+			rden				=>	ROM_RDEN,
 			q					=>	INSTR_INT);
 			
 	-- branch history table, trains using pc value
 	BHT					:	entity work.BHT
+		generic map(
+			INDEX_BITS		=>	4)
 		port map(
-			INSTR				=>	INSTR_INT,
-			PC					=>	PC_INT,
-			FETCH_TARGET	=>	BR_TARGET_INT,
-			TARGET_VALID	=>	TARGET_VALID,
-			IS_JAL			=>	IS_JAL);
+			CLK				=>	CLK,
+			RST				=>	RST,
+			FETCH_PC			=>	PC_INT,
+			EX_PC				=>	PC_EX,
+			UPDATE_EN		=>	UPDATE_EN,
+			BR_TAKEN			=>	BR_TAKEN_BHT,
+			PREDICT			=>	PREDICT);
 			
 	-- branch target calculation, moved to fetch for 0 penalty on correctly
 	-- predicted branches
