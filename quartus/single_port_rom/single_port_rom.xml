@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2026.10.14.13:14:13"
+ outputDirectory="C:/dev/riscv-power-aware/quartus/single_port_rom/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 3"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="A3CW135BM16AE6S"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="6"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="q" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="q" direction="output" role="dataout" width="32" />
+  </interface>
+  <interface name="address" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="address" direction="input" role="address" width="12" />
+  </interface>
+  <interface name="clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clock" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="rden" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="rden" direction="input" role="rden" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="single_port_rom" version="1.0" name="single_port_rom">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="A3CW135BM16AE6S" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 3" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
+  <generatedFiles>
+   <file
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\synth\single_port_rom.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\synth\single_port_rom.vhd"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="C:/dev/riscv-power-aware/quartus/single_port_rom.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="C:/altera_pro/25.1/ip/altera/megafunctions/rom_1port/rom_1_port_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom"</message>
+   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_erqluhq"</message>
+  </messages>
+ </entity>
+ <entity
+   kind="rom_1port"
+   version="20.2.2"
+   name="single_port_rom_rom_1port_2022_erqluhq">
+  <parameter name="GUI_CLOCK_ENABLE_INPUT_A" value="false" />
+  <parameter name="GUI_NUMWORDS_A" value="4096" />
+  <parameter name="DEVICE_FAMILY" value="Agilex 3" />
+  <parameter name="GUI_RAM_BLOCK_TYPE" value="M20K" />
+  <parameter name="GUI_SingleClock" value="0" />
+  <parameter name="GUI_AclrAddr" value="false" />
+  <parameter name="GUI_INIT_FILE_LAYOUT" value="PORT_A" />
+  <parameter name="GUI_MAXIMUM_DEPTH" value="2048" />
+  <parameter name="GUI_RegOutput" value="false" />
+  <parameter name="GUI_CLOCK_ENABLE_OUTPUT_A" value="false" />
+  <parameter name="GUI_RESOURCE_USAGE" value="1 M20K" />
+  <parameter name="GUI_rden" value="true" />
+  <parameter name="GUI_JTAG_ID" value="NONE" />
+  <parameter name="GUI_WIDTH_A" value="32" />
+  <parameter name="GUI_FORCE_TO_ZERO" value="false" />
+  <parameter
+     name="GUI_MIFfilename"
+     value="C:/dev/riscv-power-aware/benchmarks/test_prog.mif" />
+  <parameter name="GUI_OPTIMIZATION_OPTION" value="2" />
+  <parameter name="GUI_RegAddr" value="true" />
+  <parameter name="GUI_JTAG_ENABLED" value="false" />
+  <parameter name="GUI_INIT_TO_SIM_X" value="false" />
+  <parameter name="GUI_AclrOutput" value="false" />
+  <parameter name="GUI_WIDTHAD_A" value="12" />
+  <parameter name="GUI_ADDRESSSTALL_A" value="false" />
+  <parameter name="GUI_FILE_REFERENCE" value="0" />
+  <parameter name="GUI_TBENCH" value="false" />
+  <parameter name="GUI_SclrOutput" value="false" />
+  <parameter name="GUI_MODULE_NAME" value="altera_syncram" />
+  <parameter name="GUI_BlankMemory" value="1" />
+  <generatedFiles>
+   <file
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_erqluhq.v"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_erqluhq.v"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="C:/altera_pro/25.1/ip/altera/megafunctions/rom_1port/rom_1_port_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="single_port_rom" as="rom_1port_0" />
+  <messages>
+   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_erqluhq"</message>
+  </messages>
+ </entity>
+</deploy>

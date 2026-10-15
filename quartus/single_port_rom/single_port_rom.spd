@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd"
+   type="VHDL"
+   library="rom_1port_2022" />
+ <file
+   path="sim/single_port_rom.vhd"
+   type="VHDL"
+   library="single_port_rom"
+   hasInlineConfiguration="true" />
+ <topLevel name="single_port_rom.single_port_rom" />
+ <deviceFamily name="agilex3" />
+ <device name="A3CW135BM16AE6S" />
+</simPackage>
