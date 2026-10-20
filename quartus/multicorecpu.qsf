@@ -127,3 +127,4 @@ set_global_assignment -name VHDL_FILE ../rtl/pipeline/decode.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/memory.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipeline.vhd
+set_global_assignment -name VHDL_FILE ../rtl/fpga/synchronizer.vhd
