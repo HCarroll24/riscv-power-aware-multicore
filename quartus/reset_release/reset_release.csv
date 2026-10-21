@@ -1,0 +1,18 @@
+# system info reset_release on 2026.10.20.12:13:02
+system_info:
+name,value
+DEVICE,A3CZ135BB18AE7S
+DEVICE_FAMILY,Agilex 3
+GENERATION_ID,0
+#
+#
+# Files generated for reset_release on 2026.10.20.12:13:02
+files:
+filepath,kind,attributes,module,is_top
+sim/reset_release.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,reset_release,true
+intel_user_rst_clkgate_101/sim/intel_user_rst_clkgate.sv,SYSTEM_VERILOG,,intel_user_rst_clkgate,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+reset_release.intel_user_rst_clkgate_0,intel_user_rst_clkgate

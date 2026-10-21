@@ -27,6 +27,13 @@ use ieee.numeric_std.all;
 --		REDIRECT_EN		:	Are we branching or redirecting?
 --		PREDICT_TAKEN	:	Predict that we should take the branch
 --		MISPREDICT		:	Mispredict so we need to insert a bubble
+-- Data bus (master side):
+--		DBUS_ADDR		:	byte address
+--		DBUS_BE			:	byte enables
+--		DBUS_WDATA		:	write data in the correct byte lanes
+--		DBUS_WE			:	write enable
+--		DBUS_RE			:	read enable
+--		DBUS_RDATA		:	whole-word read data returned by the bus (input)
 entity PIPELINE is
 port(
 	CLK				:	in		std_logic;
@@ -42,7 +49,13 @@ port(
 	STALL				:	out	std_logic;
 	REDIRECT_EN		:	out	std_logic;
 	PREDICT_TAKEN	:	out	std_logic;
-	MISPREDICT		:	out	std_logic);
+	MISPREDICT		:	out	std_logic;
+	DBUS_ADDR		:	out	std_logic_vector(31 downto 0);
+	DBUS_BE			:	out	std_logic_vector(3 downto 0);
+	DBUS_WDATA		:	out	std_logic_vector(31 downto 0);
+	DBUS_WE			:	out	std_logic;
+	DBUS_RE			:	out	std_logic;
+	DBUS_RDATA		:	in		std_logic_vector(31 downto 0));
 end entity PIPELINE;
 
 -- architectural description
@@ -91,7 +104,7 @@ architecture STRUCTURAL of PIPELINE is
 	signal ID_EX_RD				:	std_logic_vector(4 downto 0);
 	signal ID_EX_FUNCT3			:	std_logic_vector(2 downto 0);
 	signal ID_EX_ALUSEL			:	std_logic_vector(3 downto 0);
-	signal ID_EX_WD4SEL			:	std_logic_vector(2 downto 0);
+	signal ID_EX_WD4SEL			:	std_logic_vector(1 downto 0);
 	signal ID_EX_BRANCH			:	std_logic;
 	signal ID_EX_IS_JALR			:	std_logic;
 	signal ID_EX_MEMRD			:	std_logic;
@@ -508,7 +521,13 @@ begin
 			CLK				=>	CLK,
 			RST				=>	RST,
 			CORE_ENABLE		=>	CORE_EN,
-			RDM_MEM			=>	RDM);
+			RDM_MEM			=>	RDM,
+			DBUS_ADDR		=>	DBUS_ADDR,
+			DBUS_BE			=>	DBUS_BE,
+			DBUS_WDATA		=>	DBUS_WDATA,
+			DBUS_WE			=>	DBUS_WE,
+			DBUS_RE			=>	DBUS_RE,
+			DBUS_RDATA		=>	DBUS_RDATA);
 			
 	-- MEM/WB Pipeline registers
 	MEMWB_WB_VALUE	:	entity work.REGN

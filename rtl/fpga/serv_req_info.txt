@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<internal_error>
+	<sub_system>ERR</sub_system>
+	<callstack>	0x7fffd3f318a0: dni_orch + 0x118a0 (?is_developer_debug@ORCH_UTIL@@YA_NXZ + 0x3590)
+	0x7ffff42a9c84: ucrtbase + 0x49c84 (bsearch_s + 0x254)
+	0x7ffff42a98a6: ucrtbase + 0x498a6 (_execute_onexit_table + 0x86)
+	0x7ffff42a985c: ucrtbase + 0x4985c (_execute_onexit_table + 0x3c)
+	0x7fffd3f2f5a0: dni_orch + 0xf5a0 (?is_developer_debug@ORCH_UTIL@@YA_NXZ + 0x1290)
+	0x7fffd3f2e68d: dni_orch + 0xe68d (?is_developer_debug@ORCH_UTIL@@YA_NXZ + 0x37d)
+	0x7fffd3f2e96d: dni_orch + 0xe96d (?is_developer_debug@ORCH_UTIL@@YA_NXZ + 0x65d)
+	0x7ffff67bead9: ntdll + 0x11ead9 (RtlIsCriticalSectionLocked + 0x5169)
+	0x7ffff66b0c32: ntdll + 0x10c32 (RtlRaiseException + 0x1532)
+	0x7ffff672830f: ntdll + 0x8830f (LdrGetProcedureAddressForCaller + 0x106f)
+	0x7ffff67265fd: ntdll + 0x865fd (LdrUnloadDll + 0x50d)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff67267a1: ntdll + 0x867a1 (LdrUnloadDll + 0x6b1)
+	0x7ffff6726443: ntdll + 0x86443 (LdrUnloadDll + 0x353)
+	0x7ffff67262df: ntdll + 0x862df (LdrUnloadDll + 0x1ef)
+	0x7ffff3dc1358: KERNELBASE + 0x21358 (FreeLibrary + 0x18)
+	0x7fffc4631fc8: mega_qsysipc_jni_stub + 0x1fc8 (Java_com_altera_qsys_ipc_QsysIPCNativeInterface_nativeShutDownJNIModule + 0x6c8)
+	0x7fffc4631908: mega_qsysipc_jni_stub + 0x1908 (Java_com_altera_qsys_ipc_QsysIPCNativeInterface_nativeShutDownJNIModule + 0x8)
+	0x218cf31d620:
+	0x2193071af3f:
+	0x21930916907:
+	0x218cf3194fd:
+</callstack>
+	<error>*** Fatal Error: Access Violation at 00007FFFD3F318A1</error>
+	<date>Tue Oct 20 12:19:35 2026
+</date>
+	<version>Version 25.1.0 Build 129 03/26/2025 SC Pro Edition</version>
+</internal_error>

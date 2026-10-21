@@ -38,7 +38,7 @@ set_time_format -unit ns -decimal_places 3
 # Create Clock
 #**************************************************************
 
-create_clock -name {clk} -period 20 -waveform { 0.000 10.000 } [get_ports {CLK}]
+create_clock -name {clk} -period 20.000 -waveform { 0.000 10.000 } [get_ports {CLK}]
 
 
 #**************************************************************
@@ -56,11 +56,6 @@ create_clock -name {clk} -period 20 -waveform { 0.000 10.000 } [get_ports {CLK}]
 #**************************************************************
 # Set Clock Uncertainty
 #**************************************************************
-
-set_clock_uncertainty -rise_from [get_clocks {clk}] -rise_to [get_clocks {clk}]  0.020  
-set_clock_uncertainty -rise_from [get_clocks {clk}] -fall_to [get_clocks {clk}]  0.020  
-set_clock_uncertainty -fall_from [get_clocks {clk}] -rise_to [get_clocks {clk}]  0.020  
-set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {clk}]  0.020  
 
 
 #**************************************************************
@@ -84,7 +79,10 @@ set_clock_uncertainty -fall_from [get_clocks {clk}] -fall_to [get_clocks {clk}] 
 #**************************************************************
 # Set False Path
 #**************************************************************
-
+set_false_path -from [get_ports {KEY[*]}]
+set_false_path -from [get_ports {SW[*]}]
+set_false_path -to   [get_ports {LEDR[*]}]
+set_false_path -to   [get_ports {HEX0[*] HEX1[*] HEX2[*] HEX3[*] HEX4[*] HEX5[*]}]
 
 
 #**************************************************************

@@ -44,11 +44,9 @@ set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:10:40  FEBRUARY 27, 2
 set_global_assignment -name LAST_QUARTUS_VERSION "25.1.0 Pro Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
-set_global_assignment -name EDA_SIMULATION_TOOL "Questa Altera FPGA (VHDL)"
+set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
 
 set_global_assignment -name SEARCH_PATH ../rtl
 set_global_assignment -name SEARCH_PATH ../rtl/core
@@ -68,16 +66,14 @@ set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation"
+set_global_assignment -name VHDL_FILE ../rtl/fpga/display_format.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/seg7decode.vhd
 set_global_assignment -name MIF_FILE ../benchmarks/solving_issues.mif
 set_global_assignment -name MIF_FILE ../benchmarks/forward_stall_test.mif
 set_global_assignment -name MIF_FILE ../benchmarks/br_predict_test.mif
 set_global_assignment -name SDC_FILE multicorecpu.sdc
 set_global_assignment -name VHDL_FILE ../rtl/core/alu.vhd
-set_global_assignment -name BDF_FILE ../rtl/multicorecpu.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/regfile.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/imm_gen.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/control_unit.vhd
@@ -102,8 +98,6 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name VHDL_FILE ../rtl/and2_32.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/const_bus.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/rs_decode.vhd
-set_global_assignment -name BDF_FILE ../rtl/core/synchronizer.bdf
-set_global_assignment -name VHDL_FILE ../rtl/fpga/address_decoder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/run_ctrl.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/blank.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/led_map.vhd
@@ -114,7 +108,6 @@ set_global_assignment -name SIGNALTAP_FILE core_debug.stp
 set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS MAXIMUM
 set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
 set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
-set_global_assignment -name VHDL_FILE ../rtl/fpga/system.vhd
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top"
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top"
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top"
@@ -128,3 +121,9 @@ set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/memory.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipeline.vhd
 set_global_assignment -name VHDL_FILE ../rtl/fpga/synchronizer.vhd
+set_global_assignment -name VHDL_FILE ../rtl/fpga/multicorecpu.vhd
+set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
+set_global_assignment -name IP_FILE reset_release.ip
+set_global_assignment -name BOARD default
+set_global_assignment -name VHDL_FILE ../rtl/fpga/data_bus.vhd
+set_global_assignment -name VHDL_FILE ../rtl/mmio.vhd
