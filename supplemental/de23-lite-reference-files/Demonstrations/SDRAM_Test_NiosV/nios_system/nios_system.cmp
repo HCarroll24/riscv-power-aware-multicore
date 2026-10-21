@@ -1,0 +1,22 @@
+	component nios_system is
+		port (
+			clk_clk                        : in  std_logic                     := 'X';             -- clk
+			sdram_clk_clk                  : out std_logic;                                        -- clk
+			key_external_connection_export : in  std_logic_vector(3 downto 0)  := (others => 'X'); -- export
+			led_external_connection_export : out std_logic_vector(9 downto 0);                     -- export
+			sw_external_connection_export  : in  std_logic_vector(9 downto 0)  := (others => 'X'); -- export
+			reset_reset_n                  : in  std_logic                     := 'X';             -- reset_n
+			sdram_cke                      : out std_logic;                                        -- cke
+			sdram_cs_n                     : out std_logic;                                        -- cs_n
+			sdram_ras_n                    : out std_logic;                                        -- ras_n
+			sdram_cas_n                    : out std_logic;                                        -- cas_n
+			sdram_we_n                     : out std_logic;                                        -- we_n
+			sdram_dqm                      : out std_logic_vector(3 downto 0);                     -- dqm
+			sdram_addr                     : out std_logic_vector(12 downto 0);                    -- addr
+			sdram_ba                       : out std_logic_vector(1 downto 0);                     -- ba
+			sdram_data_out                 : out std_logic_vector(31 downto 0);                    -- data_out
+			sdram_data_oe                  : out std_logic;                                        -- data_oe
+			sdram_data_in                  : in  std_logic_vector(31 downto 0) := (others => 'X')  -- data_in
+		);
+	end component nios_system;
+

@@ -43,7 +43,6 @@ set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:10:40  FEBRUARY 27, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "25.1.0 Pro Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
@@ -57,18 +56,7 @@ set_global_assignment -name SEARCH_PATH ../rtl/packages
 
 set_global_assignment -name ADD_PASS_THROUGH_LOGIC_TO_INFERRED_RAMS OFF
 set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
-set_global_assignment -name ENABLE_OCT_DONE OFF
-set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
-set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE COMP IMAGE WITH ERAM"
-set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation"
-set_global_assignment -name VHDL_FILE ../rtl/fpga/display_format.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/seg7decode.vhd
 set_global_assignment -name MIF_FILE ../benchmarks/solving_issues.mif
 set_global_assignment -name MIF_FILE ../benchmarks/forward_stall_test.mif
 set_global_assignment -name MIF_FILE ../benchmarks/br_predict_test.mif
@@ -84,23 +72,13 @@ set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg32.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/adder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/regn.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg1.vhd
-set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipe_control_unit.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/pc_sel_logic.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/branch_predictor.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/busmux6to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/busmux5to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/forwarding_unit.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/hazard_control_unit.vhd
-set_global_assignment -name VHDL_FILE ../rtl/pipeline/nop_adder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/bht.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_target_calc.vhd
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
-set_global_assignment -name VHDL_FILE ../rtl/and2_32.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/const_bus.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/rs_decode.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/run_ctrl.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/blank.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/led_map.vhd
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name ENABLE_SIGNALTAP OFF
 set_global_assignment -name USE_SIGNALTAP_FILE core_debug.stp
@@ -127,3 +105,171 @@ set_global_assignment -name IP_FILE reset_release.ip
 set_global_assignment -name BOARD default
 set_global_assignment -name VHDL_FILE ../rtl/fpga/data_bus.vhd
 set_global_assignment -name VHDL_FILE ../rtl/mmio.vhd
+
+# DE23-Lite pin assignments for MULTICORECPU
+# Locations and I/O standards copied from Terasic golden_top.qsf (Terasic V2.1.0,
+# Quartus 25.1.0 Pro). The user manual (Dec 18, 2025) Tables 3-8/3-9 list the wrong
+# I/O standards for LEDR (all 1.2-V, not 3.3V) and HEX2[5]..HEX5[6] (1.8-V / 3.3-V,
+# not 1.2V); locations in the manual are correct.
+
+# CLOCK (CLOCK0_50 on the board)
+set_location_assignment PIN_K43 -to CLK
+set_instance_assignment -name IO_STANDARD "1.2-V" -to CLK
+
+# KEY
+set_location_assignment PIN_K26 -to KEY[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[0]
+set_location_assignment PIN_K27 -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[1]
+set_location_assignment PIN_BK10 -to KEY[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[2]
+set_location_assignment PIN_W12 -to KEY[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[3]
+
+# SW
+set_location_assignment PIN_A37 -to SW[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[0]
+set_location_assignment PIN_B37 -to SW[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[1]
+set_location_assignment PIN_B26 -to SW[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[2]
+set_location_assignment PIN_A42 -to SW[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[3]
+set_location_assignment PIN_K32 -to SW[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[4]
+set_location_assignment PIN_A26 -to SW[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[5]
+set_location_assignment PIN_B27 -to SW[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[6]
+set_location_assignment PIN_A29 -to SW[7]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[7]
+set_location_assignment PIN_D32 -to SW[8]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[8]
+set_location_assignment PIN_A34 -to SW[9]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[9]
+
+# LEDR
+set_location_assignment PIN_B39 -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[0]
+set_location_assignment PIN_B42 -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[1]
+set_location_assignment PIN_K35 -to LEDR[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[2]
+set_location_assignment PIN_F32 -to LEDR[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[3]
+set_location_assignment PIN_A19 -to LEDR[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[4]
+set_location_assignment PIN_B24 -to LEDR[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[5]
+set_location_assignment PIN_A24 -to LEDR[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[6]
+set_location_assignment PIN_A44 -to LEDR[7]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[7]
+set_location_assignment PIN_B34 -to LEDR[8]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[8]
+set_location_assignment PIN_D40 -to LEDR[9]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[9]
+
+# HEX0
+set_location_assignment PIN_L51 -to HEX0[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[0]
+set_location_assignment PIN_J51 -to HEX0[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[1]
+set_location_assignment PIN_G51 -to HEX0[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[2]
+set_location_assignment PIN_J52 -to HEX0[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[3]
+set_location_assignment PIN_M51 -to HEX0[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[4]
+set_location_assignment PIN_M52 -to HEX0[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[5]
+set_location_assignment PIN_R51 -to HEX0[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[6]
+
+# HEX1
+set_location_assignment PIN_F40 -to HEX1[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[0]
+set_location_assignment PIN_K40 -to HEX1[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[1]
+set_location_assignment PIN_N52 -to HEX1[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[2]
+set_location_assignment PIN_V51 -to HEX1[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[3]
+set_location_assignment PIN_R52 -to HEX1[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[4]
+set_location_assignment PIN_V52 -to HEX1[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[5]
+set_location_assignment PIN_G52 -to HEX1[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[6]
+
+# HEX2
+set_location_assignment PIN_H43 -to HEX2[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[0]
+set_location_assignment PIN_F35 -to HEX2[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[1]
+set_location_assignment PIN_A31 -to HEX2[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[2]
+set_location_assignment PIN_B29 -to HEX2[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[3]
+set_location_assignment PIN_H35 -to HEX2[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[4]
+set_location_assignment PIN_BN24 -to HEX2[5]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX2[5]
+set_location_assignment PIN_BN19 -to HEX2[6]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX2[6]
+
+# HEX3
+set_location_assignment PIN_BM22 -to HEX3[0]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX3[0]
+set_location_assignment PIN_BH13 -to HEX3[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[1]
+set_location_assignment PIN_BM3 -to HEX3[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[2]
+set_location_assignment PIN_AY6 -to HEX3[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[3]
+set_location_assignment PIN_AU6 -to HEX3[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[4]
+set_location_assignment PIN_AU4 -to HEX3[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[5]
+set_location_assignment PIN_AW12 -to HEX3[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[6]
+
+# HEX4
+set_location_assignment PIN_AT9 -to HEX4[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[0]
+set_location_assignment PIN_AT12 -to HEX4[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[1]
+set_location_assignment PIN_AP9 -to HEX4[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[2]
+set_location_assignment PIN_BK7 -to HEX4[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[3]
+set_location_assignment PIN_BM2 -to HEX4[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[4]
+set_location_assignment PIN_BL2 -to HEX4[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[5]
+set_location_assignment PIN_BH7 -to HEX4[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[6]
+
+# HEX5
+set_location_assignment PIN_BH3 -to HEX5[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[0]
+set_location_assignment PIN_BF12 -to HEX5[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[1]
+set_location_assignment PIN_BF9 -to HEX5[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[2]
+set_location_assignment PIN_BB12 -to HEX5[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[3]
+set_location_assignment PIN_BB9 -to HEX5[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[4]
+set_location_assignment PIN_E2 -to HEX5[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[5]
+set_location_assignment PIN_K3 -to HEX5[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[6]
+
+# Configuration scheme and power management (board-specific, from golden_top.qsf)
+set_global_assignment -name USE_CONF_DONE SDM_IO16
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"

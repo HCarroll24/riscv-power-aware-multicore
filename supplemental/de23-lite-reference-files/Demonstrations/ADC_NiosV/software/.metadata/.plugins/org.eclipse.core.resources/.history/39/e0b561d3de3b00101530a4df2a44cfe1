@@ -1,0 +1,21 @@
+/*
+ * ADC7953.h
+ *
+ *  Created on: 2022¦~11¤ë1¤é
+ *      Author: User
+ */
+
+#ifndef ADS7953_H_
+#define ADS7953_H_
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <alt_types.h>
+
+bool ADS7953_Read_16ch(alt_u32 base, uint16_t slave, uint16_t szCH[16]);
+void ADS7953_write_cmd(uint32_t base, uint16_t cmd);
+bool ADS7953_read_data(uint32_t base, uint16_t *pdata);
+
+void ADS7953_Read_Data(alt_u32 base, alt_u8 Channel, alt_u8 *Rdata);
+
+#endif /* ADS7953_H_ */

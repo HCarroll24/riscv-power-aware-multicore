@@ -17,20 +17,20 @@ entity single_port_rom is
 end entity single_port_rom;
 
 architecture rtl of single_port_rom is
-	component single_port_rom_rom_1port_2022_erqluhq_cmp is
+	component single_port_rom_rom_1port_2022_qun65uy_cmp is
 		port (
 			q       : out std_logic_vector(31 downto 0);                    -- dataout
 			address : in  std_logic_vector(11 downto 0) := (others => 'X'); -- address
 			clock   : in  std_logic                     := 'X';             -- clk
 			rden    : in  std_logic                     := 'X'              -- rden
 		);
-	end component single_port_rom_rom_1port_2022_erqluhq_cmp;
+	end component single_port_rom_rom_1port_2022_qun65uy_cmp;
 
-	for rom_1port_0 : single_port_rom_rom_1port_2022_erqluhq_cmp
-		use entity rom_1port_2022.single_port_rom_rom_1port_2022_erqluhq;
+	for rom_1port_0 : single_port_rom_rom_1port_2022_qun65uy_cmp
+		use entity rom_1port_2022.single_port_rom_rom_1port_2022_qun65uy;
 begin
 
-	rom_1port_0 : component single_port_rom_rom_1port_2022_erqluhq_cmp
+	rom_1port_0 : component single_port_rom_rom_1port_2022_qun65uy_cmp
 		port map (
 			q       => q,       --       q.dataout
 			address => address, -- address.address

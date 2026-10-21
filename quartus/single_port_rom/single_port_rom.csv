@@ -1,18 +1,18 @@
-# system info single_port_rom on 2026.10.14.13:14:08
+# system info single_port_rom on 2026.10.21.01:15:32
 system_info:
 name,value
-DEVICE,A3CW135BM16AE6S
+DEVICE,A3CZ135BB18AE7S
 DEVICE_FAMILY,Agilex 3
 GENERATION_ID,0
 #
 #
-# Files generated for single_port_rom on 2026.10.14.13:14:08
+# Files generated for single_port_rom on 2026.10.21.01:15:32
 files:
 filepath,kind,attributes,module,is_top
 sim/single_port_rom.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,single_port_rom,true
-rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd,VHDL,,single_port_rom_rom_1port_2022_erqluhq,false
+rom_1port_2022/sim/single_port_rom_rom_1port_2022_qun65uy.vhd,VHDL,,single_port_rom_rom_1port_2022_qun65uy,false
 #
 # Map from instance-path to kind of module
 instances:
 instancePath,module
-single_port_rom.rom_1port_0,single_port_rom_rom_1port_2022_erqluhq
+single_port_rom.rom_1port_0,single_port_rom_rom_1port_2022_qun65uy

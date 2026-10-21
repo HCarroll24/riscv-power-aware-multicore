@@ -69,10 +69,10 @@ begin
 		case FUNCT3_EX(1 downto 0) is
 			when B"00" =>	-- sb
 				case A_EX(1 downto 0) is
-					when B"00" => BYTE_EN_INT <= B"0001";
-					when B"01" => BYTE_EN_INT <= B"0010";
-					when B"10" => BYTE_EN_INT <= B"0100";
-					when B"11" => BYTE_EN_INT <= B"1000";
+					when B"00" 	=> BYTE_EN_INT <= B"0001";
+					when B"01" 	=> BYTE_EN_INT <= B"0010";
+					when B"10" 	=> BYTE_EN_INT <= B"0100";
+					when others	=> BYTE_EN_INT <= B"1000";
 				end case;
 			when B"01" =>	-- sh
 				if A_EX(1) = '0' then
@@ -166,10 +166,10 @@ begin
 	end process LOAD_FORMAT;
 	
 	-- only a load produces data in MEM
-	RDM_MEM	<=	RDM_FMT when MEM_RD = '1' else (others => '0');
+	RDM_MEM	<=	RDM_FMT when MEMRD_R = '1' else (others => '0');
 	
 	-- simulation only checks
-	-- synthesis translate-off
+	-- synthesis translate_off
 	CHECKS:	process(CLK)
 		variable ACTIVE		:	boolean;
 		variable MISALIGNED	:	boolean;
@@ -179,7 +179,7 @@ begin
 			MISALIGNED	:= (FUNCT3_EX(1 downto 0) = B"10" and A_EX(1 downto 0) /= B"00")
 									or (FUNCT3_EX(1 downto 0) = B"01" and A_EX(0) /= '0');
 									
-			assert not (ACTIVE and MISALIGNED);
+			assert not (ACTIVE and MISALIGNED)
 				report "MEMORY: misaligned access at 0x" & to_hstring(A_EX) & " -- folded into the containing word"
 				severity error;
 				
@@ -188,5 +188,5 @@ begin
 				severity failure;
 		end if;
 	end process CHECKS;
-	-- synthesis translate-on
-end architecture STRUCTURAL;
+	-- synthesis translate_on
+end architecture BEHAVIORAL;

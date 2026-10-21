@@ -1,0 +1,195 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 472 616)
+	(text "nios_system" (rect 196 0 247 12)(font "SansSerif" (font_size 11)))
+	(text "inst" (rect 8 600 20 612)(font "Arial" ))
+	(port
+		(pt 0 76)
+		(input)
+		(text "clk_clk" (rect 0 0 27 12)(font "SansSerif" (font_size 8)))
+		(text "clk_clk" (rect 4 65 46 76)(font "SansSerif" (font_size 8)))
+		(line (pt 0 76)(pt 204 76)(line_width 1))
+	)
+	(port
+		(pt 0 126)
+		(input)
+		(text "key_external_connection_export[3..0]" (rect 0 0 149 12)(font "SansSerif" (font_size 8)))
+		(text "key_external_connection_export[3..0]" (rect 4 115 220 126)(font "SansSerif" (font_size 8)))
+		(line (pt 0 126)(pt 204 126)(line_width 3))
+	)
+	(port
+		(pt 0 226)
+		(input)
+		(text "sw_external_connection_export[9..0]" (rect 0 0 145 12)(font "SansSerif" (font_size 8)))
+		(text "sw_external_connection_export[9..0]" (rect 4 215 214 226)(font "SansSerif" (font_size 8)))
+		(line (pt 0 226)(pt 204 226)(line_width 3))
+	)
+	(port
+		(pt 0 276)
+		(input)
+		(text "reset_reset_n" (rect 0 0 56 12)(font "SansSerif" (font_size 8)))
+		(text "reset_reset_n" (rect 4 265 82 276)(font "SansSerif" (font_size 8)))
+		(line (pt 0 276)(pt 204 276)(line_width 1))
+	)
+	(port
+		(pt 0 576)
+		(input)
+		(text "sdram_data_in[31..0]" (rect 0 0 83 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_data_in[31..0]" (rect 4 565 124 576)(font "SansSerif" (font_size 8)))
+		(line (pt 0 576)(pt 204 576)(line_width 3))
+	)
+	(port
+		(pt 472 76)
+		(output)
+		(text "sdram_clk_clk" (rect 0 0 59 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_clk_clk" (rect 404 65 482 76)(font "SansSerif" (font_size 8)))
+		(line (pt 472 76)(pt 272 76)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(output)
+		(text "led_external_connection_export[9..0]" (rect 0 0 145 12)(font "SansSerif" (font_size 8)))
+		(text "led_external_connection_export[9..0]" (rect 4 165 220 176)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 326)
+		(output)
+		(text "sdram_cke" (rect 0 0 46 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_cke" (rect 4 315 58 326)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 351)
+		(output)
+		(text "sdram_cs_n" (rect 0 0 51 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_cs_n" (rect 4 340 64 351)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 376)
+		(output)
+		(text "sdram_ras_n" (rect 0 0 55 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_ras_n" (rect 4 365 70 376)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 401)
+		(output)
+		(text "sdram_cas_n" (rect 0 0 56 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_cas_n" (rect 4 390 70 401)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 426)
+		(output)
+		(text "sdram_we_n" (rect 0 0 53 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_we_n" (rect 4 415 64 426)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 451)
+		(output)
+		(text "sdram_dqm[3..0]" (rect 0 0 69 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_dqm[3..0]" (rect 4 440 94 451)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 476)
+		(output)
+		(text "sdram_addr[12..0]" (rect 0 0 73 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_addr[12..0]" (rect 4 465 106 476)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 501)
+		(output)
+		(text "sdram_ba[1..0]" (rect 0 0 60 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_ba[1..0]" (rect 4 490 88 501)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 526)
+		(output)
+		(text "sdram_data_out[31..0]" (rect 0 0 89 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_data_out[31..0]" (rect 4 515 130 526)(font "SansSerif" (font_size 8)))
+	)
+	(port
+		(pt 0 551)
+		(output)
+		(text "sdram_data_oe" (rect 0 0 63 12)(font "SansSerif" (font_size 8)))
+		(text "sdram_data_oe" (rect 4 540 82 551)(font "SansSerif" (font_size 8)))
+	)
+	(drawing
+		(text "clk" (rect 189 46 396 105)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 209 71 436 152)(font "SansSerif" (color 0 0 0)))
+		(text "sdram_clk" (rect 273 46 600 105)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 257 71 532 152)(font "SansSerif" (color 0 0 0)))
+		(text "key_external_connection" (rect 62 96 262 205)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 209 121 454 252)(font "SansSerif" (color 0 0 0)))
+		(text "led_external_connection" (rect 65 146 268 305)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 209 171 454 352)(font "SansSerif" (color 0 0 0)))
+		(text "sw_external_connection" (rect 65 196 262 405)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 209 221 454 452)(font "SansSerif" (color 0 0 0)))
+		(text "reset" (rect 175 246 380 505)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 209 271 460 552)(font "SansSerif" (color 0 0 0)))
+		(text "sdram" (rect 168 296 366 605)(font "SansSerif" (color 128 0 0)(font_size 9)))
+		(text "cke" (rect 209 321 436 652)(font "SansSerif" (color 0 0 0)))
+		(text "cs_n" (rect 209 346 442 702)(font "SansSerif" (color 0 0 0)))
+		(text "ras_n" (rect 209 371 448 752)(font "SansSerif" (color 0 0 0)))
+		(text "cas_n" (rect 209 396 448 802)(font "SansSerif" (color 0 0 0)))
+		(text "we_n" (rect 209 421 442 852)(font "SansSerif" (color 0 0 0)))
+		(text "dqm" (rect 209 446 436 902)(font "SansSerif" (color 0 0 0)))
+		(text "addr" (rect 209 471 442 952)(font "SansSerif" (color 0 0 0)))
+		(text "ba" (rect 209 496 430 1002)(font "SansSerif" (color 0 0 0)))
+		(text "data_out" (rect 209 521 466 1052)(font "SansSerif" (color 0 0 0)))
+		(text "data_oe" (rect 209 546 460 1102)(font "SansSerif" (color 0 0 0)))
+		(text "data_in" (rect 209 571 460 1152)(font "SansSerif" (color 0 0 0)))
+		(text " system " (rect 441 601 930 1212)(font "SansSerif" ))
+		(line (pt 204 34)(pt 272 34)(line_width 1))
+		(line (pt 272 34)(pt 272 601)(line_width 1))
+		(line (pt 204 601)(pt 272 601)(line_width 1))
+		(line (pt 204 34)(pt 204 601)(line_width 1))
+		(line (pt 205 55)(pt 205 80)(line_width 1))
+		(line (pt 206 55)(pt 206 80)(line_width 1))
+		(line (pt 271 55)(pt 271 80)(line_width 1))
+		(line (pt 270 55)(pt 270 80)(line_width 1))
+		(line (pt 205 105)(pt 205 130)(line_width 1))
+		(line (pt 206 105)(pt 206 130)(line_width 1))
+		(line (pt 472 176)(pt 204 176)(line_width 3))
+		(line (pt 205 155)(pt 205 180)(line_width 1))
+		(line (pt 206 155)(pt 206 180)(line_width 1))
+		(line (pt 205 205)(pt 205 230)(line_width 1))
+		(line (pt 206 205)(pt 206 230)(line_width 1))
+		(line (pt 205 255)(pt 205 280)(line_width 1))
+		(line (pt 206 255)(pt 206 280)(line_width 1))
+		(line (pt 472 326)(pt 204 326)(line_width 1))
+		(line (pt 472 351)(pt 204 351)(line_width 1))
+		(line (pt 472 376)(pt 204 376)(line_width 1))
+		(line (pt 472 401)(pt 204 401)(line_width 1))
+		(line (pt 472 426)(pt 204 426)(line_width 1))
+		(line (pt 472 451)(pt 204 451)(line_width 3))
+		(line (pt 472 476)(pt 204 476)(line_width 3))
+		(line (pt 472 501)(pt 204 501)(line_width 3))
+		(line (pt 472 526)(pt 204 526)(line_width 3))
+		(line (pt 472 551)(pt 204 551)(line_width 1))
+		(line (pt 205 305)(pt 205 580)(line_width 1))
+		(line (pt 206 305)(pt 206 580)(line_width 1))
+		(line (pt 0 0)(pt 472 0)(line_width 1))
+		(line (pt 472 0)(pt 472 618)(line_width 1))
+		(line (pt 0 618)(pt 472 618)(line_width 1))
+		(line (pt 0 0)(pt 0 618)(line_width 1))
+	)
+)

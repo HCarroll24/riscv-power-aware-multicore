@@ -5,7 +5,7 @@
  version="1.0"
  fabric="QSYS">
  <!-- Format version 25.1 129 (Future versions may contain additional information.) -->
- <!-- 2026.10.14.13:14:13 -->
+ <!-- 2026.10.21.01:15:34 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -36,7 +36,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE">
   <type>java.lang.String</type>
-  <value>A3CW135BM16AE6S</value>
+  <value>A3CZ135BB18AE7S</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -45,7 +45,7 @@
  </parameter>
  <parameter name="AUTO_DEVICE_SPEEDGRADE">
   <type>java.lang.String</type>
-  <value>6</value>
+  <value>7</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -112,7 +112,7 @@
    name="rom_1port_0"
    kind="rom_1port"
    version="20.2.2"
-   entity="single_port_rom_rom_1port_2022_erqluhq"
+   entity="single_port_rom_rom_1port_2022_qun65uy"
    library="rom_1port_2022"
    path="rom_1port_0"
    hpath="rom_1port_0"
@@ -314,7 +314,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="GUI_MIFfilename">
    <type>java.lang.String</type>
-   <value>C:/dev/riscv-power-aware/benchmarks/test_prog.mif</value>
+   <value>C:/dev/riscv-power-aware/benchmarks/board_test.mif</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

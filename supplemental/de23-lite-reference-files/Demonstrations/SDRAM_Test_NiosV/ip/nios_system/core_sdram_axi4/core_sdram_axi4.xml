@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2025.08.21.16:56:27"
+ outputDirectory="E:/Code/DE23_Lite/SDRAM_NiosV/ip/nios_system/core_sdram_axi4/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 3"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="A3CZ135BB18AE7S"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="4"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SINK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SINK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SINK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SAMPLE_SINK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SAMPLE_SINK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_SAMPLE_SINK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_AXI4_SLAVE_CPU_INFO_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="sdram" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="sdram_cke_o" direction="output" role="cke" width="1" />
+   <port name="sdram_cs_o" direction="output" role="cs_n" width="1" />
+   <port name="sdram_ras_o" direction="output" role="ras_n" width="1" />
+   <port name="sdram_cas_o" direction="output" role="cas_n" width="1" />
+   <port name="sdram_we_o" direction="output" role="we_n" width="1" />
+   <port name="sdram_dqm_o" direction="output" role="dqm" width="4" />
+   <port name="sdram_addr_o" direction="output" role="addr" width="13" />
+   <port name="sdram_ba_o" direction="output" role="ba" width="2" />
+   <port
+       name="sdram_data_output_o"
+       direction="output"
+       role="data_out"
+       width="32" />
+   <port
+       name="sdram_data_out_en_o"
+       direction="output"
+       role="data_oe"
+       width="1" />
+   <port name="sdram_data_input_i" direction="input" role="data_in" width="32" />
+  </interface>
+  <interface name="clock_sink" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk_i" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="clock_sample_sink" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk_sample_i" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset_sink" kind="reset" start="0">
+   <property name="associatedClock" value="clock_sink" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="rst_i" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="axi4_slave" kind="axi4" start="0">
+   <property name="associatedClock" value="clock_sink" />
+   <property name="associatedReset" value="reset_sink" />
+   <property name="trustzoneAware" value="true" />
+   <property name="wakeupSignals" value="false" />
+   <property name="uniqueIdSupport" value="false" />
+   <property name="poison" value="false" />
+   <property name="traceSignals" value="false" />
+   <property name="isTranslator" value="false" />
+   <property name="maximumOutstandingReads" value="1" />
+   <property name="maximumOutstandingWrites" value="1" />
+   <property name="maximumOutstandingTransactions" value="1" />
+   <property name="dataCheck" value="false" />
+   <property name="addressCheck" value="false" />
+   <property name="securityAttribute" value="false" />
+   <property name="userData" value="false" />
+   <property name="readAcceptanceCapability" value="1" />
+   <property name="writeAcceptanceCapability" value="1" />
+   <property name="combinedAcceptanceCapability" value="1" />
+   <property name="readDataReorderingDepth" value="1" />
+   <property name="bridgesToMaster" value="" />
+   <property name="dfhFeatureGuid" value="0" />
+   <property name="dfhGroupId" value="0" />
+   <property name="dfhParameterId" value="" />
+   <property name="dfhParameterName" value="" />
+   <property name="dfhParameterVersion" value="" />
+   <property name="dfhParameterData" value="" />
+   <property name="dfhParameterDataLength" value="" />
+   <property name="dfhFeatureMajorVersion" value="0" />
+   <property name="dfhFeatureMinorVersion" value="0" />
+   <property name="dfhFeatureId" value="35" />
+   <property name="dfhFeatureType" value="3" />
+   <port name="inport_awvalid_i" direction="input" role="awvalid" width="1" />
+   <port name="inport_awaddr_i" direction="input" role="awaddr" width="26" />
+   <port name="inport_awid_i" direction="input" role="awid" width="4" />
+   <port name="inport_awlen_i" direction="input" role="awlen" width="8" />
+   <port name="inport_awburst_i" direction="input" role="awburst" width="2" />
+   <port name="inport_wvalid_i" direction="input" role="wvalid" width="1" />
+   <port name="inport_wdata_i" direction="input" role="wdata" width="64" />
+   <port name="inport_wstrb_i" direction="input" role="wstrb" width="8" />
+   <port name="inport_wlast_i" direction="input" role="wlast" width="1" />
+   <port name="inport_bready_i" direction="input" role="bready" width="1" />
+   <port name="inport_arvalid_i" direction="input" role="arvalid" width="1" />
+   <port name="inport_araddr_i" direction="input" role="araddr" width="26" />
+   <port name="inport_arid_i" direction="input" role="arid" width="4" />
+   <port name="inport_arlen_i" direction="input" role="arlen" width="8" />
+   <port name="inport_arburst_i" direction="input" role="arburst" width="2" />
+   <port name="inport_rready_i" direction="input" role="rready" width="1" />
+   <port name="inport_awready_o" direction="output" role="awready" width="1" />
+   <port name="inport_wready_o" direction="output" role="wready" width="1" />
+   <port name="inport_bvalid_o" direction="output" role="bvalid" width="1" />
+   <port name="inport_bresp_o" direction="output" role="bresp" width="2" />
+   <port name="inport_bid_o" direction="output" role="bid" width="4" />
+   <port name="inport_arready_o" direction="output" role="arready" width="1" />
+   <port name="inport_rvalid_o" direction="output" role="rvalid" width="1" />
+   <port name="inport_rdata_o" direction="output" role="rdata" width="64" />
+   <port name="inport_rresp_o" direction="output" role="rresp" width="2" />
+   <port name="inport_rid_o" direction="output" role="rid" width="4" />
+   <port name="inport_rlast_o" direction="output" role="rlast" width="1" />
+   <port name="inport_awsize_i" direction="input" role="awsize" width="3" />
+   <port name="inport_arsize_i" direction="input" role="arsize" width="3" />
+  </interface>
+ </perimeter>
+ <entity kind="core_sdram_axi4" version="1.0" name="core_sdram_axi4">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 3" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_CLOCK_SINK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <parameter name="AUTO_CLOCK_SAMPLE_SINK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_CLOCK_SAMPLE_SINK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_SAMPLE_SINK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_AXI4_SLAVE_CPU_INFO_ID" value="" />
+  <parameter name="AUTO_DEVICE" value="A3CZ135BB18AE7S" />
+  <parameter name="AUTO_CLOCK_SINK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_SINK_CLOCK_RATE" value="-1" />
+  <generatedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\synth\core_sdram_axi4.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\synth\core_sdram_axi4.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="E:/Code/DE23_Lite/SDRAM_NiosV/ip/nios_system/core_sdram_axi4.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="E:/Code/DE23_Lite/SDRAM_NiosV/ip/core_sdram_axi/core_sdram_axi4_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="core_sdram_axi4">"Generating: core_sdram_axi4"</message>
+   <message level="Info" culprit="core_sdram_axi4">"Generating: sdram_axi"</message>
+  </messages>
+ </entity>
+ <entity kind="core_sdram_axi4" version="1.3" name="sdram_axi">
+  <generatedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi.v"
+       attributes="TOP_LEVEL_FILE" />
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi_core.v"
+       attributes="" />
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi_pmem.v"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi.v"
+       attributes="TOP_LEVEL_FILE" />
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi_core.v"
+       attributes="" />
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\core_sdram_axi4\core_sdram_axi4_13\synth\sdram_axi_pmem.v"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="E:/Code/DE23_Lite/SDRAM_NiosV/ip/core_sdram_axi/core_sdram_axi4_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="core_sdram_axi4" as="sdram" />
+  <messages>
+   <message level="Info" culprit="core_sdram_axi4">"Generating: sdram_axi"</message>
+  </messages>
+ </entity>
+</deploy>

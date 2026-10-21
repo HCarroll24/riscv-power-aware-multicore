@@ -1,0 +1,113 @@
+/*
+ * TLA2528.cpp
+ *
+ *  Created on: May 21, 2025
+ *      Author: User
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdint.h>
+
+#include "TLA2528.h"
+
+TLA2528::TLA2528(const char *pDevName, alt_u32 nDeviceAddr):
+I2C(pDevName, nDeviceAddr){
+	// TODO Auto-generated constructor stub
+	//strcpy(m_szDevName, pDevName);
+	//m_nDeviceAddr = nDeviceAddr;
+}
+
+TLA2528::~TLA2528() {
+	// TODO Auto-generated destructor stub
+}
+
+
+bool TLA2528::Write_Reg(alt_u8 nRegAddr, alt_u8 nValue){
+	bool bSuccess;
+	alt_u16 Addr16;
+
+	//bool WriteReg8(alt_u16 nRegByteOffset, alt_u8 nValue8);
+	Addr16 = OP_REG_WRITE;
+	Addr16 <<= 8;
+	Addr16 |= nRegAddr;
+	bSuccess = WriteReg8(Addr16, nValue);
+
+	return bSuccess;
+
+}
+
+bool TLA2528::Read_Reg(alt_u8 nRegAddr, alt_u8 *pnRead8){
+	bool bSuccess;
+	alt_u16 Addr16;
+
+	//bool ReadReg8(alt_u16 nRegByteOffset, alt_u8 *pnRead8);
+	Addr16 = OP_REG_READ;
+	Addr16 <<= 8;
+	Addr16 |= nRegAddr;
+	bSuccess = ReadReg8(Addr16, pnRead8);
+
+	return bSuccess;
+
+}
+
+bool TLA2528::Read_Data16(alt_u16 *pnRead16){
+	bool bSuccess;
+	bSuccess = ReadData(2, (alt_u8 *)pnRead16);
+	return bSuccess;
+}
+
+
+bool TLA2528::Read_8CH_ManualMode(uint16_t szCH[8], bool bShowData){
+	int ch;
+	alt_u16 value16;
+	bool bSuccess = true;
+
+	bSuccess = Open();
+
+	if (bSuccess)
+		bSuccess = Write_Reg(REG_SEQUENCE_CFG, 0x00); // set manual mode
+
+
+	for(ch=0;ch<8 && bSuccess;ch++){
+
+		//////////////////
+		// Write Register to select channel
+		bSuccess = Write_Reg(REG_CHANNEL_SEL, ch);
+
+		// conversion time 600 ns
+		//////////////////
+		// read data
+		if (bSuccess){
+			usleep(1);
+			bSuccess = Read_Data16(&value16); // this is previous channel value
+			usleep(1);
+			bSuccess = Read_Data16(&value16); // second cyclone is the expected channel. see figure 31 in datasheet
+			// decode data output (see datasheet figure 25 SPI Frames for reading data)
+			if (bSuccess){
+				szCH[ch] = value16;
+
+				if (bShowData)
+					printf("read ch%d = %04xh\r\n", ch, value16);
+			}
+		}
+
+	} // for
+
+	return bSuccess;
+
+
+
+}
+
+bool TLA2528::Softreset(){
+	bool bSuccess;
+
+	bSuccess = Open();
+
+	if (bSuccess)
+		bSuccess = Write_Reg(REG_GENERAL_CFG, 0x01);
+
+	return bSuccess;
+}

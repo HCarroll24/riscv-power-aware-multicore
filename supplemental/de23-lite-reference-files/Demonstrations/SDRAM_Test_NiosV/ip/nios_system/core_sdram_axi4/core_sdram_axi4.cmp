@@ -1,0 +1,54 @@
+	component core_sdram_axi4 is
+		generic (
+			SDRAM_MHZ          : integer := 80;
+			SDRAM_ADDR_W       : integer := 24;
+			SDRAM_COL_W        : integer := 9;
+			SDRAM_READ_LATENCY : integer := 2
+		);
+		port (
+			sdram_cke_o         : out std_logic;                                                            -- cke
+			sdram_cs_o          : out std_logic;                                                            -- cs_n
+			sdram_ras_o         : out std_logic;                                                            -- ras_n
+			sdram_cas_o         : out std_logic;                                                            -- cas_n
+			sdram_we_o          : out std_logic;                                                            -- we_n
+			sdram_dqm_o         : out std_logic_vector(3 downto 0);                                         -- dqm
+			sdram_addr_o        : out std_logic_vector(12 downto 0);                                        -- addr
+			sdram_ba_o          : out std_logic_vector(1 downto 0);                                         -- ba
+			sdram_data_output_o : out std_logic_vector(31 downto 0);                                        -- data_out
+			sdram_data_out_en_o : out std_logic;                                                            -- data_oe
+			sdram_data_input_i  : in  std_logic_vector(31 downto 0)                     := (others => 'X'); -- data_in
+			clk_i               : in  std_logic                                         := 'X';             -- clk
+			clk_sample_i        : in  std_logic                                         := 'X';             -- clk
+			rst_i               : in  std_logic                                         := 'X';             -- reset
+			inport_awvalid_i    : in  std_logic                                         := 'X';             -- awvalid
+			inport_awaddr_i     : in  std_logic_vector(((SDRAM_ADDR_W-0)+2)-1 downto 0) := (others => 'X'); -- awaddr
+			inport_awid_i       : in  std_logic_vector(3 downto 0)                      := (others => 'X'); -- awid
+			inport_awlen_i      : in  std_logic_vector(7 downto 0)                      := (others => 'X'); -- awlen
+			inport_awburst_i    : in  std_logic_vector(1 downto 0)                      := (others => 'X'); -- awburst
+			inport_wvalid_i     : in  std_logic                                         := 'X';             -- wvalid
+			inport_wdata_i      : in  std_logic_vector(63 downto 0)                     := (others => 'X'); -- wdata
+			inport_wstrb_i      : in  std_logic_vector(7 downto 0)                      := (others => 'X'); -- wstrb
+			inport_wlast_i      : in  std_logic                                         := 'X';             -- wlast
+			inport_bready_i     : in  std_logic                                         := 'X';             -- bready
+			inport_arvalid_i    : in  std_logic                                         := 'X';             -- arvalid
+			inport_araddr_i     : in  std_logic_vector(((SDRAM_ADDR_W-0)+2)-1 downto 0) := (others => 'X'); -- araddr
+			inport_arid_i       : in  std_logic_vector(3 downto 0)                      := (others => 'X'); -- arid
+			inport_arlen_i      : in  std_logic_vector(7 downto 0)                      := (others => 'X'); -- arlen
+			inport_arburst_i    : in  std_logic_vector(1 downto 0)                      := (others => 'X'); -- arburst
+			inport_rready_i     : in  std_logic                                         := 'X';             -- rready
+			inport_awready_o    : out std_logic;                                                            -- awready
+			inport_wready_o     : out std_logic;                                                            -- wready
+			inport_bvalid_o     : out std_logic;                                                            -- bvalid
+			inport_bresp_o      : out std_logic_vector(1 downto 0);                                         -- bresp
+			inport_bid_o        : out std_logic_vector(3 downto 0);                                         -- bid
+			inport_arready_o    : out std_logic;                                                            -- arready
+			inport_rvalid_o     : out std_logic;                                                            -- rvalid
+			inport_rdata_o      : out std_logic_vector(63 downto 0);                                        -- rdata
+			inport_rresp_o      : out std_logic_vector(1 downto 0);                                         -- rresp
+			inport_rid_o        : out std_logic_vector(3 downto 0);                                         -- rid
+			inport_rlast_o      : out std_logic;                                                            -- rlast
+			inport_awsize_i     : in  std_logic_vector(2 downto 0)                      := (others => 'X'); -- awsize
+			inport_arsize_i     : in  std_logic_vector(2 downto 0)                      := (others => 'X')  -- arsize
+		);
+	end component core_sdram_axi4;
+

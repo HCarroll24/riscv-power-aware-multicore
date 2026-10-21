@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="DATA_CFG"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="DATA_CFG"/>
+			<item value="DATA_CFG "/>
+			<item value="ReadData"/>
+			<item value="Read_Data16"/>
+			<item value="REG_CHANNEL_SEL"/>
+			<item value="REG_SEQUENCE_CFG"/>
+			<item value="Open"/>
+			<item value="REG_GENERAL_CFG"/>
+			<item value="Read_8CH_ManualMode"/>
+			<item value="::Open"/>
+			<item value="TLA2518_Softreset"/>
+			<item value="Addr8_ReadReg8s"/>
+			<item value="Addr8_ReadReg8"/>
+			<item value="value8"/>
+			<item value="TLA2518_Read_8CH_ManualMode"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="695"/>
+		<item key="DIALOG_Y_ORIGIN" value="356"/>
+		<item key="DIALOG_WIDTH" value="322"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft JhengHei UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft JhengHei UI"/>
+	</section>
+</section>

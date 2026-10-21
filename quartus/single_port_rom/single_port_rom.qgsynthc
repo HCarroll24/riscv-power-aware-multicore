@@ -74,7 +74,7 @@
           </parameter>
           <parameter>
             <name>GUI_MIFfilename</name>
-            <value>C:/dev/riscv-power-aware/benchmarks/test_prog.mif</value>
+            <value>C:/dev/riscv-power-aware/benchmarks/board_test.mif</value>
           </parameter>
           <parameter>
             <name>GUI_MODULE_NAME</name>
@@ -133,7 +133,7 @@
         <className>rom_1port</className>
         <version>20.2.2</version>
         <name>rom_1port_0</name>
-        <uniqueName>single_port_rom_rom_1port_2022_erqluhq</uniqueName>
+        <uniqueName>single_port_rom_rom_1port_2022_qun65uy</uniqueName>
         <nonce>0</nonce>
         <incidentConnections></incidentConnections>
         <path>single_port_rom.rom_1port_0</path>

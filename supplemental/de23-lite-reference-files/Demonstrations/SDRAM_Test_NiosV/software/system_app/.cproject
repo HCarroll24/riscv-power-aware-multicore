@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552" moduleId="org.eclipse.cdt.core.settings" name="Default">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.VCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.autotools.core.ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration buildProperties="" description="" id="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552" name="Default" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552.614417645" name="/" resourcePath="">
+						<toolChain id="de.marw.cmake.cdt.lsp.toolchain.cmake.1697645195" name="CMake driven" superClass="de.marw.cmake.cdt.lsp.toolchain.cmake">
+							<targetPlatform id="de.marw.cmake.cdt.lsp.targetPlatform.cmake.601632085" name="Any Platform" superClass="de.marw.cmake.cdt.lsp.targetPlatform.cmake"/>
+							<builder buildPath="/system_app/build/Default" id="de.marw.cmake.cdt.lsp.builder.portable.1067511207" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder" superClass="de.marw.cmake.cdt.lsp.builder.portable"/>
+							<tool id="de.marw.cmake.cdt.lsp.toolchain.tool.dummy.868361515" name="CMake driven Languages Proxy" superClass="de.marw.cmake.cdt.lsp.toolchain.tool.dummy">
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="de.marw.cmake.option.dummy.1310551550" superClass="de.marw.cmake.option.dummy" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\riscv32-unknown-elf\include\c++\13.2.0&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\riscv32-unknown-elf\include\c++\13.2.0\riscv32-unknown-elf&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\riscv32-unknown-elf\include\c++\13.2.0\backward&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\lib\gcc\riscv32-unknown-elf\13.2.0\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\lib\gcc\riscv32-unknown-elf\13.2.0\include-fixed&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${QUARTUS_ROOTDIR}\..\riscfree\toolchain\riscv32-unknown-elf\riscv32-unknown-elf\include&quot;"/>
+								</option>
+								<inputType id="de.marw.cmake.cdt.lsp.inputType.c.460009677" superClass="de.marw.cmake.cdt.lsp.inputType.c"/>
+								<inputType id="de.marw.cmake.cdt.lsp.inputType.cpp.1461670434" superClass="de.marw.cmake.cdt.lsp.inputType.cpp"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="system_bsp;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="system_app.null.401224381" name="system_app"/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552;de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552.614417645;de.marw.cmake.cdt.lsp.toolchain.tool.dummy.868361515;de.marw.cmake.cdt.lsp.inputType.c.460009677">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552;de.marw.cmake.cdt.lsp.toolchain.cmake.1006298552.614417645;de.marw.cmake.cdt.lsp.toolchain.tool.dummy.868361515;de.marw.cmake.cdt.lsp.inputType.cpp.1461670434">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+</cproject>

@@ -61,7 +61,7 @@ on the Quartus Prime software download page.
 		(text "clk" (rect 90 121 198 252)(font "Arial" (color 0 0 0)))
 		(text "rden" (rect 60 146 144 305)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "rden" (rect 90 171 204 352)(font "Arial" (color 0 0 0)))
-		(text " single_port_rom " (rect 182 201 466 412)(font "Arial" ))
+		(text " system " (rect 220 201 488 412)(font "Arial" ))
 		(line (pt 85 34)(pt 170 34)(line_width 1))
 		(line (pt 170 34)(pt 170 201)(line_width 1))
 		(line (pt 85 201)(pt 170 201)(line_width 1))

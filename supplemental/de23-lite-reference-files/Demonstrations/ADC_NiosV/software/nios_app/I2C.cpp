@@ -1,0 +1,291 @@
+/*
+ * I2C.cpp
+ *
+ *  Created on: Mar 21, 2024
+ *      Author: User
+ */
+
+#include "I2C.h"
+#include <stdio.h>
+#include <string.h>
+
+
+//#define DUMP_REG_RW
+
+I2C::I2C(const char *pDevName, alt_u32 nDeviceAddr)
+:m_i2c_dev(NULL){
+	// TODO Auto-generated constructor stub
+	strcpy(m_szDevName, pDevName);
+	m_nDeviceAddr = nDeviceAddr;
+
+}
+
+I2C::~I2C() {
+	// TODO Auto-generated destructor stub
+}
+
+//bool I2C::Open(const char *pDevName, alt_u32 nDeviceAddr /* 7-bit addr */){
+bool I2C::Open(void){
+	bool bSuccess = false;
+	ALT_AVALON_I2C_DEV_t *i2c_dev;
+
+
+	Close();
+
+	//get a pointer to the avalon i2c instance
+	i2c_dev = alt_avalon_i2c_open(m_szDevName);
+	if (NULL==i2c_dev){
+		printf("Error: Cannot find %s\n", m_szDevName);
+	}else{
+	  alt_avalon_i2c_master_target_set(i2c_dev,m_nDeviceAddr);
+  	  bSuccess = true;
+  	  m_i2c_dev = i2c_dev;
+	}
+
+
+	return bSuccess;
+}
+
+void I2C::Close(){
+	if (m_i2c_dev){
+		//alt_avalon_i2c_close(m_i2c_dev);
+		m_i2c_dev = NULL;
+	}
+}
+
+bool I2C::ReadReg8s(alt_u16 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pBuffer){
+	bool bSuccess = false;
+	ALT_AVALON_I2C_STATUS_CODE status;
+
+
+	if (m_i2c_dev == NULL){
+		printf("m_i2c_dev is NULL\r\n");
+		return false;
+	}
+
+	// reg byte offset
+	m_txbuffer[0]= nRegByteOffset >> 8; // high byte of byte-offset
+	m_txbuffer[1]= nRegByteOffset & 0xFF; // low byte of  byte-offset
+
+
+	status=alt_avalon_i2c_master_tx_rx(m_i2c_dev, m_txbuffer, 2, m_rxbuffer, nByteCnt, ALT_AVALON_I2C_NO_INTERRUPTS);
+	if (status==ALT_AVALON_I2C_SUCCESS){
+		memcpy(pBuffer, m_rxbuffer, nByteCnt);
+    	bSuccess = true;
+#ifdef DUMP_REG_RW
+    	if (nByteCnt == 1){
+    		printf("  REG[%04xh] --> %02xh\r\n", nRegByteOffset, *pBuffer);
+    	}else{
+    		for(int i=0; i< nByteCnt; i+=2){
+        		printf("  REG[%04xh] --> %04xh \r\n", nRegByteOffset+i, *(alt_u16 *)(pBuffer+i));
+    		}
+    	}
+#endif
+	}else{
+		printf("alt_avalon_i2c_master_tx_rx failed in ReadReg8s\r\n");
+	}
+
+	return bSuccess;
+}
+
+bool I2C::Addr8_ReadReg8s(alt_u8 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pBuffer){
+	bool bSuccess = false;
+	ALT_AVALON_I2C_STATUS_CODE status;
+
+
+	if (m_i2c_dev == NULL){
+		printf("m_i2c_dev is NULL\r\n");
+		return false;
+	}
+
+	// reg byte offset
+	m_txbuffer[0]= nRegByteOffset; // byte-offset
+
+	status=alt_avalon_i2c_master_tx_rx(m_i2c_dev, m_txbuffer, 1, m_rxbuffer, nByteCnt, ALT_AVALON_I2C_NO_INTERRUPTS);
+	if (status==ALT_AVALON_I2C_SUCCESS){
+		memcpy(pBuffer, m_rxbuffer, nByteCnt);
+    	bSuccess = true;
+#ifdef DUMP_REG_RW
+    	if (nByteCnt == 1){
+    		printf("  REG[%02xh] --> %02xh\r\n", nRegByteOffset, *pBuffer);
+    	}else{
+    		for(int i=0; i< nByteCnt; i+=2){
+        		printf("  REG[%02xh] --> %04xh \r\n", nRegByteOffset+i, *(alt_u16 *)(pBuffer+i));
+    		}
+    	}
+#endif
+	}else{
+		printf("alt_avalon_i2c_master_tx_rx failed in ReadReg8s\r\n");
+	}
+
+	return bSuccess;
+}
+
+bool I2C::ReadReg8(alt_u16 nRegByteOffset, alt_u8 *pnRead8){
+	bool bSuccess;
+
+	bSuccess = ReadReg8s(nRegByteOffset, 1, pnRead8);
+
+	return bSuccess;
+}
+
+bool I2C::ReadReg16(alt_u16 nRegByteOffset, alt_u16 *pnRead16){
+	bool bSuccess;
+
+	bSuccess = ReadReg8s(nRegByteOffset, 2, (alt_u8 *)pnRead16);
+
+	return bSuccess;
+}
+
+bool I2C::Addr8_ReadReg8(alt_u8 nRegByteOffset, alt_u8 *pnRead8){
+	bool bSuccess;
+
+	bSuccess = Addr8_ReadReg8s(nRegByteOffset, 1, pnRead8);
+
+	return bSuccess;
+}
+
+bool I2C::Addr8_ReadReg16(alt_u8 nRegByteOffset, alt_u16 *pnRead16){
+	bool bSuccess;
+
+	bSuccess = Addr8_ReadReg8s(nRegByteOffset, 2, (alt_u8 *)pnRead16);
+
+	return bSuccess;
+}
+
+
+bool I2C::WriteReg8s(alt_u16 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pData){
+	bool bSuccess;
+	ALT_AVALON_I2C_STATUS_CODE status;
+
+	if (m_i2c_dev == NULL){
+		printf("m_i2c_dev is NULL\r\n");
+		return false;
+	}
+
+	// reg byte offset
+	m_txbuffer[0]= nRegByteOffset >> 8; // high byte of byte-offset
+	m_txbuffer[1]= nRegByteOffset & 0xFF; // low byte of  byte-offset
+	memcpy(m_txbuffer+2, pData, nByteCnt);
+    status=alt_avalon_i2c_master_tx(m_i2c_dev,m_txbuffer, nByteCnt+2, ALT_AVALON_I2C_NO_INTERRUPTS);
+	if (status == ALT_AVALON_I2C_SUCCESS){
+    	bSuccess = true;
+#ifdef DUMP_REG_RW
+    	if (nByteCnt == 1){
+    		printf("  %02xh --> REG[%04xh]\r\n", *pData, nRegByteOffset);
+    	}else{
+    		for(int i=0; i< nByteCnt; i+=2){
+        		printf("  %04xh --> REG[%04xh]\r\n", *(alt_u16 *)(pData+i), nRegByteOffset+i);
+    		}
+    	}
+#endif
+	}
+	return bSuccess;
+}
+
+bool I2C::Addr8_WriteReg8s(alt_u8 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pData){
+	bool bSuccess;
+	ALT_AVALON_I2C_STATUS_CODE status;
+
+	if (m_i2c_dev == NULL){
+		printf("m_i2c_dev is NULL\r\n");
+		return false;
+	}
+
+	// reg byte offset
+	m_txbuffer[0]= nRegByteOffset; // byte-offset
+	memcpy(m_txbuffer+1, pData, nByteCnt);
+    status=alt_avalon_i2c_master_tx(m_i2c_dev,m_txbuffer, nByteCnt+1, ALT_AVALON_I2C_NO_INTERRUPTS);
+	if (status == ALT_AVALON_I2C_SUCCESS){
+    	bSuccess = true;
+#ifdef DUMP_REG_RW
+    	if (nByteCnt == 1){
+    		printf("  %02xh --> REG[%02xh]\r\n", *pData, nRegByteOffset);
+    	}else{
+    		for(int i=0; i< nByteCnt; i+=2){
+        		printf("  %04xh --> REG[%02xh]\r\n", *(alt_u16 *)(pData+i), nRegByteOffset+i);
+    		}
+    	}
+#endif
+	}
+	return bSuccess;
+}
+
+
+bool I2C::WriteReg8(alt_u16 nRegByteOffset, alt_u8 nValue8){
+	bool bSuccess;
+
+	bSuccess = WriteReg8s(nRegByteOffset, 1, &nValue8);
+
+	return bSuccess;
+}
+
+bool I2C::WriteReg16(alt_u16 nRegByteOffset, alt_u16 nValue16){
+	bool bSuccess;
+
+	bSuccess = WriteReg8s(nRegByteOffset, 2, (alt_u8 *)&nValue16);
+
+	return bSuccess;
+}
+
+
+bool I2C::Addr8_WriteReg8(alt_u8 nRegByteOffset, alt_u8 nValue8){
+	bool bSuccess;
+
+	bSuccess = Addr8_WriteReg8s(nRegByteOffset, 1, &nValue8);
+
+	return bSuccess;
+}
+
+bool I2C::Addr8_WriteReg16(alt_u8 nRegByteOffset, alt_u16 nValue16){
+	bool bSuccess;
+
+	bSuccess = Addr8_WriteReg8s(nRegByteOffset, 2, (alt_u8 *)&nValue16);
+
+	return bSuccess;
+}
+
+
+bool I2C::DumpReg8(alt_u16 nRegByteOffset, alt_u8 nReg8Cnt){
+	bool bSuccess;
+	alt_u8 szBuf[256];
+	int i;
+
+	bSuccess = ReadReg8s(nRegByteOffset, nReg8Cnt, szBuf);
+
+	if (bSuccess){
+		for(i=0;i<nReg8Cnt;i++){
+			printf("[%d]=%d(%xh)\r\n", i, szBuf[i], szBuf[i]);
+		}
+
+	}
+
+
+	return bSuccess;
+
+
+
+}
+
+
+bool I2C::ReadData(alt_u8 nByteCnt, alt_u8 *pBuffer){
+	bool bSuccess = false;
+	ALT_AVALON_I2C_STATUS_CODE status;
+
+
+	if (m_i2c_dev == NULL){
+		printf("m_i2c_dev is NULL\r\n");
+		return false;
+	}
+
+
+	status=alt_avalon_i2c_master_rx(m_i2c_dev, m_rxbuffer, nByteCnt, ALT_AVALON_I2C_NO_INTERRUPTS);
+	if (status==ALT_AVALON_I2C_SUCCESS){
+		memcpy(pBuffer, m_rxbuffer, nByteCnt);
+    	bSuccess = true;
+	}else{
+		printf("alt_avalon_i2c_master_rx failed in ReadData\r\n");
+	}
+
+	return bSuccess;
+}

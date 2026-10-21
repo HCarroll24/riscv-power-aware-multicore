@@ -4,6 +4,7 @@ output_files/
 simulation/
 greybox_tmp/
 qdb/
+dni/
 'Claude outputs'/
 .qsys_edit/
 *.qws
@@ -29,3 +30,6 @@ modelsim.ini
 __pycache__/
 .vscode/
 Thumbs.db
+quartus/dni/
+tmp-clearbox/
+serv_req_info.txt

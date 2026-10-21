@@ -1,0 +1,51 @@
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TOOL_VERSION "25.1"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TOOL_VENDOR_NAME "Altera"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TOP_LEVEL_COMPONENT_NAME "altera_avalon_i2c"
+set_global_assignment -library "nios_system_i2c_1" -name SOPCINFO_FILE [file join $::quartus(qip_path) "nios_system_i2c_1.sopcinfo"]
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name SLD_INFO "QSYS_NAME nios_system_i2c_1 HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "nios_system_i2c_1" -name MISC_FILE [file join $::quartus(qip_path) "nios_system_i2c_1.cmp"]
+set_global_assignment -library "nios_system_i2c_1" -name SLD_FILE [file join $::quartus(qip_path) "nios_system_i2c_1.regmap"]
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_TARGETED_DEVICE_FAMILY "Agilex 3"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_GENERATED_DEVICE_FAMILY "{Agilex 3}"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "nios_system_i2c_1" -name MISC_FILE [file join $::quartus(qip_path) "../nios_system_i2c_1.ip"]
+
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_NAME "YWx0ZXJhX2F2YWxvbl9pMmM="
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_DISPLAY_NAME "QXZhbG9uIEkyQyAoTWFzdGVyKSBJUA=="
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_AUTHOR "QWx0ZXJh"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_VERSION "MTkuMi42"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_DESCRIPTION "STJDIENvcmUgd2l0aCBBdmFsb24gTU0gU2xhdmUgSW50ZXJmYWNlIGZvciBjb25maWd1cmF0aW9u"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_GROUP "SW50ZXJmYWNlIFByb3RvY29scy9TZXJpYWw="
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL2RvY3MvcHJvZ3JhbW1hYmxlLzY4MzEzMC9jdXJyZW50L2ZwZ2EtaTJjLWhvc3QtY29yZS5odG1s"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvd3d3L3VzL2VuL2RvY3MvcHJvZ3JhbW1hYmxlLzY4MzEzMC9jdXJyZW50L2ZwZ2EtaTJjLWhvc3QtY29yZS1yZXZpc2lvbi1oaXN0b3J5Lmh0bWw="
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_NAME "bmlvc19zeXN0ZW1faTJjXzE="
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_AUTHOR "QWx0ZXJh"
+set_global_assignment -entity "nios_system_i2c_1" -library "nios_system_i2c_1" -name IP_COMPONENT_VERSION "MS4w"
+
+
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_csr.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_clk_cnt.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_condt_det.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_condt_gen.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_fifo.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_mstfsm.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_rxshifter.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_txshifter.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_spksupp.v"]
+set_global_assignment -library "altera_avalon_i2c_1926" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_i2c_1926/synth/altera_avalon_i2c_txout.v"]
+set_global_assignment -library "nios_system_i2c_1" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/nios_system_i2c_1.v"]
+
+
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_TOOL_NAME "altera_avalon_i2c"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_TOOL_VERSION "19.2.6"
+set_global_assignment -entity "altera_avalon_i2c" -library "altera_avalon_i2c_1926" -name IP_TOOL_ENV "QsysPrimePro"
+

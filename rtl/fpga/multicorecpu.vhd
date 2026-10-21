@@ -137,7 +137,7 @@ begin
 			BE		=>	DBUS_BE,
 			WDATA	=>	DBUS_WDATA,
 			WE		=>	DMEM_WE,
-			RE		=>	DMEM_RE
+			RE		=>	DMEM_RE,
 			Q		=>	DMEM_Q);
 			
 	-- memory-mapped I/O

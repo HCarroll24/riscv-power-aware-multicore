@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <io.h>
+#include <unistd.h>
+
+#include "system.h"
+#include "TLA2528.h"
+
+int main(void){
+	bool bSuccess;
+	const bool bShowData = true;
+	uint16_t szMeasured[8], data16;
+	int ch, loop=0;
+	const float fAVDD = 5.0;
+
+	TLA2528 adc(I2C_MASTER_NAME);
+
+	// softreset
+	bSuccess = adc.Softreset();
+	usleep(1);
+
+	if (!bSuccess)
+		printf("failed to reset TLA2518\r\n");
+
+
+	while (bSuccess){
+		bSuccess = adc.Read_8CH_ManualMode(szMeasured, bShowData);
+		if (!bSuccess){
+			printf("Failed to read data!\r\n");
+		}else{
+
+			printf("========== %d ========== \r\n",loop++);
+			for(ch=0;ch<8;ch++){
+				data16 = (szMeasured[ch] >> 4) & 0x0FFFF;
+				printf("ch%d=%.2fV (%04xh)\r\n", ch, (float)data16/4095.0 * fAVDD,  data16);
+			}
+			usleep(5*1000*1000);
+
+		}
+
+	}
+	return 0;
+}

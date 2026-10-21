@@ -1,0 +1,170 @@
+/*
+ * TLA2518.c
+ *
+ *  Created on: 2025/5/29
+ *      Author: Richard
+ */
+
+#include <unistd.h>
+#include "TLA2518.h"
+#include "altera_avalon_spi.h"
+
+
+
+bool TLA2518_Write_Reg8(alt_u32 base, alt_u8 Addr8, alt_u8 Data8){
+	const int slave = 0;
+	const alt_u32 flags = 0;
+	bool bSuccess = true;
+	alt_u8 tx[3];
+	int result;
+
+ 	tx[0] = OP_REG_WRITE; // OPCODE: single register write
+	tx[1] = Addr8; // address
+	tx[2] = Data8; // data
+
+	result = alt_avalon_spi_command(base,  slave,
+                       sizeof(tx),  tx,
+					   0, NULL,
+					   flags);
+
+	if (result != 0)
+		bSuccess = false;
+
+
+	return bSuccess;
+}
+
+bool TLA2518_Read_Reg8(alt_u32 base, alt_u8 Addr8, alt_u8 *pData8){
+	const int slave = 0;
+	const alt_u32 flags = 0;
+	bool bSuccess = true;
+	alt_u8 tx[3];
+	alt_u8 rx[3];
+	int result;
+
+ 	tx[0] = OP_REG_READ; // OPCODE: single register write
+	tx[1] = Addr8; // address
+	tx[2] = 0; // data
+
+	result = alt_avalon_spi_command(base,  slave,
+                       sizeof(tx),  tx,
+					   0, NULL,
+					   flags);
+
+	if (result != 0){
+		bSuccess = false;
+	}else{
+		result = alt_avalon_spi_command(base,  slave,
+				0, NULL,
+				sizeof(rx),  rx,
+				flags);
+
+
+		if (result == sizeof(rx)){
+			*pData8 = rx[0];
+		}else{
+			bSuccess = false;
+		}
+	}
+
+	return bSuccess;
+}
+
+bool TLA2518_Read_Data24(alt_u32 base, alt_u16 *pData16){
+	const int slave = 0;
+	const alt_u32 flags = 0;
+	bool bSuccess = true;
+	alt_u16 data16;
+	alt_u8 rx[3];
+	int result;
+
+	result = alt_avalon_spi_command(base,  slave,
+			0, NULL,
+			sizeof(rx),  rx,
+			flags);
+
+	if (result != sizeof(rx)){
+			bSuccess = false;
+	}else{
+		data16 = rx[0];
+		data16 <<= 8;
+		data16 |= rx[1];
+		*pData16 = data16;
+	}
+
+	return bSuccess;
+}
+
+bool TLA2518_Read_Data16(alt_u32 base, alt_u16 *pData16){
+	const int slave = 0;
+	const alt_u32 flags = 0;
+	bool bSuccess = true;
+	alt_u16 data16;
+	alt_u8 rx[2];
+	int result;
+
+	result = alt_avalon_spi_command(base,  slave,
+			0, NULL,
+			sizeof(rx),  rx,
+			flags);
+
+	if (result != sizeof(rx)){
+			bSuccess = false;
+	}else{
+		data16 = rx[0];
+		data16 <<= 8;
+		data16 |= rx[1];
+		*pData16 = data16;
+	}
+
+	return bSuccess;
+}
+
+
+bool TLA2518_Softreset(alt_u32 base){
+	bool bSuccess;
+
+	bSuccess = TLA2518_Write_Reg8(base, REG_GENERAL_CFG, 0x01);
+
+	return bSuccess;
+}
+
+
+bool TLA2518_Read_8CH_ManualMode(alt_u32 base, uint16_t szCH[8], bool bShowData){
+	int ch;
+	alt_u16 value16;
+	bool bSuccess = true;
+
+	bSuccess = TLA2518_Write_Reg8(base, REG_SEQUENCE_CFG, 0x00); // set manual mode
+
+
+	for(ch=0;ch<8 && bSuccess;ch++){
+
+		//////////////////
+		// Write Register to select channel
+		bSuccess = TLA2518_Write_Reg8(base, REG_CHANNEL_SEL, ch);
+
+		// conversion time 600 ns
+		//////////////////
+		// read data
+		if (bSuccess){
+			usleep(1);
+			bSuccess = TLA2518_Read_Data16(base, &value16); // this is previous channel value
+			usleep(1);
+			bSuccess = TLA2518_Read_Data16(base, &value16); // second cyclone is the expected channel. see figure 31 in datasheet
+			// decode data output (see datasheet figure 25 SPI Frames for reading data)
+			if (bSuccess){
+				szCH[ch] = value16;
+
+				if (bShowData)
+					printf("read ch%d = %04xh\r\n", ch, value16);
+			}
+		}
+
+	} // for
+
+	return bSuccess;
+
+
+
+}

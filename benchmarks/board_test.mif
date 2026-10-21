@@ -1,0 +1,205 @@
+-- board_test.mif: DE23-Lite bring-up test for MULTICORECPU
+-- lamp test (25000000 loops), LED/segment walk (7500000 loops per step),
+-- 16 KiB data memory test, then SW->LEDR/HEX2..0, KEY->HEX3,
+-- counter on HEX5..4 (KEY1 +1, KEY2 -1, KEY3 clear). KEY0 = reset.
+-- Memory failure: HEX5..3 = Err, LEDR = code (see gen_board_test.py).
+WIDTH=32;
+DEPTH=4096;
+ADDRESS_RADIX=HEX;
+DATA_RADIX=HEX;
+CONTENT BEGIN
+	000  :   FF2002B7;   -- PC 0x0000  lui   x5, 0xFF200
+	001  :   3FF00393;   -- PC 0x0004  addi  x7, x0, 1023
+	002  :   0072A023;   -- PC 0x0008  sw    x7, 0(x5)
+	003  :   7F7F83B7;   -- PC 0x000C  lui   x7, 0x7F7F8
+	004  :   F7F38393;   -- PC 0x0010  addi  x7, x7, -129
+	005  :   0272A023;   -- PC 0x0014  sw    x7, 32(x5)
+	006  :   000083B7;   -- PC 0x0018  lui   x7, 0x8
+	007  :   F7F38393;   -- PC 0x001C  addi  x7, x7, -129
+	008  :   0272A823;   -- PC 0x0020  sw    x7, 48(x5)
+	009  :   017D8E37;   -- PC 0x0024  lui   x28, 0x17D8
+	00A  :   840E0E13;   -- PC 0x0028  addi  x28, x28, -1984
+	00B  :   2CC000EF;   -- PC 0x002C  jal   x1, delay
+	00C  :   00100413;   -- PC 0x0030  addi  x8, x0, 1
+	00D  :   40000A93;   -- PC 0x0034  addi  x21, x0, 1024
+	00E  :   0082A023;   -- PC 0x0038  sw    x8, 0(x5)
+	00F  :   07F47493;   -- PC 0x003C  andi  x9, x8, 127
+	010  :   00849513;   -- PC 0x0040  slli  x10, x9, 8
+	011  :   00A4E4B3;   -- PC 0x0044  or    x9, x9, x10
+	012  :   01049513;   -- PC 0x0048  slli  x10, x9, 16
+	013  :   00A4E4B3;   -- PC 0x004C  or    x9, x9, x10
+	014  :   0292A023;   -- PC 0x0050  sw    x9, 32(x5)
+	015  :   0292A823;   -- PC 0x0054  sw    x9, 48(x5)
+	016  :   00727E37;   -- PC 0x0058  lui   x28, 0x727
+	017  :   0E0E0E13;   -- PC 0x005C  addi  x28, x28, 224
+	018  :   298000EF;   -- PC 0x0060  jal   x1, delay
+	019  :   00141413;   -- PC 0x0064  slli  x8, x8, 1
+	01A  :   FD5418E3;   -- PC 0x0068  bne   x8, x21, walk
+	01B  :   0002A023;   -- PC 0x006C  sw    x0, 0(x5)
+	01C  :   0202A023;   -- PC 0x0070  sw    x0, 32(x5)
+	01D  :   0202A823;   -- PC 0x0074  sw    x0, 48(x5)
+	01E  :   A5C3F6B7;   -- PC 0x0078  lui   x13, 0xA5C3F
+	01F  :   00F68693;   -- PC 0x007C  addi  x13, x13, 15
+	020  :   000045B7;   -- PC 0x0080  lui   x11, 0x4
+	021  :   00000513;   -- PC 0x0084  addi  x10, x0, 0
+	022  :   00D54633;   -- PC 0x0088  xor   x12, x10, x13
+	023  :   00C52023;   -- PC 0x008C  sw    x12, 0(x10)
+	024  :   00450513;   -- PC 0x0090  addi  x10, x10, 4
+	025  :   FEB51AE3;   -- PC 0x0094  bne   x10, x11, wr1
+	026  :   00000513;   -- PC 0x0098  addi  x10, x0, 0
+	027  :   00052703;   -- PC 0x009C  lw    x14, 0(x10)
+	028  :   00D54633;   -- PC 0x00A0  xor   x12, x10, x13
+	029  :   00100F93;   -- PC 0x00A4  addi  x31, x0, 1
+	02A  :   22C71A63;   -- PC 0x00A8  bne   x14, x12, fail
+	02B  :   00450513;   -- PC 0x00AC  addi  x10, x10, 4
+	02C  :   FEB516E3;   -- PC 0x00B0  bne   x10, x11, rd1
+	02D  :   00000513;   -- PC 0x00B4  addi  x10, x0, 0
+	02E  :   00D54633;   -- PC 0x00B8  xor   x12, x10, x13
+	02F  :   FFF64613;   -- PC 0x00BC  xori  x12, x12, -1
+	030  :   00C52023;   -- PC 0x00C0  sw    x12, 0(x10)
+	031  :   00450513;   -- PC 0x00C4  addi  x10, x10, 4
+	032  :   FEB518E3;   -- PC 0x00C8  bne   x10, x11, wr2
+	033  :   00000513;   -- PC 0x00CC  addi  x10, x0, 0
+	034  :   00052703;   -- PC 0x00D0  lw    x14, 0(x10)
+	035  :   00D54633;   -- PC 0x00D4  xor   x12, x10, x13
+	036  :   FFF64613;   -- PC 0x00D8  xori  x12, x12, -1
+	037  :   00200F93;   -- PC 0x00DC  addi  x31, x0, 2
+	038  :   1EC71E63;   -- PC 0x00E0  bne   x14, x12, fail
+	039  :   00450513;   -- PC 0x00E4  addi  x10, x10, 4
+	03A  :   FEB514E3;   -- PC 0x00E8  bne   x10, x11, rd2
+	03B  :   20000513;   -- PC 0x00EC  addi  x10, x0, 512
+	03C  :   00052023;   -- PC 0x00F0  sw    x0, 0(x10)
+	03D  :   08100393;   -- PC 0x00F4  addi  x7, x0, 129
+	03E  :   00750023;   -- PC 0x00F8  sb    x7, 0(x10)
+	03F  :   04200393;   -- PC 0x00FC  addi  x7, x0, 66
+	040  :   007500A3;   -- PC 0x0100  sb    x7, 1(x10)
+	041  :   0C300393;   -- PC 0x0104  addi  x7, x0, 195
+	042  :   00750123;   -- PC 0x0108  sb    x7, 2(x10)
+	043  :   02400393;   -- PC 0x010C  addi  x7, x0, 36
+	044  :   007501A3;   -- PC 0x0110  sb    x7, 3(x10)
+	045  :   00052703;   -- PC 0x0114  lw    x14, 0(x10)
+	046  :   24C34637;   -- PC 0x0118  lui   x12, 0x24C34
+	047  :   28160613;   -- PC 0x011C  addi  x12, x12, 641
+	048  :   00300F93;   -- PC 0x0120  addi  x31, x0, 3
+	049  :   1AC71C63;   -- PC 0x0124  bne   x14, x12, fail
+	04A  :   00050703;   -- PC 0x0128  lb    x14, 0(x10)
+	04B  :   F8100613;   -- PC 0x012C  addi  x12, x0, -127
+	04C  :   00400F93;   -- PC 0x0130  addi  x31, x0, 4
+	04D  :   1AC71463;   -- PC 0x0134  bne   x14, x12, fail
+	04E  :   00254703;   -- PC 0x0138  lbu   x14, 2(x10)
+	04F  :   0C300613;   -- PC 0x013C  addi  x12, x0, 195
+	050  :   00500F93;   -- PC 0x0140  addi  x31, x0, 5
+	051  :   18C71C63;   -- PC 0x0144  bne   x14, x12, fail
+	052  :   000083B7;   -- PC 0x0148  lui   x7, 0x8
+	053  :   00138393;   -- PC 0x014C  addi  x7, x7, 1
+	054  :   00751123;   -- PC 0x0150  sh    x7, 2(x10)
+	055  :   00052703;   -- PC 0x0154  lw    x14, 0(x10)
+	056  :   80014637;   -- PC 0x0158  lui   x12, 0x80014
+	057  :   28160613;   -- PC 0x015C  addi  x12, x12, 641
+	058  :   00600F93;   -- PC 0x0160  addi  x31, x0, 6
+	059  :   16C71C63;   -- PC 0x0164  bne   x14, x12, fail
+	05A  :   00251703;   -- PC 0x0168  lh    x14, 2(x10)
+	05B  :   FFFF8637;   -- PC 0x016C  lui   x12, 0xFFFF8
+	05C  :   00160613;   -- PC 0x0170  addi  x12, x12, 1
+	05D  :   00700F93;   -- PC 0x0174  addi  x31, x0, 7
+	05E  :   16C71263;   -- PC 0x0178  bne   x14, x12, fail
+	05F  :   00255703;   -- PC 0x017C  lhu   x14, 2(x10)
+	060  :   00008637;   -- PC 0x0180  lui   x12, 0x8
+	061  :   00160613;   -- PC 0x0184  addi  x12, x12, 1
+	062  :   00800F93;   -- PC 0x0188  addi  x31, x0, 8
+	063  :   14C71863;   -- PC 0x018C  bne   x14, x12, fail
+	064  :   10000313;   -- PC 0x0190  addi  x6, x0, 256
+	065  :   03F00393;   -- PC 0x0194  addi  x7, x0, 63
+	066  :   00730023;   -- PC 0x0198  sb    x7, 0(x6)
+	067  :   00600393;   -- PC 0x019C  addi  x7, x0, 6
+	068  :   007300A3;   -- PC 0x01A0  sb    x7, 1(x6)
+	069  :   05B00393;   -- PC 0x01A4  addi  x7, x0, 91
+	06A  :   00730123;   -- PC 0x01A8  sb    x7, 2(x6)
+	06B  :   04F00393;   -- PC 0x01AC  addi  x7, x0, 79
+	06C  :   007301A3;   -- PC 0x01B0  sb    x7, 3(x6)
+	06D  :   06600393;   -- PC 0x01B4  addi  x7, x0, 102
+	06E  :   00730223;   -- PC 0x01B8  sb    x7, 4(x6)
+	06F  :   06D00393;   -- PC 0x01BC  addi  x7, x0, 109
+	070  :   007302A3;   -- PC 0x01C0  sb    x7, 5(x6)
+	071  :   07D00393;   -- PC 0x01C4  addi  x7, x0, 125
+	072  :   00730323;   -- PC 0x01C8  sb    x7, 6(x6)
+	073  :   00700393;   -- PC 0x01CC  addi  x7, x0, 7
+	074  :   007303A3;   -- PC 0x01D0  sb    x7, 7(x6)
+	075  :   07F00393;   -- PC 0x01D4  addi  x7, x0, 127
+	076  :   00730423;   -- PC 0x01D8  sb    x7, 8(x6)
+	077  :   06F00393;   -- PC 0x01DC  addi  x7, x0, 111
+	078  :   007304A3;   -- PC 0x01E0  sb    x7, 9(x6)
+	079  :   07700393;   -- PC 0x01E4  addi  x7, x0, 119
+	07A  :   00730523;   -- PC 0x01E8  sb    x7, 10(x6)
+	07B  :   07C00393;   -- PC 0x01EC  addi  x7, x0, 124
+	07C  :   007305A3;   -- PC 0x01F0  sb    x7, 11(x6)
+	07D  :   03900393;   -- PC 0x01F4  addi  x7, x0, 57
+	07E  :   00730623;   -- PC 0x01F8  sb    x7, 12(x6)
+	07F  :   05E00393;   -- PC 0x01FC  addi  x7, x0, 94
+	080  :   007306A3;   -- PC 0x0200  sb    x7, 13(x6)
+	081  :   07900393;   -- PC 0x0204  addi  x7, x0, 121
+	082  :   00730723;   -- PC 0x0208  sb    x7, 14(x6)
+	083  :   07100393;   -- PC 0x020C  addi  x7, x0, 113
+	084  :   007307A3;   -- PC 0x0210  sb    x7, 15(x6)
+	085  :   00000A13;   -- PC 0x0214  addi  x20, x0, 0
+	086  :   00F00393;   -- PC 0x0218  addi  x7, x0, 15
+	087  :   0472AE23;   -- PC 0x021C  sw    x7, 92(x5)
+	088  :   0402A403;   -- PC 0x0220  lw    x8, 64(x5)
+	089  :   0082A023;   -- PC 0x0224  sw    x8, 0(x5)
+	08A  :   00F47493;   -- PC 0x0228  andi  x9, x8, 15
+	08B  :   006484B3;   -- PC 0x022C  add   x9, x9, x6
+	08C  :   0004C503;   -- PC 0x0230  lbu   x10, 0(x9)
+	08D  :   00445593;   -- PC 0x0234  srli  x11, x8, 4
+	08E  :   00F5F593;   -- PC 0x0238  andi  x11, x11, 15
+	08F  :   006585B3;   -- PC 0x023C  add   x11, x11, x6
+	090  :   0005C603;   -- PC 0x0240  lbu   x12, 0(x11)
+	091  :   00861613;   -- PC 0x0244  slli  x12, x12, 8
+	092  :   00C56533;   -- PC 0x0248  or    x10, x10, x12
+	093  :   00845593;   -- PC 0x024C  srli  x11, x8, 8
+	094  :   00F5F593;   -- PC 0x0250  andi  x11, x11, 15
+	095  :   006585B3;   -- PC 0x0254  add   x11, x11, x6
+	096  :   0005C603;   -- PC 0x0258  lbu   x12, 0(x11)
+	097  :   01061613;   -- PC 0x025C  slli  x12, x12, 16
+	098  :   00C56533;   -- PC 0x0260  or    x10, x10, x12
+	099  :   0502A683;   -- PC 0x0264  lw    x13, 80(x5)
+	09A  :   00F6F593;   -- PC 0x0268  andi  x11, x13, 15
+	09B  :   006585B3;   -- PC 0x026C  add   x11, x11, x6
+	09C  :   0005C603;   -- PC 0x0270  lbu   x12, 0(x11)
+	09D  :   01861613;   -- PC 0x0274  slli  x12, x12, 24
+	09E  :   00C56533;   -- PC 0x0278  or    x10, x10, x12
+	09F  :   02A2A023;   -- PC 0x027C  sw    x10, 32(x5)
+	0A0  :   05C2A703;   -- PC 0x0280  lw    x14, 92(x5)
+	0A1  :   00277793;   -- PC 0x0284  andi  x15, x14, 2
+	0A2  :   00078463;   -- PC 0x0288  beq   x15, x0, no_k1
+	0A3  :   001A0A13;   -- PC 0x028C  addi  x20, x20, 1
+	0A4  :   00477793;   -- PC 0x0290  andi  x15, x14, 4
+	0A5  :   00078463;   -- PC 0x0294  beq   x15, x0, no_k2
+	0A6  :   FFFA0A13;   -- PC 0x0298  addi  x20, x20, -1
+	0A7  :   00877793;   -- PC 0x029C  andi  x15, x14, 8
+	0A8  :   00078463;   -- PC 0x02A0  beq   x15, x0, no_k3
+	0A9  :   00000A13;   -- PC 0x02A4  addi  x20, x0, 0
+	0AA  :   04E2AE23;   -- PC 0x02A8  sw    x14, 92(x5)
+	0AB  :   0FFA7A13;   -- PC 0x02AC  andi  x20, x20, 255
+	0AC  :   00FA7793;   -- PC 0x02B0  andi  x15, x20, 15
+	0AD  :   006787B3;   -- PC 0x02B4  add   x15, x15, x6
+	0AE  :   0007C803;   -- PC 0x02B8  lbu   x16, 0(x15)
+	0AF  :   004A5893;   -- PC 0x02BC  srli  x17, x20, 4
+	0B0  :   00F8F893;   -- PC 0x02C0  andi  x17, x17, 15
+	0B1  :   006888B3;   -- PC 0x02C4  add   x17, x17, x6
+	0B2  :   0008C903;   -- PC 0x02C8  lbu   x18, 0(x17)
+	0B3  :   00891913;   -- PC 0x02CC  slli  x18, x18, 8
+	0B4  :   01286833;   -- PC 0x02D0  or    x16, x16, x18
+	0B5  :   0302A823;   -- PC 0x02D4  sw    x16, 48(x5)
+	0B6  :   F49FF06F;   -- PC 0x02D8  jal   x0, loop
+	0B7  :   01F2A023;   -- PC 0x02DC  sw    x31, 0(x5)
+	0B8  :   500003B7;   -- PC 0x02E0  lui   x7, 0x50000
+	0B9  :   0272A023;   -- PC 0x02E4  sw    x7, 32(x5)
+	0BA  :   000083B7;   -- PC 0x02E8  lui   x7, 0x8
+	0BB  :   95038393;   -- PC 0x02EC  addi  x7, x7, -1712
+	0BC  :   0272A823;   -- PC 0x02F0  sw    x7, 48(x5)
+	0BD  :   0000006F;   -- PC 0x02F4  jal   x0, halt
+	0BE  :   FFFE0E13;   -- PC 0x02F8  addi  x28, x28, -1
+	0BF  :   FE0E1EE3;   -- PC 0x02FC  bne   x28, x0, delay
+	0C0  :   00008067;   -- PC 0x0300  jalr  x0, 0(x1)
+	[0C1..FFF]  :   00000000;
+END;

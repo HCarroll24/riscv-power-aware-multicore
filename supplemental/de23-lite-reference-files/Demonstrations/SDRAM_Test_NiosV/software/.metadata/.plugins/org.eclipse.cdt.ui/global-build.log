@@ -1,0 +1,147 @@
+17:56:13 Buildscript generation: system_app::Default in E:\Code\DE23_Lite\SDRAM_NiosV\software\system_app\build\Default
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON -G "Unix Makefiles" "E:\\Code\\DE23_Lite\\SDRAM_NiosV\\software\\system_app" 
+-- Defaulting build type to Debug.
+-- The C compiler identification is GNU 13.2.0
+-- The CXX compiler identification is GNU 13.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: E:/altera_pro/25.1/riscfree/toolchain/riscv32-unknown-elf/bin/riscv32-unknown-elf-gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: E:/altera_pro/25.1/riscfree/toolchain/riscv32-unknown-elf/bin/riscv32-unknown-elf-g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: E:/altera_pro/25.1/riscfree/toolchain/riscv32-unknown-elf/bin/riscv32-unknown-elf-gcc.exe
+-- Configuring done (6.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/build/Default
+17:56:20 Buildscript generation finished (took 6601 ms)
+17:56:20 **** Build of configuration Default for project system_app ****
+"E:\\altera_pro\\25.1\\riscfree\\build_tools\\bin\\make.exe" -j all 
+[  1%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_ecc_exception_entry.S.obj
+[  3%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_log_macro.S.obj
+[  3%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_vic_vector_table.S.obj
+[  5%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_mcount.S.obj
+[  5%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/crt0.S.obj
+[  7%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_alarm_start.c.obj
+[  7%] Building ASM object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/machine_trap.S.obj
+[  8%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_busy_sleep.c.obj
+[  9%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_close.c.obj
+[ 11%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dcache_flush.c.obj
+[ 11%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dcache_flush_all.c.obj
+[ 12%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dev_llist_insert.c.obj
+[ 14%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dcache_flush_no_writeback.c.obj
+[ 14%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dev.c.obj
+[ 15%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dma_rxchan_open.c.obj
+[ 16%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_dma_txchan_open.c.obj
+[ 17%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_do_ctors.c.obj
+[ 18%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_do_dtors.c.obj
+[ 19%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_ecc_error_inject.c.obj
+[ 20%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_env_lock.c.obj
+[ 22%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_ecc_exception.c.obj
+[ 22%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_environ.c.obj
+[ 23%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_errno.c.obj
+[ 24%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_exit.c.obj
+[ 25%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_execve.c.obj
+[ 26%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fd_lock.c.obj
+[ 27%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fcntl.c.obj
+[ 29%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fd_unlock.c.obj
+[ 29%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_find_dev.c.obj
+[ 30%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_find_file.c.obj
+[ 31%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fork.c.obj
+[ 32%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_getchar.c.obj
+[ 33%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_getpid.c.obj
+[ 34%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_iic.c.obj
+[ 35%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fstat.c.obj
+[ 36%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_get_fd.c.obj
+[ 37%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_flash_dev.c.obj
+[ 39%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_icache_flush.c.obj
+[ 39%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_fs_reg.c.obj
+[ 40%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_log_printf.c.obj
+[ 41%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_gettod.c.obj
+[ 42%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_icache_flush_all.c.obj
+[ 43%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_io_redirect.c.obj
+[ 44%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_link.c.obj
+[ 46%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_load.c.obj
+[ 46%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_kill.c.obj
+[ 46%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_irq_handler.c.obj
+[ 47%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_ioctl.c.obj
+[ 48%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_gmon.c.obj
+[ 49%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_instruction_exception_register.c.obj
+[ 50%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_malloc_lock.c.obj
+[ 52%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_settod.c.obj
+[ 52%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_putchar.c.obj
+[ 53%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_tls.c.obj
+[ 55%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_rename.c.obj
+[ 54%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_remap_cached.c.obj
+[ 56%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_putcharbuf.c.obj
+[ 58%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_sbrk.c.obj
+[ 58%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_uncached_free.c.obj
+[ 59%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_release_fd.c.obj
+[ 60%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_isatty.c.obj
+[ 61%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_read.c.obj
+[ 63%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_main.c.obj
+[ 63%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_putstr.c.obj
+[ 65%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_printf.c.obj
+[ 67%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_lseek.c.obj
+[ 67%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_iic_isr_register.c.obj
+[ 68%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_times.c.obj
+[ 69%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_uncached_malloc.c.obj
+[ 71%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_tick.c.obj
+[ 71%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_write.c.obj
+[ 65%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_open.c.obj
+[ 75%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_init.c.obj
+[ 75%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_sysid_qsys.c.obj
+[ 75%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_usleep.c.obj
+[ 75%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_vic_isr_wrapper.c.obj
+[ 78%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_niosv_irq.c.obj
+[ 76%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_remap_uncached.c.obj
+[ 77%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_wait.c.obj
+[ 79%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_fpga_platform_api_niosv.c.obj
+[ 82%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/alt_sys_init.c.obj
+[ 81%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_fpga_api_cmn_msg.c.obj
+[ 80%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_stat.c.obj
+[ 83%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/mtimer.c.obj
+[ 86%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/alt_unlink.c.obj
+[ 90%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_fpga_api_cmn_inf.c.obj
+[ 90%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_fd.c.obj
+[ 90%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_write.c.obj
+[ 90%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_fpga_api_niosv.c.obj
+[ 85%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/HAL/src/intel_fpga_api_cmn_dfl.c.obj
+[ 90%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_read.c.obj
+[ 92%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_jtag_uart_ioctl.c.obj
+[ 92%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_timer_vars.c.obj
+[ 93%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_timer_sc.c.obj
+[ 94%] Building C object system_bsp/CMakeFiles/hal2_bsp.dir/drivers/src/altera_avalon_timer_ts.c.obj
+[ 95%] Linking C static library libhal2_bsp.a
+[ 95%] Built target hal2_bsp
+[ 97%] Building C object CMakeFiles/ddr4.elf.dir/mem_verify.c.obj
+[ 97%] Building C object CMakeFiles/ddr4.elf.dir/main.c.obj
+E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/mem_verify.c: In function 'TMEM_Verify':
+E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/mem_verify.c:93:79: warning: format '%X' expects argument of type 'unsigned int', but argument 4 has type 'alt_64' {aka 'long long int'} [-Wformat=]
+   93 |                     printf("verify ng, read=%08Xh, expected=%08Xh, WordIndex=%Xh\n", (int)*(pSrc-1), (int)szData[i], (nPos/my_data_size)+i);
+      |                                                                              ~^                                      ~~~~~~~~~~~~~~~~~~~~~
+      |                                                                               |                                                         |
+      |                                                                               unsigned int                                              alt_64 {aka long long int}
+      |                                                                              %llX
+E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/main.c: In function 'TEST_DDR4':
+E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/main.c:147:25: warning: 'i' is used uninitialized [-Wuninitialized]
+  147 |                 bPass = TMEM_Verify(EMIF_IO96B_DDR4COMP_BASE, EMIF_IO96B_DDR4COMP_SPAN, InitValue << i,  bShowMessage);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:/Code/DE23_Lite/SDRAM_NiosV/software/system_app/main.c:108:17: note: 'i' was declared here
+  108 |         alt_u32 i;
+      |                 ^
+[ 98%] Linking C executable ddr4.elf
+[ 98%] Built target ddr4.elf
+[100%] Creating intel_onchip_memory.hex.
+[100%] Reporting memory available for stack + heap in ddr4.elf.
+[100%] Creating ddr4.elf.objdump.
+ddr4.elf
+ * 152.34 KB - Program size (code + initialized data).
+ * 353.16 KB - Free for stack + heap.
+[100%] Built target niosv-stack-report
+[100%] Built target create-objdump
+[100%] Built target create-hex

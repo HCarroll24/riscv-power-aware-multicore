@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2025.08.21.16:56:29"
+ outputDirectory="E:/Code/DE23_Lite/SDRAM_NiosV/ip/nios_system/pio_key/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Agilex 3"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="A3CZ135BB18AE7S"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="4"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_BOARD"
+     type="String"
+     defaultValue="default"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_S1_CPU_INFO_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="clk" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset" kind="reset" start="0">
+   <property name="associatedClock" value="clk" />
+   <property name="synchronousEdges" value="DEASSERT" />
+   <port name="reset_n" direction="input" role="reset_n" width="1" />
+  </interface>
+  <interface name="s1" kind="avalon" start="0">
+   <property name="addressAlignment" value="NATIVE" />
+   <property name="addressGroup" value="0" />
+   <property name="addressSpan" value="4" />
+   <property name="addressUnits" value="WORDS" />
+   <property name="alwaysBurstMaxBurst" value="false" />
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <property name="bitsPerSymbol" value="8" />
+   <property name="bridgedAddressOffset" value="0" />
+   <property name="bridgesToMaster" value="" />
+   <property name="burstOnBurstBoundariesOnly" value="false" />
+   <property name="burstcountUnits" value="WORDS" />
+   <property name="constantBurstBehavior" value="false" />
+   <property name="explicitAddressSpan" value="0" />
+   <property name="holdTime" value="0" />
+   <property name="interleaveBursts" value="false" />
+   <property name="isBigEndian" value="false" />
+   <property name="isFlash" value="false" />
+   <property name="isMemoryDevice" value="false" />
+   <property name="isNonVolatileStorage" value="false" />
+   <property name="linewrapBursts" value="false" />
+   <property name="maximumPendingReadTransactions" value="0" />
+   <property name="maximumPendingWriteTransactions" value="0" />
+   <property name="minimumReadLatency" value="1" />
+   <property name="minimumResponseLatency" value="1" />
+   <property name="minimumUninterruptedRunLength" value="1" />
+   <property name="prSafe" value="false" />
+   <property name="printableDevice" value="false" />
+   <property name="readLatency" value="0" />
+   <property name="readWaitStates" value="1" />
+   <property name="readWaitTime" value="1" />
+   <property name="registerIncomingSignals" value="false" />
+   <property name="registerOutgoingSignals" value="false" />
+   <property name="setupTime" value="0" />
+   <property name="timingUnits" value="Cycles" />
+   <property name="transparentBridge" value="false" />
+   <property name="waitrequestAllowance" value="0" />
+   <property name="waitrequestTimeout" value="1024" />
+   <property name="wellBehavedWaitrequest" value="false" />
+   <property name="writeLatency" value="0" />
+   <property name="writeWaitStates" value="0" />
+   <property name="writeWaitTime" value="0" />
+   <property name="dfhFeatureGuid" value="0" />
+   <property name="dfhGroupId" value="0" />
+   <property name="dfhParameterId" value="" />
+   <property name="dfhParameterName" value="" />
+   <property name="dfhParameterVersion" value="" />
+   <property name="dfhParameterData" value="" />
+   <property name="dfhParameterDataLength" value="" />
+   <property name="dfhFeatureMajorVersion" value="0" />
+   <property name="dfhFeatureMinorVersion" value="0" />
+   <property name="dfhFeatureId" value="35" />
+   <property name="dfhFeatureType" value="3" />
+   <port name="address" direction="input" role="address" width="2" />
+   <port name="write_n" direction="input" role="write_n" width="1" />
+   <port name="writedata" direction="input" role="writedata" width="32" />
+   <port name="chipselect" direction="input" role="chipselect" width="1" />
+   <port name="readdata" direction="output" role="readdata" width="32" />
+  </interface>
+  <interface name="external_connection" kind="conduit" start="0">
+   <property name="associatedClock" value="" />
+   <property name="associatedReset" value="" />
+   <property name="prSafe" value="false" />
+   <port name="in_port" direction="input" role="export" width="4" />
+  </interface>
+  <interface name="irq" kind="interrupt" start="0">
+   <property name="associatedAddressablePoint" value="pio_key.s1" />
+   <property name="associatedClock" value="clk" />
+   <property name="associatedReset" value="reset" />
+   <property name="bridgedReceiverOffset" value="0" />
+   <property name="bridgesToReceiver" value="" />
+   <property name="irqScheme" value="NONE" />
+   <port name="irq" direction="output" role="irq" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="pio_key" version="1.0" name="pio_key">
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="A3CZ135BB18AE7S" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Agilex 3" />
+  <parameter name="AUTO_BOARD" value="default" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_S1_CPU_INFO_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
+  <generatedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\pio_key\synth\pio_key.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\pio_key\synth\pio_key.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file path="E:/Code/DE23_Lite/SDRAM_NiosV/ip/nios_system/pio_key.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="E:/altera_pro/25.1/ip/altera/platform_designer_ip/altera_avalon_pio/altera_avalon_pio_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="pio_key">"Generating: pio_key"</message>
+   <message level="Info" culprit="pio_key">"Generating: pio_key_altera_avalon_pio_1924_l4vo5ay"</message>
+   <message level="Info" culprit="pio_key">Starting RTL generation for module 'pio_key_altera_avalon_pio_1924_l4vo5ay'</message>
+   <message level="Info" culprit="pio_key"><![CDATA[  Generation command is [exec cmd /c {set LC_ALL=C&& E:/altera_pro/25.1/quartus/bin64//perl/bin/perl.exe -I E:/altera_pro/25.1/quartus/bin64//perl/lib -I E:/altera_pro/25.1/quartus/sopc_builder/bin/europa -I E:/altera_pro/25.1/quartus/sopc_builder/bin/perl_lib -I E:/altera_pro/25.1/quartus/sopc_builder/bin -I E:/altera_pro/25.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/altera_pro/25.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_pio -- E:/altera_pro/25.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_pio/generate_rtl.pl --name=pio_key_altera_avalon_pio_1924_l4vo5ay --dir=C:/Users/User/AppData/Local/Temp/alt0321_288169733990434403.dir/0002_pio_key_gen/ --quartus_dir=E:/altera_pro/25.1/quartus --verilog --config=C:/Users/User/AppData/Local/Temp/alt0321_288169733990434403.dir/0002_pio_key_gen//pio_key_altera_avalon_pio_1924_l4vo5ay_component_configuration.pl --do_build_sim=0}]]]></message>
+   <message level="Info" culprit="pio_key">Done RTL generation for module 'pio_key_altera_avalon_pio_1924_l4vo5ay'</message>
+  </messages>
+ </entity>
+ <entity
+   kind="altera_avalon_pio"
+   version="19.2.4"
+   name="pio_key_altera_avalon_pio_1924_l4vo5ay">
+  <parameter name="DEVICE_FAMILY" value="Agilex 3" />
+  <parameter name="derived_do_test_bench_wiring" value="false" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="derived_has_irq" value="true" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="80000000" />
+  <parameter name="derived_has_out" value="false" />
+  <parameter name="derived_has_in" value="true" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="derived_has_tri" value="false" />
+  <parameter name="derived_capture" value="true" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="simDrivenValue" value="4" />
+  <parameter name="derived_edge_type" value="FALLING" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="derived_irq_type" value="EDGE" />
+  <parameter name="edgeType" value="FALLING" />
+  <parameter name="width" value="4" />
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="direction" value="Input" />
+  <generatedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\pio_key\altera_avalon_pio_1924\synth\pio_key_altera_avalon_pio_1924_l4vo5ay.v"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="E:\Code\DE23_Lite\SDRAM_NiosV\ip\nios_system\pio_key\altera_avalon_pio_1924\synth\pio_key_altera_avalon_pio_1924_l4vo5ay.v"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="E:/altera_pro/25.1/ip/altera/platform_designer_ip/altera_avalon_pio/altera_avalon_pio_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="pio_key" as="pio_key" />
+  <messages>
+   <message level="Info" culprit="pio_key">"Generating: pio_key_altera_avalon_pio_1924_l4vo5ay"</message>
+   <message level="Info" culprit="pio_key">Starting RTL generation for module 'pio_key_altera_avalon_pio_1924_l4vo5ay'</message>
+   <message level="Info" culprit="pio_key"><![CDATA[  Generation command is [exec cmd /c {set LC_ALL=C&& E:/altera_pro/25.1/quartus/bin64//perl/bin/perl.exe -I E:/altera_pro/25.1/quartus/bin64//perl/lib -I E:/altera_pro/25.1/quartus/sopc_builder/bin/europa -I E:/altera_pro/25.1/quartus/sopc_builder/bin/perl_lib -I E:/altera_pro/25.1/quartus/sopc_builder/bin -I E:/altera_pro/25.1/quartus/../ip/altera/sopc_builder_ip/common -I E:/altera_pro/25.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_pio -- E:/altera_pro/25.1/quartus/../ip/altera/platform_designer_ip/altera_avalon_pio/generate_rtl.pl --name=pio_key_altera_avalon_pio_1924_l4vo5ay --dir=C:/Users/User/AppData/Local/Temp/alt0321_288169733990434403.dir/0002_pio_key_gen/ --quartus_dir=E:/altera_pro/25.1/quartus --verilog --config=C:/Users/User/AppData/Local/Temp/alt0321_288169733990434403.dir/0002_pio_key_gen//pio_key_altera_avalon_pio_1924_l4vo5ay_component_configuration.pl --do_build_sim=0}]]]></message>
+   <message level="Info" culprit="pio_key">Done RTL generation for module 'pio_key_altera_avalon_pio_1924_l4vo5ay'</message>
+  </messages>
+ </entity>
+</deploy>

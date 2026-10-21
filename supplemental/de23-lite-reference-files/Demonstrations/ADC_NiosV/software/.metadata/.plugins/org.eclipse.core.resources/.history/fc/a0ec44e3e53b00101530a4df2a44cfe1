@@ -1,0 +1,125 @@
+/*
+ * TLA2518.c
+ *
+ *  Created on: 2025/5/29
+ *      Author: Richard
+ */
+
+#include <unistd.h>
+#include "TLA2518.h"
+#include "altera_avalon_spi.h"
+
+//https://www.intel.com/content/www/us/en/docs/programmable/683130/21-4/alt-avalon-spi-command.html
+// https://www.intel.com/content/www/us/en/docs/programmable/683130/21-4/alt-avalon-spi-command.html
+// ADS7953 datasheet: https://www.ti.com/lit/ds/symlink/ads7953.pdf?ts=1670391711133&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FADS7953
+//   waveform see figure-2 in page 18
+// see example: https://github.com/iseroid/microbridge_nios2/blob/master/mb_de0/software/mb_de0nano_c_demo/max3421e.c
+
+void TLA2518_write_cmd(uint32_t base, uint16_t cmd){
+	const alt_u32 flags = 0;
+	const int slave = 0;
+	uint8_t txdata[2];
+
+	txdata[1] = cmd & 0xFF;
+	txdata[0] = (cmd >> 8)& 0xFF;
+	alt_avalon_spi_command(base,  slave,
+	                       2,  (const alt_u8*)&txdata,
+	                       0,  NULL,
+						   flags);
+
+}
+
+bool TLA2518_read_data(uint32_t base, uint16_t *pdata){
+	const alt_u32 flags = 0;
+	const int slave = 0;
+	uint8_t rxdata[2];
+	int result;
+	bool bSuccess = false;
+
+	result = alt_avalon_spi_command(base,  slave,
+	                       0,  NULL,
+	                       2, (alt_u8*)&rxdata,
+						   flags);
+	if (result == 2){
+		*pdata = (rxdata[0] << 8) | rxdata[1];
+		bSuccess = true;
+	}
+
+	return bSuccess;
+
+}
+
+
+
+bool TLA2518_Read_16ch(alt_u32 base, uint16_t slave, uint16_t szCH[16]){
+	int result, ch, nTry;
+	const alt_u32 flags = 0;
+	uint16_t cmd, data;
+	uint8_t txdata[2], rxdata[2];
+	bool bPass = true, bSuccess;
+
+	/*
+	 * Use this function to perform one SPI access on your target.  'base' should
+	 * be the base address of your SPI peripheral, while 'slave' indicates which
+	 * bit in the slave select register should be set.
+	 */
+
+	/* If you need to make multiple accesses to the same slave then you should
+	 * set the merge bit in the flags for all of them except the first.
+	 */
+	//#define ALT_AVALON_SPI_COMMAND_MERGE (0x01)
+
+	/*
+	 * If you need the slave select line to be toggled between words then you
+	 * should set the toggle bit in the flag.
+	 */
+	//#define ALT_AVALON_SPI_COMMAND_TOGGLE_SS_N (0x02)
+
+
+
+	for(ch=0;ch<16;ch++){
+		// configure channel
+		cmd = 0x1000; // manual mode
+		cmd |= ch << 7; // specify next channel. data available at frame N+2
+
+		// default:
+		//DI06 = 0: Selects 0 to VREF input range (Range 1)
+		//DI05 = 0: Device normal operation (no powerdown)
+		//DI04 = 0: SDO outputs current channel address of the channel on DO15..12 followed by 12 bit conversion result on DO11..00.
+
+
+		txdata[1] = cmd & 0xFF;
+		txdata[0] = (cmd >> 8)& 0xFF;
+
+		// config at frame N
+		TLA2518_write_cmd(base, cmd);
+
+		// skip data at frame N+1
+		TLA2518_read_data(base, &data);
+
+		usleep(200); // wait to get more accuracy data
+
+		// get ADC data at frame N+2
+		bSuccess = TLA2518_read_data(base, &data);
+
+		//printf("ch%d, command:%04xh, data=%04xh\r\n", ch, cmd, data);
+
+		if (!bSuccess){
+			printf("TLA2518_Read_16ch::alt_avalon_spi_command read failed at ch%d, command:%04xh\r\n", ch, cmd);
+			bPass = false;
+			szCH[ch] = 0;
+		}else if (((data >> 12) & 0xFF) != ch){
+			printf("TLA2518_Read_16ch::alt_avalon_spi_command response channel number invalid, at ch%d, command:%04xh, data=%04xh\r\n", ch, cmd, data);
+			bPass = false;
+			szCH[ch] = 0;
+		}else{
+			szCH[ch] = data;
+		}
+	}
+
+
+	return bPass;
+}
+
+
+

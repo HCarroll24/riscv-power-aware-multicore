@@ -1,0 +1,62 @@
+/*
+ * I2C.h
+ *
+ *  Created on: Mar 21, 2024
+ *      Author: User
+ */
+
+#ifndef I2C_H_
+#define I2C_H_
+
+//#include <stdio.h>
+//#include <stdlib.h> // malloc, free
+//#include <unistd.h>  // usleep (unix standard?)
+#include <stdint.h>
+#include <stdbool.h>
+//#include "system.h"
+//#include "io.h"
+#include "altera_avalon_i2c.h"
+
+class I2C {
+protected:
+	alt_u8 m_txbuffer[256+2];
+	alt_u8 m_rxbuffer[256];
+
+	char m_szDevName[64];
+	alt_u32 m_nDeviceAddr;
+
+	ALT_AVALON_I2C_DEV_t *m_i2c_dev;
+
+	// 16-bit addr
+
+	bool ReadReg8s(alt_u16 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pBuffer);
+	bool WriteReg8s(alt_u16 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pData);
+
+	// 8-bit addr
+	bool Addr8_ReadReg8s(alt_u8 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pBuffer);
+	bool Addr8_WriteReg8s(alt_u8 nRegByteOffset, alt_u8 nByteCnt, alt_u8 *pData);
+
+public:
+	I2C(const char *pDevName, alt_u32 nDeviceAddr);
+	virtual ~I2C();
+
+	bool Open(void);//const char *pDevName, alt_u32 nDeviceAddr /* 7-bit addr */);
+	void Close(void);
+	bool ReadReg8(alt_u16 nRegByteOffset, alt_u8 *pnRead8);
+	bool ReadReg16(alt_u16 nRegByteOffset, alt_u16 *pnRead16);
+	bool WriteReg8(alt_u16 nRegByteOffset, alt_u8 nValue8);
+	bool WriteReg16(alt_u16 nRegByteOffset, alt_u16 nValue16);
+
+	bool DumpReg8(alt_u16 nRegByteOffset, alt_u8 nReg8Cnt);
+
+	// 8-bit addr
+	bool Addr8_ReadReg8(alt_u8 nRegByteOffset, alt_u8 *pnRead8);
+	bool Addr8_ReadReg16(alt_u8 nRegByteOffset, alt_u16 *pnRead16);
+	bool Addr8_WriteReg8(alt_u8 nRegByteOffset, alt_u8 nValue8);
+	bool Addr8_WriteReg16(alt_u8 nRegByteOffset, alt_u16 nValue16);
+
+	// read data
+	bool ReadData(alt_u8 nByteCnt, alt_u8 *pBuffer);
+};
+
+#endif /* I2C_H_ */

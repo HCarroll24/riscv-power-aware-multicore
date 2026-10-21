@@ -76,7 +76,7 @@ architecture BEHAVIORAL of MMIO is
 	signal HEX5_REG			:	std_logic_vector(7 downto 0);
 	
 	-- input synchronizers
-	signal SW_1, SW_2			:	std_logic_vector(9 downto 0);
+	signal SW_S1, SW_S2			:	std_logic_vector(9 downto 0);
 	signal KEY_S1, KEY_S2	:	std_logic_vector(3 downto 0);
 	signal KEY_DOWN			:	std_logic_vector(3 downto 0); -- 1 = pressed
 	signal KEY_DOWN_PREV		:	std_logic_vector(3 downto 0);

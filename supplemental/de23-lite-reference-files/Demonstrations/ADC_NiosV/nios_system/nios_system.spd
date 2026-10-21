@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="altera_merlin_axi_translator_1974/sim/nios_system_altera_merlin_axi_translator_1974_xfkiwxi.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_axi_translator_1974" />
+ <file
+   path="altera_merlin_slave_translator_191/sim/nios_system_altera_merlin_slave_translator_191_xg7rzxi.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_slave_translator_191" />
+ <file
+   path="altera_merlin_axi_master_ni_19100/sim/altera_merlin_address_alignment.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_axi_master_ni_19100" />
+ <file
+   path="altera_merlin_axi_master_ni_19100/sim/nios_system_altera_merlin_axi_master_ni_19100_y3ctica.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_axi_master_ni_19100" />
+ <file
+   path="altera_merlin_slave_agent_1930/sim/nios_system_altera_merlin_slave_agent_1930_jxauz3i.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_slave_agent_1930" />
+ <file
+   path="altera_merlin_slave_agent_1930/sim/altera_merlin_burst_uncompressor.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_slave_agent_1930" />
+ <file
+   path="altera_avalon_sc_fifo_1932/sim/nios_system_altera_avalon_sc_fifo_1932_22gxxgi.v"
+   type="VERILOG"
+   library="altera_avalon_sc_fifo_1932" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_gmm3fdq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_hukm2cq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_qyvgeei.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_xnxkgda.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/nios_system_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1921_te3kfhq.v"
+   type="VERILOG"
+   library="altera_merlin_traffic_limiter_1921"
+   hasInlineConfiguration="true" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/altera_merlin_reorder_memory.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/altera_avalon_st_pipeline_base.v"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/nios_system_altera_merlin_traffic_limiter_1921_5pm4apa.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_avalon_st_pipeline_stage_1930/sim/nios_system_altera_avalon_st_pipeline_stage_1930_oiupeiq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_st_pipeline_stage_1930" />
+ <file
+   path="altera_avalon_st_pipeline_stage_1930/sim/altera_avalon_st_pipeline_base.v"
+   type="SYSTEM_VERILOG"
+   library="altera_avalon_st_pipeline_stage_1930" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/nios_system_altera_merlin_burst_adapter_altera_avalon_st_pipeline_stage_1940_amki4ia.v"
+   type="VERILOG"
+   library="altera_merlin_burst_adapter_1940"
+   hasInlineConfiguration="true" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/nios_system_altera_merlin_burst_adapter_1940_d2k55uq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_merlin_burst_adapter_uncmpr.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_merlin_burst_adapter_13_1.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_merlin_burst_adapter_new.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_incr_burst_converter.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_wrap_burst_converter.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_default_burst_converter.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_burst_adapter_1940/sim/altera_merlin_address_alignment.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_burst_adapter_1940" />
+ <file
+   path="altera_merlin_demultiplexer_1921/sim/nios_system_altera_merlin_demultiplexer_1921_usuzvxq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_demultiplexer_1921/sim/nios_system_altera_merlin_demultiplexer_1921_whzax3q.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_cvbulrq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_33mlhei.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_demultiplexer_1921/sim/nios_system_altera_merlin_demultiplexer_1921_ajr4npq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_gilod4i.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_r6mavia.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_mm_interconnect_1920/sim/nios_system_altera_mm_interconnect_1920_gvlg2ai.v"
+   type="VERILOG"
+   library="altera_mm_interconnect_1920"
+   hasInlineConfiguration="true" />
+ <file
+   path="altera_merlin_master_translator_193/sim/nios_system_altera_merlin_master_translator_193_lgcew2q.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_master_translator_193" />
+ <file
+   path="altera_merlin_master_agent_1931/sim/nios_system_altera_merlin_master_agent_1931_jtx3eyy.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_master_agent_1931" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_r4sqfxq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_router_1921/sim/nios_system_altera_merlin_router_1921_pfc4ega.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_router_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/nios_system_altera_merlin_traffic_limiter_altera_avalon_sc_fifo_1921_a53nykq.v"
+   type="VERILOG"
+   library="altera_merlin_traffic_limiter_1921"
+   hasInlineConfiguration="true" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/altera_merlin_reorder_memory.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/altera_avalon_st_pipeline_base.v"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_merlin_traffic_limiter_1921/sim/nios_system_altera_merlin_traffic_limiter_1921_p3fvlba.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_traffic_limiter_1921" />
+ <file
+   path="altera_merlin_demultiplexer_1921/sim/nios_system_altera_merlin_demultiplexer_1921_bixj62q.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_vgugpha.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_demultiplexer_1921/sim/nios_system_altera_merlin_demultiplexer_1921_jqica2q.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_demultiplexer_1921" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/nios_system_altera_merlin_multiplexer_1922_dcphjea.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_merlin_multiplexer_1922/sim/altera_merlin_arbitrator.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_merlin_multiplexer_1922" />
+ <file
+   path="altera_mm_interconnect_1920/sim/nios_system_altera_mm_interconnect_1920_g7zuaki.v"
+   type="VERILOG"
+   library="altera_mm_interconnect_1920"
+   hasInlineConfiguration="true" />
+ <file
+   path="altera_irq_mapper_2001/sim/nios_system_altera_irq_mapper_2001_k3auftq.sv"
+   type="SYSTEM_VERILOG"
+   library="altera_irq_mapper_2001" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_synchronizer.v"
+   type="VERILOG"
+   library="altera_reset_controller_1924" />
+ <file
+   path="altera_reset_controller_1924/sim/altera_reset_controller.sdc"
+   type="SDC_ENTITY"
+   library="altera_reset_controller_1924" />
+ <file
+   path="sim/nios_system.v"
+   type="VERILOG"
+   library="nios_system"
+   hasInlineConfiguration="true" />
+ <topLevel name="nios_system.nios_system" />
+ <deviceFamily name="agilex3" />
+ <device name="A3CZ135BB18AE7S" />
+ <modelMap
+   controllerPath="nios_system.onchip_memory"
+   modelPath="nios_system.onchip_memory" />
+</simPackage>
