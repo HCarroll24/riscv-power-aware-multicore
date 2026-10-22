@@ -38,3 +38,6 @@ crt0.S
 link.ld
 *.elf
 *.bin
+make_mif.sh
+*.lst
+*.nuiqu.tcl.history
