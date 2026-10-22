@@ -125,13 +125,13 @@ begin
 	begin
 		if rising_edge(CLK) then
 			if RST = '1' then
-				LEDR_REG	<=	(others => '0');
-				HEX0_REG	<=	(others => '0');
-				HEX1_REG	<=	(others => '0');
-				HEX2_REG	<=	(others => '0');
-				HEX3_REG	<=	(others => '0');
-				HEX4_REG	<=	(others => '0');
-				HEX5_REG	<=	(others => '0');
+				LEDR_REG	<=	(others => '1');
+				HEX0_REG	<=	(others => '1');
+				HEX1_REG	<=	(others => '1');
+				HEX2_REG	<=	(others => '1');
+				HEX3_REG	<=	(others => '1');
+				HEX4_REG	<=	(others => '1');
+				HEX5_REG	<=	(others => '1');
 			elsif WE = '1' then
 				if REG_OFF = OFF_LEDR then
 					if BE(0) = '1' then
@@ -179,7 +179,7 @@ begin
 				elsif	REG_OFF = OFF_SW then
 					Q	<= (31 downto 10 => '0') & SW_S2;
 				elsif REG_OFF = OFF_KEY then
-					Q	<=	(31 downto 4 => '0') & KEY_DOWN;
+					Q	<=	(31 downto 4 => '0') & KEY_S2;
 				elsif REG_OFF = OFF_KEY_EDGE then
 					Q	<=	(31 downto 4 => '0') & KEY_EDGE_REG;
 				else
@@ -190,11 +190,11 @@ begin
 	end process reads;
 	
 	-- board outputs (active-low)
-	LEDR	<=	not LEDR_REG;
-	HEX0	<=	not HEX0_REG(6 downto 0);
-	HEX1	<=	not HEX1_REG(6 downto 0);
-	HEX2	<=	not HEX2_REG(6 downto 0);
-	HEX3	<=	not HEX3_REG(6 downto 0);
-	HEX4	<=	not HEX4_REG(6 downto 0);
-	HEX5	<=	not HEX5_REG(6 downto 0);
+	LEDR	<=	LEDR_REG;
+	HEX0	<= HEX0_REG(6 downto 0);
+	HEX1	<=	HEX1_REG(6 downto 0);
+	HEX2	<=	HEX2_REG(6 downto 0);
+	HEX3	<=	HEX3_REG(6 downto 0);
+	HEX4	<=	HEX4_REG(6 downto 0);
+	HEX5	<=	HEX5_REG(6 downto 0);
 end architecture BEHAVIORAL;

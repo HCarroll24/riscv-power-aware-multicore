@@ -19,7 +19,7 @@ namespace eval single_port_rom {
   
   proc get_design_files {USER_DEFINED_COMPILE_OPTIONS USER_DEFINED_VERILOG_COMPILE_OPTIONS USER_DEFINED_VHDL_COMPILE_OPTIONS QSYS_SIMDIR QUARTUS_INSTALL_DIR} {
     set design_files [list]
-    lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../rom_1port_2022/sim/single_port_rom_rom_1port_2022_qun65uy.vhd"]\"  -work rom_1port_2022"
+    lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/../rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd"]\"  -work rom_1port_2022"
     lappend design_files "vcom $USER_DEFINED_VHDL_COMPILE_OPTIONS $USER_DEFINED_COMPILE_OPTIONS  \"[normalize_path "$QSYS_SIMDIR/single_port_rom.vhd"]\"  -work single_port_rom"                                            
     return $design_files
   }

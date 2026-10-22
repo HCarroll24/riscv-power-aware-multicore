@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2026.10.21.01:15:34"
+ date="2026.10.21.21:22:36"
  outputDirectory="C:/dev/riscv-power-aware/quartus/single_port_rom/">
  <perimeter>
   <parameter
@@ -111,13 +111,13 @@
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="single_port_rom">"Generating: single_port_rom"</message>
-   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_qun65uy"</message>
+   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_erqluhq"</message>
   </messages>
  </entity>
  <entity
    kind="rom_1port"
    version="20.2.2"
-   name="single_port_rom_rom_1port_2022_qun65uy">
+   name="single_port_rom_rom_1port_2022_erqluhq">
   <parameter name="GUI_CLOCK_ENABLE_INPUT_A" value="false" />
   <parameter name="GUI_NUMWORDS_A" value="4096" />
   <parameter name="DEVICE_FAMILY" value="Agilex 3" />
@@ -135,7 +135,7 @@
   <parameter name="GUI_FORCE_TO_ZERO" value="false" />
   <parameter
      name="GUI_MIFfilename"
-     value="C:/dev/riscv-power-aware/benchmarks/board_test.mif" />
+     value="C:/dev/riscv-power-aware/benchmarks/test_prog.mif" />
   <parameter name="GUI_OPTIMIZATION_OPTION" value="2" />
   <parameter name="GUI_RegAddr" value="true" />
   <parameter name="GUI_JTAG_ENABLED" value="false" />
@@ -150,12 +150,12 @@
   <parameter name="GUI_BlankMemory" value="1" />
   <generatedFiles>
    <file
-       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_qun65uy.v"
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_erqluhq.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_qun65uy.v"
+       path="C:\dev\riscv-power-aware\quartus\single_port_rom\rom_1port_2022\synth\single_port_rom_rom_1port_2022_erqluhq.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
@@ -165,7 +165,7 @@
   <childSourceFiles/>
   <instantiator instantiator="single_port_rom" as="rom_1port_0" />
   <messages>
-   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_qun65uy"</message>
+   <message level="Info" culprit="single_port_rom">"Generating: single_port_rom_rom_1port_2022_erqluhq"</message>
   </messages>
  </entity>
 </deploy>

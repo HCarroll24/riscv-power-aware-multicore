@@ -33,3 +33,6 @@ Thumbs.db
 quartus/dni/
 tmp-clearbox/
 serv_req_info.txt
+bin2mif.py
+crt0.S
+link.ld
