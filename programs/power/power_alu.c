@@ -11,7 +11,7 @@
 
 int main(void) {
     uint32_t x = 0x12345678u;   // seed for random number generator
-    uint32_t acc = 0x9E377989u; // 2^32 / golden ratio
+    uint32_t acc = 0x9E3779B9u; // 2^32 / golden ratio
 
     bench_start();
     for(int i = 0; i < ALU_LOOPS; i++) {
@@ -24,7 +24,7 @@ int main(void) {
         acc += x;
         acc ^= (acc << 3) | (acc >> 29);
         acc -= i;
-        acc = (acc >> 1) | (x & 0xFFFFu);
+        acc = (acc >> 1) + (x & 0xFFFFu);
     }
     bench_done(acc ^ x);
     while(1){}   // spin forever

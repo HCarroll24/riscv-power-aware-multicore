@@ -26,7 +26,7 @@ int main(void) {
 
     // node i -> node (i + 97) mod 256: 97 is odd, so it visits all 256
     for (int i = 0; i < NODES; i++) {
-        list[i].next = &list[(i + 97) % (NODES - 1)];
+        list[i].next = &list[(i + 97) & (NODES - 1)];
         list[i].val = i ^ 0x5Au;
     }
     for (int lap = 0; lap < CHASE_LAPS; lap++) {

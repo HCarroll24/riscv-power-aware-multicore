@@ -24,14 +24,14 @@ int main(void) {
     }
     for (int pass = 0; pass < MEM_PASSES; pass++) {
         // lw, lw, sw
-        for (int i = 0; i < BUFFER_WORDS; i++) {
+        for (int i = 1; i < BUFFER_WORDS; i++) {
             buf[i] = buf[i] + buf[i - 1u];
         }
         for (int i = 0; i < BUFFER_WORDS; i++) {
             bytes[i] = (uint8_t)(bytes[i] ^ (uint8_t)i);  // lbu, sb
         }
     }
-    for (int i = 0; i < BUFFER_WORDS; i++) {
+    for (int i = 0; i < BUFFER_WORDS * 4u; i++) {
         sum += buf[i];  // lw
     }
 

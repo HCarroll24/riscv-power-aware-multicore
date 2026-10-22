@@ -278,3 +278,4 @@ set_global_assignment -name EDA_WRITE_NODES_FOR_POWER_ESTIMATION ALL_NODES -sect
 set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE "12.5 %"
 set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
 set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
+set_global_assignment -name VHDL_FILE ../sim/tb_multicorecpu.vhd

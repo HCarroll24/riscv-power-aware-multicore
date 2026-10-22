@@ -1,0 +1,54 @@
+m255
+K4
+z2
+!s11e vcom 2024.3 2024.09, Sep 10 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/dev/riscv-power-aware/sim
+Esingle_port_rom_rom_1port_2022_erqluhq
+Z1 w1792635754
+Z2 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 C:G_iSQeM5Kz<@`8U4keD1
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z5 8../quartus/single_port_rom/rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd
+Z6 F../quartus/single_port_rom/rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd
+l0
+L22 1
+VlK4eg<TTK5>3Qkk[4F5<L1
+!s100 ]mGH]6]KSO=GDmAJnZejM2
+Z7 OL;C;2024.3;79
+33
+Z8 !s110 1792649204
+!i10b 1
+Z9 !s108 1792649204.000000
+Z10 !s90 -reportprogress|300|-2008|-work|rom_1port_2022|../quartus/single_port_rom/rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd|
+!s107 ../quartus/single_port_rom/rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd|
+!i113 0
+Z11 o-2008 -work rom_1port_2022
+Z12 tExplicit 1 CvgOpt 0
+Asyn
+R2
+R3
+R4
+DEx4 work 38 single_port_rom_rom_1port_2022_erqluhq 0 22 lK4eg<TTK5>3Qkk[4F5<L1
+!i122 0
+l37
+L33 38
+V;BB1ez77@QlMTjcF1^Vb@3
+!s100 W_IahW[?JM386Ya8FU>@]2
+R7
+33
+R8
+!i10b 1
+R9
+R10
+Z13 !s107 ../quartus/single_port_rom/rom_1port_2022/sim/single_port_rom_rom_1port_2022_erqluhq.vhd|
+!i113 0
+R11
+R12

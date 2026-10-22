@@ -1,0 +1,56 @@
+m255
+K4
+z2
+!s11e vcom 2024.3 2024.09, Sep 10 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/dev/riscv-power-aware/sim
+Ereset_release
+Z1 w1792516382
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 0
+R0
+Z5 8../quartus/reset_release/sim/reset_release.vhd
+Z6 F../quartus/reset_release/sim/reset_release.vhd
+l0
+L10 1
+VT]kY9T>i8O@[egIQa>B=z1
+!s100 _3UN1zeK8hCcHC[:I12H`2
+Z7 OL;C;2024.3;79
+33
+Z8 !s110 1792649231
+!i10b 1
+Z9 !s108 1792649231.000000
+Z10 !s90 -reportprogress|300|-2008|-work|reset_release|../quartus/reset_release/sim/reset_release.vhd|
+!s107 ../quartus/reset_release/sim/reset_release.vhd|
+!i113 0
+Z11 o-2008 -work reset_release
+Z12 tExplicit 1 CvgOpt 0
+Artl
+DPx7 verilog 8 vl_types 0 22 >4b[mPLBjEg5WFfh9`3^P3
+DEx26 intel_user_rst_clkgate_101 22 intel_user_rst_clkgate 0 22 Dg1SIo80bB@j0V0VzS_@n1
+R2
+R3
+R4
+DEx4 work 13 reset_release 0 22 T]kY9T>i8O@[egIQa>B=z1
+!i122 0
+l25
+L16 17
+VPJEZam4njzENd>RKM?VVK0
+!s100 ^D1k?gJY?d8KOd2X5@PX^1
+R7
+33
+R8
+!i10b 1
+R9
+R10
+Z13 !s107 ../quartus/reset_release/sim/reset_release.vhd|
+!i113 0
+R11
+R12
