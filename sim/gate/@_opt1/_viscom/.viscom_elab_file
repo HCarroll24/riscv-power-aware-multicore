@@ -1,0 +1,1 @@
+C:/altera_pro/25.1/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 129368064 gate.multicorecpu -quiet -auto_acc_if_foreign -work gate -L tennm -L altera_lnsim -L altera_ver +acc -allow_unnamed -o _opt1 -id 1-801316a309ee-6ada170f-c3-1f10 +__betafsm

@@ -11,6 +11,9 @@ vlib reset_release
 vcom -2008 -work reset_release ../quartus/reset_release/sim/reset_release.vhd
 
 # your three RTL vcom lines, then the testbench
+vcom -2008 ../rtl/core/alu.vhd ../rtl/core/regfile.vhd ../rtl/core/imm_gen.vhd ../rtl/core/control_unit.vhd ../rtl/core/branch_comp.vhd ../rtl/core/dmem.vhd ../rtl/core/busmux4to1.vhd ../rtl/pipeline/reg32.vhd ../rtl/core/adder.vhd ../rtl/pipeline/regn.vhd ../rtl/pipeline/reg1.vhd ../rtl/core/pc_sel_logic.vhd ../rtl/core/busmux5to1.vhd ../rtl/core/forwarding_unit.vhd ../rtl/pipeline/hazard_control_unit.vhd ../rtl/core/bht.vhd ../rtl/core/branch_target_calc.vhd ../rtl/core/rs_decode.vhd
+vcom -2008 ../rtl/pipeline/fetch.vhd ../rtl/pipeline/decode.vhd ../rtl/pipeline/execute.vhd ../rtl/pipeline/memory.vhd ../rtl/pipeline/pipeline.vhd
+vcom -2008 ../rtl/fpga/synchronizer.vhd ../rtl/fpga/data_bus.vhd ../rtl/mmio.vhd ../rtl/fpga/multicorecpu.vhd
 vcom -2008 tb_multicorecpu.vhd
 
 vsim -t ps -voptargs=+acc -L single_port_rom -L rom_1port_2022 -L reset_release -L intel_user_rst_clkgate_101 -L altera_lnsim work.tb_multicorecpu

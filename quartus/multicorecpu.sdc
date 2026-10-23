@@ -68,7 +68,7 @@ create_clock -name {clk} -period 20.000 -waveform { 0.000 10.000 } [get_ports {C
 # Set Output Delay
 #**************************************************************
 
-
+set_output_delay -clock clk 0 [get_ports {LEDR[*] HEX0[*] HEX1[*] HEX2[*] HEX3[*] HEX4[*] HEX5[*]}]
 
 #**************************************************************
 # Set Clock Groups
@@ -79,6 +79,7 @@ create_clock -name {clk} -period 20.000 -waveform { 0.000 10.000 } [get_ports {C
 #**************************************************************
 # Set False Path
 #**************************************************************
+
 set_false_path -from [get_ports {KEY[*]}]
 set_false_path -from [get_ports {SW[*]}]
 set_false_path -to   [get_ports {LEDR[*]}]

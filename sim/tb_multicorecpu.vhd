@@ -10,6 +10,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity TB_MULTICORECPU is
+generic(
+	USE_MARKERS	:	boolean	:=	true);
 end entity TB_MULTICORECPU;
 
 -- architectural description
@@ -34,4 +36,21 @@ begin
 			HEX3	=>	HEX3,
 			HEX4	=>	HEX4,
 			HEX5	=>	HEX5);
+			
+		MARKERS	:	if USE_MARKERS generate	
+			WINDOW	:	process
+				alias ADDR	is <<signal .TB_MULTICORECPU.DUT.DBUS_ADDR	:	std_logic_vector(31 downto 0)>>;
+				alias WDATA	is <<signal .TB_MULTICORECPU.DUT.DBUS_WDATA	:	std_logic_vector(31 downto 0)>>;
+				alias WE		is <<signal .TB_MULTICORECPU.DUT.DBUS_WE		:	std_logic>>;
+			begin
+				wait until rising_edge(CLK) and WE = '1' and ADDR = x"FF2000F0" and WDATA = x"00000001";
+				report "WINDOW START " & time'image(now);
+				wait until rising_edge(CLK) and WE = '1' and ADDR = x"FF2000F4";
+				report "CHECKSUM " & to_hstring(WDATA);
+				wait until rising_edge(CLK) and WE = '1' and ADDR = x"FF2000F0" and WDATA = x"00000002";
+				report "WINDOW END " & time'image(now);
+				wait for 100 ns;
+				std.env.stop;
+			end process WINDOW;
+		end generate MARKERS;
 end architecture SIM;

@@ -279,3 +279,11 @@ set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE "12.5 %"
 set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
 set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
 set_global_assignment -name VHDL_FILE ../sim/tb_multicorecpu.vhd
+set_global_assignment -name POWER_OUTPUT_SAF_NAME multicorecpu.saf
+set_global_assignment -name POWER_USE_INPUT_FILES ON
+set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_alu.vcd -entity multicorecpu -section_id power_alu.vcd
+set_global_assignment -name POWER_VCD_FILE_START_TIME "270 ns" -entity multicorecpu -section_id power_alu.vcd
+set_global_assignment -name POWER_VCD_FILE_END_TIME "1080490 ns" -entity multicorecpu -section_id power_alu.vcd
+set_instance_assignment -name POWER_READ_INPUT_FILE power_alu.vcd -to MULTICORECPU -entity multicorecpu
+set_instance_assignment -name PARTITION_COLOUR 4284350273 -to multicorecpu -entity multicorecpu
+set_instance_assignment -name PARTITION_COLOUR 4287627213 -to auto_fab_0 -entity multicorecpu
