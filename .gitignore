@@ -25,7 +25,6 @@ work/
 transcript
 *.wlf
 modelsim.ini
-*.vcd
 *.vht
 __pycache__/
 .vscode/
@@ -33,11 +32,7 @@ Thumbs.db
 quartus/dni/
 tmp-clearbox/
 serv_req_info.txt
-bin2mif.py
-crt0.S
-link.ld
 *.elf
 *.bin
-make_mif.sh
 *.lst
-*.nuiqu.tcl.history
+*.nuiqu.tcl.history*.vcd
