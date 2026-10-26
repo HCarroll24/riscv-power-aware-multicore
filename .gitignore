@@ -35,4 +35,5 @@ serv_req_info.txt
 *.elf
 *.bin
 *.lst
-*.nuiqu.tcl.history*.vcd
+*.nuiqu.tcl.history
+*.vcd
