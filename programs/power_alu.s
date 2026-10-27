@@ -13,12 +13,11 @@ main:
 	li	a5,-14680064
 	li	a4,-1640529920
 	li	a3,305418240
-	li	a0,4096
 	sw	a2,240(a5)
 	addi	a4,a4,-1607
 	addi	a3,a3,1656
-	addi	a0,a0,-1096
 	li	a2,0
+	li	a0,500
 .L2:
 	slli	a5,a3,13
 	xor	a3,a5,a3

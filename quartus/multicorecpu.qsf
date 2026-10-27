@@ -45,7 +45,7 @@ set_global_assignment -name LAST_QUARTUS_VERSION "25.1.0 Pro Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
-set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (VHDL)"
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (Verilog)"
 
 set_global_assignment -name SEARCH_PATH ../rtl
 set_global_assignment -name SEARCH_PATH ../rtl/core
@@ -273,17 +273,18 @@ set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
 set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
 set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
 set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name EDA_WRITE_NODES_FOR_POWER_ESTIMATION ALL_NODES -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_WRITE_NODES_FOR_POWER_ESTIMATION OFF -section_id eda_simulation
 set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE "12.5 %"
 set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
 set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
 set_global_assignment -name VHDL_FILE ../sim/tb_multicorecpu.vhd
 set_global_assignment -name POWER_OUTPUT_SAF_NAME multicorecpu.saf
 set_global_assignment -name POWER_USE_INPUT_FILES ON
-set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_alu.vcd -entity multicorecpu -section_id power_alu.vcd
-set_global_assignment -name POWER_VCD_FILE_START_TIME "270 ns" -entity multicorecpu -section_id power_alu.vcd
-set_global_assignment -name POWER_VCD_FILE_END_TIME "1080490 ns" -entity multicorecpu -section_id power_alu.vcd
-set_instance_assignment -name POWER_READ_INPUT_FILE power_alu.vcd -to MULTICORECPU -entity multicorecpu
 set_instance_assignment -name PARTITION_COLOUR 4284350273 -to multicorecpu -entity multicorecpu
 set_instance_assignment -name PARTITION_COLOUR 4287627213 -to auto_fab_0 -entity multicorecpu
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_mem.vcd -entity multicorecpu -section_id power_mem.vcd
+set_global_assignment -name POWER_VCD_FILE_START_TIME "230 ns" -entity multicorecpu -section_id power_mem.vcd
+set_global_assignment -name POWER_VCD_FILE_END_TIME "82290 ns" -entity multicorecpu -section_id power_mem.vcd
+set_instance_assignment -name POWER_READ_INPUT_FILE power_mem.vcd -to MULTICORECPU -entity multicorecpu
