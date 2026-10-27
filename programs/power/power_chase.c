@@ -8,8 +8,8 @@
 #include "bench.h"
 
 // 256 linked list nodes on stack
-#define NODES 256u
-#define CHASE_LAPS 24u
+#define NODES 64u
+#define CHASE_LAPS 16u
 
 typedef struct node {
     struct node *next;

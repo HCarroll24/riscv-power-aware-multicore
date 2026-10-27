@@ -7,7 +7,7 @@
  */
 #include "bench.h"
 
-#define BUFFER_WORDS 512u
+#define BUFFER_WORDS 85u
 #define MEM_PASSES 2u
 
 int main(void) {
@@ -31,7 +31,7 @@ int main(void) {
             bytes[i] = (uint8_t)(bytes[i] ^ (uint8_t)i);  // lbu, sb
         }
     }
-    for (int i = 0; i < BUFFER_WORDS * 4u; i++) {
+    for (int i = 0; i < BUFFER_WORDS; i++) {
         sum += buf[i];  // lw
     }
 

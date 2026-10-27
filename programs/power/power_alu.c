@@ -7,7 +7,7 @@
  */
 #include "bench.h"
 
-#define ALU_LOOPS 3000u
+#define ALU_LOOPS 500u
 
 int main(void) {
     uint32_t x = 0x12345678u;   // seed for random number generator

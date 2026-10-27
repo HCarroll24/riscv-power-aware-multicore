@@ -7,7 +7,7 @@
  */
 #include "bench.h"
 
-#define BRANCH_LOOPS 3000u
+#define BRANCH_LOOPS 500u
 
 int main(void) {
     uint32_t x = 0xDEADBEEFu;   // "magic number"

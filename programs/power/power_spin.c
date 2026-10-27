@@ -7,7 +7,7 @@
  */
 #include "bench.h"
 
-#define SPIN_LOOPS 20000u
+#define SPIN_LOOPS 3333u
 
 int main(void) {
     uint32_t loops = SPIN_LOOPS;
