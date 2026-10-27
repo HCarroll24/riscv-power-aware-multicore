@@ -9,8 +9,6 @@ dni/
 .qsys_edit/
 *.qws
 *.qdf
-*.rpt
-*.summary
 *.smsg
 *.sof
 *.pof
