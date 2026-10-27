@@ -1,0 +1,15 @@
+Power Analyzer Status : Successful - Tue Oct 27 00:28:18 2026
+Quartus Prime Version : 25.1.0 Build 129 03/26/2025 SC Pro Edition
+Revision Name : multicorecpu
+Top-level Entity Name : MULTICORECPU
+Family : Agilex 3
+Device : A3CZ135BB18AE7S
+Timing Models : Preliminary
+Power Models : Preliminary
+Device Status : Preliminary
+Total Dynamic Power Dissipation : 0.335 W
+Total Static Power Dissipation (Before Savings) : 0.314 W
+Static Power Dissipation Savings : -0.087 W
+SmartVID Power Savings : -0.000 W
+Total On-Chip Power Dissipation : 0.562 W
+Power Estimation Confidence : High: user provided sufficient toggle rate data
