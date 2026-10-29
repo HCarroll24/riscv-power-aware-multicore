@@ -12,8 +12,8 @@ main:
 	li	a4,-14680064
 	addi	a4,a4,240
 	li	a3,1
-	li	a5,4096
-	addi	a5,a5,-763
+	li	a5,20480
+	addi	a5,a5,-480
 	sw	a3,0(a4)
  #APP
 # 16 "power/power_spin.c" 1
