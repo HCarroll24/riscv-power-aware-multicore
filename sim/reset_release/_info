@@ -10,11 +10,11 @@ z2
 cModel Technology
 Z0 dC:/dev/riscv-power-aware/sim
 Ereset_release
-Z1 w1792990528
+Z1 w1792516382
 Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 14
+!i122 15
 R0
 Z5 8../quartus/reset_release/sim/reset_release.vhd
 Z6 F../quartus/reset_release/sim/reset_release.vhd
@@ -24,33 +24,33 @@ VT]kY9T>i8O@[egIQa>B=z1
 !s100 _3UN1zeK8hCcHC[:I12H`2
 Z7 OL;C;2024.3;79
 33
-Z8 !s110 1793151165
+!s110 1793252147
 !i10b 1
-Z9 !s108 1793151165.000000
-Z10 !s90 -reportprogress|300|-2008|-work|reset_release|../quartus/reset_release/sim/reset_release.vhd|
-Z11 !s107 ../quartus/reset_release/sim/reset_release.vhd|
+Z8 !s108 1793252147.000000
+Z9 !s90 -reportprogress|300|-2008|-work|reset_release|../quartus/reset_release/sim/reset_release.vhd|
+Z10 !s107 ../quartus/reset_release/sim/reset_release.vhd|
 !i113 0
-Z12 o-2008 -work reset_release
-Z13 tExplicit 1 CvgOpt 0
+Z11 o-2008 -work reset_release
+Z12 tExplicit 1 CvgOpt 0
 Artl
-Z14 DPx7 verilog 8 vl_types 0 22 >4b[mPLBjEg5WFfh9`3^P3
-Z15 DEx26 intel_user_rst_clkgate_101 22 intel_user_rst_clkgate 0 22 Dg1SIo80bB@j0V0VzS_@n1
+Z13 DPx7 verilog 8 vl_types 0 22 >4b[mPLBjEg5WFfh9`3^P3
+Z14 DEx26 intel_user_rst_clkgate_101 22 intel_user_rst_clkgate 0 22 Dg1SIo80bB@j0V0VzS_@n1
 R2
 R3
 R4
-Z16 DEx4 work 13 reset_release 0 22 T]kY9T>i8O@[egIQa>B=z1
-!i122 14
+Z15 DEx4 work 13 reset_release 0 22 T]kY9T>i8O@[egIQa>B=z1
+!i122 15
 l25
-Z17 L16 17
-Z18 VPJEZam4njzENd>RKM?VVK0
-Z19 !s100 ^D1k?gJY?d8KOd2X5@PX^1
+Z16 L16 17
+Z17 VPJEZam4njzENd>RKM?VVK0
+Z18 !s100 ^D1k?gJY?d8KOd2X5@PX^1
 R7
 33
-R8
+!s110 1793252148
 !i10b 1
+R8
 R9
 R10
-R11
 !i113 0
+R11
 R12
-R13

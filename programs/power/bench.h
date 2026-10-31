@@ -28,8 +28,8 @@ static inline void bench_start(void) {
  * @param result checksum the testbench compares against expected
  */
 static inline void bench_done(uint32_t result) {
-    SIM_RESULT = result;
     SIM_MARK = MARK_DONE;
+    SIM_RESULT = result; 
 }
 
 #endif // BENCH_H
