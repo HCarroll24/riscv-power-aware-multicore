@@ -13,6 +13,7 @@
 -- use library packages
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 -- function block symbol
 -- inputs: 
@@ -27,6 +28,9 @@ use ieee.std_logic_1164.all;
 --		RD1	: 32-bit output from register specified by address A1
 --		RD2	: 32-bit output from register specified by address A2
 entity REGFILE is 
+generic(
+	READ_GATE		:	boolean	:=	false
+);
 port(
 	A1, A2, A3		:	in std_logic_vector(4 downto 0);
 	WD3				:	in std_logic_vector(31 downto 0);
@@ -34,544 +38,125 @@ port(
 	USE_A1, USE_A2	:	in std_logic;
 	RST, CLK			: 	in std_logic;
 	RD1, RD2			:	out std_logic_vector(31 downto 0)
-	);
+);
 end entity REGFILE;
 
 -- circuit description
 architecture BEHAVIORAL of REGFILE is
-	-- declare 32 32-bit registers that will be used as outputs
-   signal X0	: std_logic_vector(31 downto 0);
-	signal X1	: std_logic_vector(31 downto 0);	
-   signal X2	: std_logic_vector(31 downto 0);
-	signal X3	: std_logic_vector(31 downto 0);
-	signal X4	: std_logic_vector(31 downto 0);
-	signal X5	: std_logic_vector(31 downto 0);	
-   signal X6	: std_logic_vector(31 downto 0);
-	signal X7	: std_logic_vector(31 downto 0);	
-	signal X8	: std_logic_vector(31 downto 0);
-	signal X9	: std_logic_vector(31 downto 0);	
-   signal X10	: std_logic_vector(31 downto 0);
-	signal X11	: std_logic_vector(31 downto 0);	
-	signal X12	: std_logic_vector(31 downto 0);
-	signal X13	: std_logic_vector(31 downto 0);	
-   signal X14	: std_logic_vector(31 downto 0);
-	signal X15	: std_logic_vector(31 downto 0);
-	signal X16	: std_logic_vector(31 downto 0);
-	signal X17	: std_logic_vector(31 downto 0);
-	signal X18	: std_logic_vector(31 downto 0);
-	signal X19	: std_logic_vector(31 downto 0);
-	signal X20	: std_logic_vector(31 downto 0);
-	signal X21	: std_logic_vector(31 downto 0);
-	signal X22	: std_logic_vector(31 downto 0);
-	signal X23	: std_logic_vector(31 downto 0);
-	signal X24	: std_logic_vector(31 downto 0);
-	signal X25	: std_logic_vector(31 downto 0);
-	signal X26	: std_logic_vector(31 downto 0);
-	signal X27	: std_logic_vector(31 downto 0);
-	signal X28	: std_logic_vector(31 downto 0);
-	signal X29	: std_logic_vector(31 downto 0);
-	signal X30	: std_logic_vector(31 downto 0);
-	signal X31	: std_logic_vector(31 downto 0);
+	-- 32 x 32 storage, one copy per read port
+	-- x0 lives at address 0: it is zero at power-up, zeroed by reset signal
+	-- clear, and never written by an instruction (A3 = 0 is discarded)
+	type RAM_T is array(0 to 31) of std_logic_vector(31 downto 0);
+	signal RAM1	:	RAM_T	:=	(others => (others => '0'));
+	signal RAM2	:	RAM_T	:=	(others => (others => '0'));
+	attribute ramstyle	:	string;
+	attribute ramstyle of RAM1	:	signal is "M20K";
+	attribute ramstyle of RAM2	:	signal is "M20K";
+	
+	-- read side
+	signal RF_EN1, RF_EN2	:	std_logic;
+	signal RAM_RA1, RAM_RA2	:	natural range 0 to 31;
+	signal RAM_Q1, RAM_Q2	:	std_logic_vector(31 downto 0)	:=	(others => '0');
+	
+	-- write port: instruction write or clear
+	signal CLR_CNT		:	unsigned(4 downto 0)	:=	(others => '0');
+	signal WR_VALID	:	std_logic;
+	signal RAM_WE		:	std_logic;
+	signal RAM_WA		:	natural range 0 to 31;
+	signal RAM_WD		:	std_logic_vector(31 downto 0);
 	
 	-- write-first bypass: the read muxes drive
 	-- output ports choose between them and WD3
-	signal RD1_INT, RD2_INT	:	std_logic_vector(31 downto 0);
 	signal BYP1, BYP2			:	std_logic;
 	
 begin
-	-- X0 is hardwired to 0
-	X0 <= X"00000000";
+	-- read enable
+	-- ready copy k only if the IF/ID instruction reads rs_k (output is
+	-- forced to zero otherwise, so the hold RAM_Qk is never seen)
+	RF_EN1	<=	USE_A1 when READ_GATE else '1';
+	RF_EN2	<=	USE_A2 when READ_GATE else '1';
 	
-	-- READ PORT 1
-	-- Selects one of the registers based on A1
-	with A1 select
-	RD1_INT <= 	X0  when B"00000",
-					X1  when B"00001",
-					X2  when B"00010",
-					X3  when B"00011",
-					X4  when B"00100",
-					X5  when B"00101",
-					X6  when B"00110",
-					X7  when B"00111",
-					X8  when B"01000",
-					X9  when B"01001",
-					X10 when B"01010",
-					X11 when B"01011",
-					X12 when B"01100",
-					X13 when B"01101",
-					X14 when B"01110",
-					X15 when B"01111",
-					X16 when B"10000",
-					X17 when B"10001",
-					X18 when B"10010",
-					X19 when B"10011",
-					X20 when B"10100",
-					X21 when B"10101",
-					X22 when B"10110",
-					X23 when B"10111",
-					X24 when B"11000",
-					X25 when B"11001",
-					X26 when B"11010",
-					X27 when B"11011",
-					X28 when B"11100",
-					X29 when B"11101",
-					X30 when B"11110",
-					X31 when others;
-			 
-	-- READ PORT 2 (rs2)
-	-- identical to RD1 but with A2 driven
-	with A2 select
-	RD2_INT <= 	X0  when B"00000",
-				X1  when B"00001",
-				X2  when B"00010",
-				X3  when B"00011",
-				X4  when B"00100",
-				X5  when B"00101",
-				X6  when B"00110",
-				X7  when B"00111",
-				X8  when B"01000",
-				X9  when B"01001",
-				X10 when B"01010",
-				X11 when B"01011",
-				X12 when B"01100",
-				X13 when B"01101",
-				X14 when B"01110",
-				X15 when B"01111",
-				X16 when B"10000",
-				X17 when B"10001",
-				X18 when B"10010",
-				X19 when B"10011",
-				X20 when B"10100",
-				X21 when B"10101",
-				X22 when B"10110",
-				X23 when B"10111",
-				X24 when B"11000",
-				X25 when B"11001",
-				X26 when B"11010",
-				X27 when B"11011",
-				X28 when B"11100",
-				X29 when B"11101",
-				X30 when B"11110",
-				X31 when others;
-			 
-	-- WRITE-FIRST BYPASS (read-during-write)
-	-- x0 has no write process, write to x0 is discarded
-	-- bypass discarded too
+	RAM_RA1	<=	to_integer(unsigned(A1));
+	RAM_RA2	<=	to_integer(unsigned(A2));
+	
+	-- WRITE PORT
+	-- valid instruction write: x0 and writes during reset are discarded
+	WR_VALID	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000") else '0';
+	
+	-- reset clear walks every address through normal write port
+	RAM_WE	<=	RST or WR_VALID;
+	
+	with RST select
+		RAM_WA	<=	to_integer(CLR_CNT) when '1',
+						to_integer(unsigned(A3)) when others;
+						
+	with RST select
+		RAM_WD	<=	(others => '0') when '1',
+						WD3	when others;
+						
+	-- reset clear counter
+	CLEAR_COUNTER:	process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if RST = '1' then
+				CLR_CNT	<=	CLR_CNT + 1;
+			end if;
+		end if;
+	end process CLEAR_COUNTER;
+	
+	-- RAM COPY 1 WRITE (rising edge)
+	RAM_WRITE1:	process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if RAM_WE = '1' then
+				RAM1(RAM_WA)	<=	RAM_WD;
+			end if;
+		end if;
+	end process RAM_WRITE1;
+	
+	-- RAM COPY 2 WRITE (rising edge)
+	RAM_WRITE2:	process(CLK)
+	begin
+		if rising_edge(CLK) then
+			if RAM_WE = '1' then
+				RAM2(RAM_WA)	<=	RAM_WD;
+			end if;
+		end if;
+	end process RAM_WRITE2;
+	
+	-- RAM COPY 1 READ (rs1, falling edge)
+	RAM_READ1:	process(CLK)
+	begin
+		if falling_edge(CLK) then
+			if RF_EN1 = '1' then
+				RAM_Q1	<=	RAM1(RAM_RA1);
+			end if;
+		end if;
+	end process RAM_READ1;
+	
+	-- RAM COPY 2 READ (rs2, falling edge)
+	RAM_READ2:	process(CLK)
+	begin
+		if falling_edge(CLK) then
+			if RF_EN2 = '1' then
+				RAM_Q2	<=	RAM2(RAM_RA2);
+			end if;
+		end if;
+	end process RAM_READ2;
+	
+	-- WRITE-FIRST BYPASS (read-during write, same as flip-flop version)
+	-- write at end of this ID cycle to the IF/ID address
 	BYP1	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A1) else '0';
 	BYP2	<=	'1' when (RST = '0' and REGWR = '1' and A3 /= B"00000" and A3 = A2) else '0';
 	
+	-- output select
+	-- priority select: unused source -> 0, write at end of this cycle (BYP),
+	-- then the RAM output
 	RD1	<=	(others => '0') when USE_A1 = '0' else
 				WD3 when BYP1 = '1' else
-				RD1_INT;
+				RAM_Q1;
 				
 	RD2	<=	(others => '0') when USE_A2 = '0' else
 				WD3 when BYP2 = '1' else
-				RD2_INT;
-	
-	-- WRITE PORT (individual per register)
-	-- RST = '1' clears all writable registers t0 zero
-	-- REGWR = '1' for synchronous load for active-low
-	reg1:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X1 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00001" then
-					X1 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg2:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X2 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00010" then
-					X2 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg3:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X3 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00011" then
-					X3 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg4:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X4 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00100" then
-					X4 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg5:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X5 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00101" then
-					X5 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg6:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X6 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00110" then
-					X6 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg7:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X7 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"00111" then
-					X7 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg8:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X8 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01000" then
-					X8 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg9:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X9 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01001" then
-					X9 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg10:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X10 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01010" then
-					X10 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg11:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X11 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01011" then
-					X11 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg12:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X12 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01100" then
-					X12 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg13:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X13 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01101" then
-					X13 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg14:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X14 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01110" then
-					X14 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg15:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X15 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"01111" then
-					X15 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg16:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X16 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10000" then
-					X16 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg17:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X17 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10001" then
-					X17 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg18:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X18 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10010" then
-					X18 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg19:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X19 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10011" then
-					X19 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg20:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X20 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10100" then
-					X20 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg21:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X21 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10101" then
-					X21 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg22:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X22 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10110" then
-					X22 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg23:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X23 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"10111" then
-					X23 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg24:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X24 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11000" then
-					X24 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg25:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X25 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11001" then
-					X25 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg26:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X26 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11010" then
-					X26 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg27:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X27 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11011" then
-					X27 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg28:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X28 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11100" then
-					X28 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg29:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X29 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11101" then
-					X29 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg30:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X30 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11110" then
-					X30 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
-	reg31:	process(CLK)
-	begin
-		if rising_edge(CLK) then
-			if RST = '1' then
-				X31 <= X"00000000";
-			elsif REGWR = '1' then
-				if A3 = B"11111" then
-					X31 <= WD3;
-				end if;
-			end if;
-		end if;
-	end process;
-	
+				RAM_Q2;
 end architecture BEHAVIORAL;
