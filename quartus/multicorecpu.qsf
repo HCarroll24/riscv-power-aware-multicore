@@ -80,8 +80,8 @@ set_global_assignment -name VHDL_FILE ../rtl/core/bht.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_target_calc.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/rs_decode.vhd
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
-set_global_assignment -name ENABLE_SIGNALTAP OFF
-set_global_assignment -name USE_SIGNALTAP_FILE core_debug.stp
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE regfile_debug.stp
 set_global_assignment -name SIGNALTAP_FILE core_debug.stp
 set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS TYPICAL
 set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
@@ -289,3 +289,4 @@ set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_spin.vcd -entity 
 set_global_assignment -name POWER_VCD_FILE_START_TIME "270 ns" -entity multicorecpu -section_id power_spin.vcd
 set_global_assignment -name POWER_VCD_FILE_END_TIME "133750 ns" -entity multicorecpu -section_id power_spin.vcd
 set_instance_assignment -name POWER_READ_INPUT_FILE power_spin.vcd -to MULTICORECPU -entity multicorecpu
+set_global_assignment -name SIGNALTAP_FILE regfile_debug.stp
