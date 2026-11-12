@@ -15,6 +15,12 @@ R0
 R1
 R0
 R1
+R0
+R1
+R0
+R1
+R0
+R1
 !s11f vlog 2024.3 2024.09, Sep 10 2024
 13
 !s112 1.1
@@ -24,10 +30,10 @@ R1
 cModel Technology
 Z2 dC:/dev/riscv-power-aware/sim
 T_opt
-!s110 1793252318
-VWK4o_bPk5JBNa[hdIO8E_3
+!s110 1794437282
+V5KaIh4z3elMUYES630EzL3
 04 12 4 work MULTICORECPU fast 0
-=1-801316a309ee-6ae2dbdb-3af-2af4
+=1-e0d4e811f535-6af4f0a0-2ef-29b4
 R1
 !s12f OEM100
 !s12b OEM100
@@ -37,27 +43,28 @@ o-quiet -auto_acc_if_foreign -work gate -L tennm -L altera_lnsim -L altera_ver +
 Z3 tCvgOpt 0
 n@_opt
 OL;O;2024.3;79
+R2
 vMULTICORECPU
 2../quartus/simulation/questa/multicorecpu.vo
-!s110 1793252315
+!s110 1794449751
 !i10b 1
-!s100 >U;:<6LU`iDEPJ9Vc3d;g1
-IGIYL`zKK0c<]RdMgDh`0j1
+!s100 K=VVJbAUKLRN:RaMbK4?91
+IfGP406b>R_G6S9nV0RBgh1
 R2
-w1793252272
+w1794449622
 8../quartus/simulation/questa/multicorecpu.vo
 F../quartus/simulation/questa/multicorecpu.vo
-!i122 6
-L0 32 95039
+!i122 12
+L0 32 67980
 VDg1SIo80bB@j0V0VzS_@n1
 OL;L;2024.3;79
 r1
 !s85 0
 31
-!s108 1793252315.000000
+!s108 1794449751.000000
 !s107 ../quartus/simulation/questa/multicorecpu.vo|
 !s90 -reportprogress|300|-work|gate|../quartus/simulation/questa/multicorecpu.vo|
 !i113 0
-o-work gate
+o-work gate -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R3
 n@m@u@l@t@i@c@o@r@e@c@p@u

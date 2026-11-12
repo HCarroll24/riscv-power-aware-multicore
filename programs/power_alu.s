@@ -37,11 +37,11 @@ main:
 	addi	a2,a2,1
 	add	a4,a4,a5
 	bne	a2,a0,.L2
-	li	a5,-14680064
+	li	a2,-14680064
+	li	a1,2
 	xor	a3,a3,a4
-	sw	a3,244(a5)
-	li	a4,2
-	sw	a4,240(a5)
+	sw	a1,240(a2)
+	sw	a3,244(a2)
 .L3:
 	j	.L3
 	.size	main, .-main

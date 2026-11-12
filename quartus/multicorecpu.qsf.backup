@@ -36,21 +36,16 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY "MAX 10"
-set_global_assignment -name DEVICE 10M50DAF484C7G
-set_global_assignment -name TOP_LEVEL_ENTITY system
+set_global_assignment -name FAMILY "Agilex 3"
+set_global_assignment -name DEVICE A3CZ135BB18AE7S
+set_global_assignment -name TOP_LEVEL_ENTITY multicorecpu
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:10:40  FEBRUARY 27, 2026"
-set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1.0 Pro Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
-set_global_assignment -name EDA_SIMULATION_TOOL "Questa Altera FPGA (VHDL)"
+set_global_assignment -name EDA_SIMULATION_TOOL "Questa Intel FPGA (Verilog)"
 
 set_global_assignment -name SEARCH_PATH ../rtl
 set_global_assignment -name SEARCH_PATH ../rtl/core
@@ -61,133 +56,237 @@ set_global_assignment -name SEARCH_PATH ../rtl/packages
 
 set_global_assignment -name ADD_PASS_THROUGH_LOGIC_TO_INFERRED_RAMS OFF
 set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
-set_global_assignment -name ENABLE_OCT_DONE OFF
-set_global_assignment -name EXTERNAL_FLASH_FALLBACK_ADDRESS 00000000
-set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
-set_global_assignment -name INTERNAL_FLASH_UPDATE_MODE "SINGLE COMP IMAGE WITH ERAM"
-set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
-set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
-set_location_assignment PIN_P11 -to CLK
-set_global_assignment -name VHDL_FILE ../rtl/fpga/seg7decode.vhd
+# Obsolete assignment in <Version 25.1> "set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation"
 set_global_assignment -name MIF_FILE ../benchmarks/solving_issues.mif
 set_global_assignment -name MIF_FILE ../benchmarks/forward_stall_test.mif
 set_global_assignment -name MIF_FILE ../benchmarks/br_predict_test.mif
 set_global_assignment -name SDC_FILE multicorecpu.sdc
-set_global_assignment -name BDF_FILE ../rtl/decode.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/alu.vhd
-set_global_assignment -name BDF_FILE ../rtl/multicorecpu.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/regfile.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/imm_gen.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/control_unit.vhd
-set_global_assignment -name BDF_FILE ../rtl/execute.bdf
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_comp.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/dmem.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/busmux4to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg32.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/adder.vhd
-set_global_assignment -name BDF_FILE ../rtl/pipeline.bdf
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/regn.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/reg1.vhd
-set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipe_control_unit.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/pc_sel_logic.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/branch_predictor.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/busmux6to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/busmux5to1.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/forwarding_unit.vhd
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/hazard_control_unit.vhd
-set_global_assignment -name VHDL_FILE ../rtl/pipeline/nop_adder.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/bht.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/branch_target_calc.vhd
-set_global_assignment -name QIP_FILE ../rtl/core/one_port_rom.qip
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
-set_global_assignment -name VHDL_FILE ../rtl/and2_32.vhd
-set_global_assignment -name VHDL_FILE ../rtl/core/const_bus.vhd
 set_global_assignment -name VHDL_FILE ../rtl/core/rs_decode.vhd
-set_global_assignment -name BDF_FILE ../rtl/memory.bdf
-set_global_assignment -name BDF_FILE ../rtl/core/synchronizer.bdf
-set_global_assignment -name VHDL_FILE ../rtl/fpga/address_decoder.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/run_ctrl.vhd
-set_global_assignment -name VHDL_FILE ../rtl/fpga/blank.vhd
-set_location_assignment PIN_B8 -to SYSRST
-set_global_assignment -name VHDL_FILE ../rtl/fpga/led_map.vhd
-set_location_assignment PIN_F15 -to RUN
-set_location_assignment PIN_B14 -to UL_SEL
-set_location_assignment PIN_A14 -to SPEED[1]
-set_location_assignment PIN_A13 -to SPEED[0]
-set_location_assignment PIN_A7 -to STEP_BTN
-set_location_assignment PIN_B11 -to LEDR[9]
-set_location_assignment PIN_A11 -to LEDR[8]
-set_location_assignment PIN_D14 -to LEDR[7]
-set_location_assignment PIN_E14 -to LEDR[6]
-set_location_assignment PIN_C13 -to LEDR[5]
-set_location_assignment PIN_D13 -to LEDR[4]
-set_location_assignment PIN_B10 -to LEDR[3]
-set_location_assignment PIN_A10 -to LEDR[2]
-set_location_assignment PIN_A9 -to LEDR[1]
-set_location_assignment PIN_A8 -to LEDR[0]
-set_location_assignment PIN_D15 -to SEG0[7]
-set_location_assignment PIN_C17 -to SEG0[6]
-set_location_assignment PIN_D17 -to SEG0[5]
-set_location_assignment PIN_E16 -to SEG0[4]
-set_location_assignment PIN_C16 -to SEG0[3]
-set_location_assignment PIN_C15 -to SEG0[2]
-set_location_assignment PIN_E15 -to SEG0[1]
-set_location_assignment PIN_C14 -to SEG0[0]
-set_location_assignment PIN_A16 -to SEG1[7]
-set_location_assignment PIN_B17 -to SEG1[6]
-set_location_assignment PIN_A18 -to SEG1[5]
-set_location_assignment PIN_A17 -to SEG1[4]
-set_location_assignment PIN_B16 -to SEG1[3]
-set_location_assignment PIN_E18 -to SEG1[2]
-set_location_assignment PIN_D18 -to SEG1[1]
-set_location_assignment PIN_C18 -to SEG1[0]
-set_location_assignment PIN_A19 -to SEG2[7]
-set_location_assignment PIN_B22 -to SEG2[6]
-set_location_assignment PIN_C22 -to SEG2[5]
-set_location_assignment PIN_B21 -to SEG2[4]
-set_location_assignment PIN_A21 -to SEG2[3]
-set_location_assignment PIN_B19 -to SEG2[2]
-set_location_assignment PIN_A20 -to SEG2[1]
-set_location_assignment PIN_B20 -to SEG2[0]
-set_location_assignment PIN_F21 -to SEG3[0]
-set_location_assignment PIN_E22 -to SEG3[1]
-set_location_assignment PIN_E21 -to SEG3[2]
-set_location_assignment PIN_C19 -to SEG3[3]
-set_location_assignment PIN_C20 -to SEG3[4]
-set_location_assignment PIN_D19 -to SEG3[5]
-set_location_assignment PIN_E17 -to SEG3[6]
-set_location_assignment PIN_D22 -to SEG3[7]
-set_location_assignment PIN_F18 -to SEG4[0]
-set_location_assignment PIN_E20 -to SEG4[1]
-set_location_assignment PIN_E19 -to SEG4[2]
-set_location_assignment PIN_J18 -to SEG4[3]
-set_location_assignment PIN_H19 -to SEG4[4]
-set_location_assignment PIN_F19 -to SEG4[5]
-set_location_assignment PIN_F20 -to SEG4[6]
-set_location_assignment PIN_F17 -to SEG4[7]
-set_location_assignment PIN_J20 -to SEG5[0]
-set_location_assignment PIN_K20 -to SEG5[1]
-set_location_assignment PIN_L18 -to SEG5[2]
-set_location_assignment PIN_N18 -to SEG5[3]
-set_location_assignment PIN_M20 -to SEG5[4]
-set_location_assignment PIN_N19 -to SEG5[5]
-set_location_assignment PIN_N20 -to SEG5[6]
-set_location_assignment PIN_L19 -to SEG5[7]
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name ENABLE_SIGNALTAP OFF
-set_global_assignment -name USE_SIGNALTAP_FILE core_debug.stp
+set_global_assignment -name USE_SIGNALTAP_FILE regfile_debug.stp
 set_global_assignment -name SIGNALTAP_FILE core_debug.stp
-set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS MAXIMUM
+set_global_assignment -name POWER_USE_DEVICE_CHARACTERISTICS TYPICAL
 set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
 set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
-set_global_assignment -name VHDL_FILE ../rtl/fpga/system.vhd
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+# Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top"
+# Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top"
+# Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top"
+# Obsolete assignment in <Version 25.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
+set_global_assignment -name IP_FILE single_port_rom.ip
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/fetch.vhd
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/decode.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/execute.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/memory.vhd
+set_global_assignment -name VHDL_FILE ../rtl/pipeline/pipeline.vhd
+set_global_assignment -name VHDL_FILE ../rtl/fpga/synchronizer.vhd
+set_global_assignment -name VHDL_FILE ../rtl/fpga/multicorecpu.vhd
+set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
+set_global_assignment -name IP_FILE reset_release.ip
+set_global_assignment -name BOARD default
+set_global_assignment -name VHDL_FILE ../rtl/fpga/data_bus.vhd
+set_global_assignment -name VHDL_FILE ../rtl/mmio.vhd
+
+# DE23-Lite pin assignments for MULTICORECPU
+# Locations and I/O standards copied from Terasic golden_top.qsf (Terasic V2.1.0,
+# Quartus 25.1.0 Pro). The user manual (Dec 18, 2025) Tables 3-8/3-9 list the wrong
+# I/O standards for LEDR (all 1.2-V, not 3.3V) and HEX2[5]..HEX5[6] (1.8-V / 3.3-V,
+# not 1.2V); locations in the manual are correct.
+
+# CLOCK (CLOCK0_50 on the board)
+set_location_assignment PIN_K43 -to CLK
+set_instance_assignment -name IO_STANDARD "1.2-V" -to CLK
+
+# KEY
+set_location_assignment PIN_K26 -to KEY[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[0]
+set_location_assignment PIN_K27 -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[1]
+set_location_assignment PIN_BK10 -to KEY[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[2]
+set_location_assignment PIN_W12 -to KEY[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to KEY[3]
+
+# SW
+set_location_assignment PIN_A37 -to SW[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[0]
+set_location_assignment PIN_B37 -to SW[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[1]
+set_location_assignment PIN_B26 -to SW[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[2]
+set_location_assignment PIN_A42 -to SW[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[3]
+set_location_assignment PIN_K32 -to SW[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[4]
+set_location_assignment PIN_A26 -to SW[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[5]
+set_location_assignment PIN_B27 -to SW[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[6]
+set_location_assignment PIN_A29 -to SW[7]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[7]
+set_location_assignment PIN_D32 -to SW[8]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[8]
+set_location_assignment PIN_A34 -to SW[9]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to SW[9]
+
+# LEDR
+set_location_assignment PIN_B39 -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[0]
+set_location_assignment PIN_B42 -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[1]
+set_location_assignment PIN_K35 -to LEDR[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[2]
+set_location_assignment PIN_F32 -to LEDR[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[3]
+set_location_assignment PIN_A19 -to LEDR[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[4]
+set_location_assignment PIN_B24 -to LEDR[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[5]
+set_location_assignment PIN_A24 -to LEDR[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[6]
+set_location_assignment PIN_A44 -to LEDR[7]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[7]
+set_location_assignment PIN_B34 -to LEDR[8]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[8]
+set_location_assignment PIN_D40 -to LEDR[9]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to LEDR[9]
+
+# HEX0
+set_location_assignment PIN_L51 -to HEX0[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[0]
+set_location_assignment PIN_J51 -to HEX0[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[1]
+set_location_assignment PIN_G51 -to HEX0[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[2]
+set_location_assignment PIN_J52 -to HEX0[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[3]
+set_location_assignment PIN_M51 -to HEX0[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[4]
+set_location_assignment PIN_M52 -to HEX0[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[5]
+set_location_assignment PIN_R51 -to HEX0[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX0[6]
+
+# HEX1
+set_location_assignment PIN_F40 -to HEX1[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[0]
+set_location_assignment PIN_K40 -to HEX1[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[1]
+set_location_assignment PIN_N52 -to HEX1[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[2]
+set_location_assignment PIN_V51 -to HEX1[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[3]
+set_location_assignment PIN_R52 -to HEX1[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[4]
+set_location_assignment PIN_V52 -to HEX1[5]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[5]
+set_location_assignment PIN_G52 -to HEX1[6]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX1[6]
+
+# HEX2
+set_location_assignment PIN_H43 -to HEX2[0]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[0]
+set_location_assignment PIN_F35 -to HEX2[1]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[1]
+set_location_assignment PIN_A31 -to HEX2[2]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[2]
+set_location_assignment PIN_B29 -to HEX2[3]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[3]
+set_location_assignment PIN_H35 -to HEX2[4]
+set_instance_assignment -name IO_STANDARD "1.2-V" -to HEX2[4]
+set_location_assignment PIN_BN24 -to HEX2[5]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX2[5]
+set_location_assignment PIN_BN19 -to HEX2[6]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX2[6]
+
+# HEX3
+set_location_assignment PIN_BM22 -to HEX3[0]
+set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to HEX3[0]
+set_location_assignment PIN_BH13 -to HEX3[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[1]
+set_location_assignment PIN_BM3 -to HEX3[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[2]
+set_location_assignment PIN_AY6 -to HEX3[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[3]
+set_location_assignment PIN_AU6 -to HEX3[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[4]
+set_location_assignment PIN_AU4 -to HEX3[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[5]
+set_location_assignment PIN_AW12 -to HEX3[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX3[6]
+
+# HEX4
+set_location_assignment PIN_AT9 -to HEX4[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[0]
+set_location_assignment PIN_AT12 -to HEX4[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[1]
+set_location_assignment PIN_AP9 -to HEX4[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[2]
+set_location_assignment PIN_BK7 -to HEX4[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[3]
+set_location_assignment PIN_BM2 -to HEX4[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[4]
+set_location_assignment PIN_BL2 -to HEX4[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[5]
+set_location_assignment PIN_BH7 -to HEX4[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX4[6]
+
+# HEX5
+set_location_assignment PIN_BH3 -to HEX5[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[0]
+set_location_assignment PIN_BF12 -to HEX5[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[1]
+set_location_assignment PIN_BF9 -to HEX5[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[2]
+set_location_assignment PIN_BB12 -to HEX5[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[3]
+set_location_assignment PIN_BB9 -to HEX5[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[4]
+set_location_assignment PIN_E2 -to HEX5[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[5]
+set_location_assignment PIN_K3 -to HEX5[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to HEX5[6]
+
+# Configuration scheme and power management (board-specific, from golden_top.qsf)
+set_global_assignment -name USE_CONF_DONE SDM_IO16
+set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
+set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
+set_global_assignment -name DEVICE_INITIALIZATION_CLOCK OSC_CLK_1_125MHZ
+set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
+set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_WRITE_NODES_FOR_POWER_ESTIMATION ON -section_id eda_simulation
+set_global_assignment -name POWER_DEFAULT_TOGGLE_RATE "12.5 %"
+set_global_assignment -name POWER_REPORT_SIGNAL_ACTIVITY ON
+set_global_assignment -name POWER_REPORT_POWER_DISSIPATION ON
+set_global_assignment -name VHDL_FILE ../sim/tb_multicorecpu.vhd
+set_global_assignment -name POWER_OUTPUT_SAF_NAME multicorecpu.saf
+set_global_assignment -name POWER_USE_INPUT_FILES ON
+set_instance_assignment -name PARTITION_COLOUR 4284350273 -to multicorecpu -entity multicorecpu
+set_instance_assignment -name PARTITION_COLOUR 4287627213 -to auto_fab_0 -entity multicorecpu
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE POWER"
+set_global_assignment -name SIGNALTAP_FILE regfile_debug.stp
+set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_alu.vcd -entity multicorecpu -section_id power_alu.vcd
+set_global_assignment -name POWER_VCD_FILE_START_TIME "250 ns" -entity multicorecpu -section_id power_alu.vcd
+set_global_assignment -name POWER_VCD_FILE_END_TIME "180510 ns" -entity multicorecpu -section_id power_alu.vcd
+set_instance_assignment -name POWER_READ_INPUT_FILE power_alu.vcd -to MULTICORECPU -entity multicorecpu
