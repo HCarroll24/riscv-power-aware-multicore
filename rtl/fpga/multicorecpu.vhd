@@ -91,6 +91,8 @@ begin
 	
 	-- single RV32I core, data bus master
 	SINGLE_CORE	:	entity work.PIPELINE
+		generic map(
+			ISOLATE	=>	true)
 		port map(
 			CLK				=>	CLK,
 			RST				=>	RST,

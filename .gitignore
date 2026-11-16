@@ -1,3 +1,12 @@
+*.qsf.backup
+*.saf
+*.qptc
+sim/gate/
+sim/altera_lnsim/
+sim/reset_release/
+sim/rom_1port_2022/
+sim/single_port_rom/
+sim/intel_user_rst_clkgate_101/
 db/
 incremental_db/
 output_files/

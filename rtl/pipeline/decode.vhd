@@ -50,6 +50,7 @@ use ieee.numeric_std.all;
 --		MEMWR				:	Write to dmem?
 --		REGWR				:	WB to regfile?
 --		IDEX_FLUSH		: 	Flush fo rbubbles for id_ex stage
+--		SHIFT_EN_ID		:	Shift enable signal in decode
 entity DECODE is
 port(
 	CLK, RST				:	in		std_logic;
@@ -83,7 +84,9 @@ port(
 	MEMRD					:	out	std_logic;
 	MEMWR					:	out	std_logic;
 	REGWR					:	out	std_logic;
-	IDEX_FLUSH			:	out	std_logic);
+	IDEX_FLUSH			:	out	std_logic;
+	SHIFT_EN_ID			:	out	std_logic_vector(2 downto 0)
+);
 end entity DECODE;
 
 -- structural description
@@ -132,7 +135,8 @@ begin
 			IS_JALR	=>	IS_JALR,
 			WD4SEL	=>	WD4SEL,
 			IMMSRC	=>	IMMSRC,
-			ALUSEL	=>	ALUSEL);
+			ALUSEL	=>	ALUSEL,
+			SHIFT_EN	=>	SHIFT_EN_ID);
 			
 	-- immediate generation and signals
 	IMMEDIATE_GEN	:	entity work.IMM_GEN

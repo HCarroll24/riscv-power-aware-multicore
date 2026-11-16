@@ -35,6 +35,8 @@ use ieee.numeric_std.all;
 --		DBUS_RE			:	read enable
 --		DBUS_RDATA		:	whole-word read data returned by the bus (input)
 entity PIPELINE is
+generic(
+	ISOLATE	:	boolean	:=	true);
 port(
 	CLK				:	in		std_logic;
 	RST				:	in		std_logic;
@@ -93,6 +95,7 @@ architecture STRUCTURAL of PIPELINE is
 	signal MEMWR					:	std_logic;
 	signal REGWR					:	std_logic;
 	signal IDEX_FLUSH				:	std_logic;
+	signal SHIFT_EN_ID			:	std_logic_vector(2 downto 0);
 	
 	-- ID/EX Register outputs
 	signal ID_EX_SRC1				:	std_logic_vector(31 downto 0);
@@ -112,6 +115,7 @@ architecture STRUCTURAL of PIPELINE is
 	signal ID_EX_REGWR			:	std_logic;
 	signal ID_EX_PREDICT_TAKEN	:	std_logic;
 	signal ID_EX_VALID_INT		:	std_logic;
+	signal ID_EX_SHIFT_EN		:	std_logic_vector(2 downto 0);
 	
 	-- Execute stage outputs
 	signal ALU_F					:	std_logic_vector(31 downto 0);
@@ -142,6 +146,12 @@ architecture STRUCTURAL of PIPELINE is
 	
 	-- writeback stage
 	signal WB_VALUE				:	std_logic_vector(31 downto 0);
+	
+	-- operand isolation signals
+	signal SH_LD	:	std_logic_vector(2 downto 0);
+	signal SH_FLUSH	:	std_logic;
+	signal ID_EX_SLL_A, ID_EX_SRL_A, ID_EX_SRA_A	:	std_logic_vector(31 downto 0);
+	signal ID_EX_SLL_B, ID_EX_SRL_B, ID_EX_SRA_B	:	std_logic_vector(4 downto 0);
 begin
 	-- Fetch stage block
 	FETCH_BLOCK	:	entity work.FETCH
@@ -261,7 +271,81 @@ begin
 			MEMRD				=>	MEMRD,
 			MEMWR				=>	MEMWR,
 			REGWR				=>	REGWR,
-			IDEX_FLUSH		=>	IDEX_FLUSH);
+			IDEX_FLUSH		=>	IDEX_FLUSH,
+			SHIFT_EN_ID		=>	SHIFT_EN_ID);
+			
+	-- ISOLATE true : load only on that shifter's own instruction, hold otherwise
+	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/SRC2 (original design)
+	SH_LD(0)	<=	CORE_EN and SHIFT_EN_ID(0) and not IDEX_FLUSH when ISOLATE else CORE_EN;
+	SH_LD(1)	<=	CORE_EN and SHIFT_EN_ID(1) and not IDEX_FLUSH when ISOLATE else CORE_EN;
+	SH_LD(2)	<=	CORE_EN and SHIFT_EN_ID(2) and not IDEX_FLUSH when ISOLATE else CORE_EN;
+	SH_FLUSH	<=	'0' when ISOLATE else IDEX_FLUSH;
+	
+	IDEX_SLL_A	:	entity work.REGN
+		generic map(
+			WIDTH	=>	32)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(0),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC1,
+			Q		=>	ID_EX_SLL_A);
+			
+	IDEX_SLL_B	:	entity work.REGN
+		generic map(
+			WIDTH	=>	5)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(0),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC2(4 downto 0),
+			Q		=>	ID_EX_SLL_B);
+			
+	IDEX_SRL_A	:	entity work.REGN
+		generic map(
+			WIDTH	=>	32)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(1),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC1,
+			Q		=>	ID_EX_SRL_A);
+	
+	IDEX_SRL_B	:	entity work.REGN
+		generic map(
+			WIDTH	=>	5)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(1),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC2(4 downto 0),
+			Q		=>	ID_EX_SRL_B);
+			
+	IDEX_SRA_A	:	entity work.REGN
+		generic map(
+			WIDTH	=>	32)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(2),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC1,
+			Q		=>	ID_EX_SRA_A);
+			
+	IDEX_SRA_B	:	entity work.REGN
+		generic map(
+			WIDTH	=>	5)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	SH_LD(2),
+			FLUSH	=>	SH_FLUSH,
+			D		=>	SRC2(4 downto 0),
+			Q		=>	ID_EX_SRA_B);
 			
 	-- ID/EX Pipeline Registers
 	IDEX_SRC1	:	entity work.REGN
@@ -452,6 +536,12 @@ begin
 			ID_EX_WD4SEL			=>	ID_EX_WD4SEL,
 			ID_EX_PREDICT_TAKEN	=>	ID_EX_PREDICT_TAKEN,
 			CORE_EN					=>	CORE_EN,
+			ID_EX_SLL_A				=>	ID_EX_SLL_A,
+			ID_EX_SLL_B				=>	ID_EX_SLL_B,
+			ID_EX_SRL_A				=>	ID_EX_SRL_A,
+			ID_EX_SRL_B				=>	ID_EX_SRL_B,
+			ID_EX_SRA_A				=>	ID_EX_SRA_A,
+			ID_EX_SRA_B				=>	ID_EX_SRA_B,
 			ALU_F						=>	ALU_F,
 			EX_WB_VALUE				=>	EX_WB_VALUE,
 			REDIRECT_PC				=>	REDIRECT_PC,

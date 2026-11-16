@@ -23,6 +23,20 @@ add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/MEM_WB_VA
 add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/DECODE_BLOCK/REG_FILE/X1
 add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/DECODE_BLOCK/REG_FILE/X2
 add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/DECODE_BLOCK/REG_FILE/X10
+add wave -noupdate -divider {OPERAND ISOLATION}
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/IF_ID_INSTR
+add wave -noupdate -radix binary      /tb_multicorecpu/DUT/SINGLE_CORE/SHIFT_EN_ID
+add wave -noupdate                    /tb_multicorecpu/DUT/SINGLE_CORE/IDEX_FLUSH
+add wave -noupdate -radix binary      /tb_multicorecpu/DUT/SINGLE_CORE/SH_LD
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SRC1
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SLL_A
+add wave -noupdate -radix unsigned    /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SLL_B
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SRL_A
+add wave -noupdate -radix unsigned    /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SRL_B
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SRA_A
+add wave -noupdate -radix unsigned    /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_SRA_B
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ID_EX_ALUSEL
+add wave -noupdate -radix hexadecimal /tb_multicorecpu/DUT/SINGLE_CORE/ALU_F
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {302370000 ps} 0}
 quietly wave cursor active 1

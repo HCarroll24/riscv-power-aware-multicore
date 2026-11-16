@@ -26,6 +26,7 @@ use ieee.std_logic_1164.all;
 --		WD4SEL		:	2-bit select signal to choose bewteen writeback sources
 --		IMMSRC[2:0]	:	immediate format select for imm_gen
 --		ALUSEL[3:0]	:	ALU operation select
+--		SHIFT_EN[2:0]	:	one bit per shifter for op isolation
 entity CONTROL_UNIT is
 port(
 	INSTR		:	in std_logic_vector(31 downto 0);
@@ -38,7 +39,8 @@ port(
 	IS_JALR	:	out std_logic;
 	WD4SEL	: 	out std_logic_vector(1 downto 0);
 	IMMSRC	:	out std_logic_vector(2 downto 0);
-	ALUSEL	:	out std_logic_vector(3 downto 0)
+	ALUSEL	:	out std_logic_vector(3 downto 0);
+	SHIFT_EN	:	out std_logic_vector(2 downto 0)
 );
 end entity CONTROL_UNIT;
 
@@ -122,4 +124,14 @@ begin
 					INSTR(30) & FUNCT3 when (OPCODE = OP_IARITH and FUNCT3 = B"101") else
 					'0' & FUNCT3 when OPCODE = OP_IARITH else
 					B"0000";
+					
+	-- SHIFT_EN signal for operand isolation
+	-- Disables shifters depending on need in instruciton
+	-- if not needed disable shifter
+	-- SHIFT_EN[0] -> SLL, SHIFT_EN[1] -> SRL, SHIFT_EN[2] -> SRA
+	-- Uses ALUSEL to decide
+	SHIFT_EN(0)	<= '1' when ALUSEL = B"0001" else '0';
+	SHIFT_EN(1)	<=	'1' when ALUSEL = B"0101" else '0';
+	SHIFT_EN(2)	<=	'1' when ALUSEL = B"1101" else '0';
+	
 end architecture BEHAVIORAL;

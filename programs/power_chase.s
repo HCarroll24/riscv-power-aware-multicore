@@ -43,9 +43,9 @@ main:
 	or	a4,a5,a4
 	bne	a1,zero,.L4
 	li	a3,-14680064
+	li	a2,2
+	sw	a2,240(a3)
 	sw	a4,244(a3)
-	li	a4,2
-	sw	a4,240(a3)
 .L5:
 	j	.L5
 	.size	main, .-main
