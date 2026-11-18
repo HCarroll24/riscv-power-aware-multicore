@@ -27,12 +27,8 @@ entity ALU is
 port(A:		in std_logic_vector(31 downto 0);
      B:		in std_logic_vector(31 downto 0);
      S:     in std_logic_vector(3 downto 0);
-	  SLL_A	:	in		std_logic_vector(31 downto 0);
-	  SLL_B	:	in		std_logic_vector(4 downto 0);
-	  SRL_A	:	in		std_logic_vector(31 downto 0);
-	  SRL_B	:	in		std_logic_vector(4 downto 0);
-	  SRA_A	:	in		std_logic_vector(31 downto 0);
-	  SRA_B	:	in		std_logic_vector(4 downto 0);
+	  SH_A	:	in		std_logic_vector(31 downto 0);
+	  SH_B	:	in		std_logic_vector(4 downto 0);
      F:		out std_logic_vector(31 downto 0)); 
 end entity ALU;
 
@@ -73,13 +69,13 @@ begin
   INTB(31 downto 0) <= unsigned(B);
   
   -- Logic for slt and sltu
-  SLT_VAL <= 33x"1" when (signed(A) < signed(B)) else 33x"0";
-  SLTU_VAL <= 33x"1" when (INTA < INTB) else 33x"0";
+	SLT_VAL <= 33x"1" when (signed(A) < signed(B)) else 33x"0";
+	SLTU_VAL <= 33x"1" when (INTA < INTB) else 33x"0";
   
   -- Logic for shifts 
-	SLL_VAL <= '0' & shift_left(unsigned(SLL_A), to_integer(unsigned(SLL_B)));
-	SRL_VAL <= '0' & shift_right(unsigned(SRL_A), to_integer(unsigned(SRL_B)));
-	SRA_VAL <= '0' & unsigned(shift_right(signed(SRA_A), to_integer(unsigned(SRA_B))));
+	SLL_VAL <= '0' & shift_left(unsigned(SH_A), to_integer(unsigned(SH_B)));
+	SRL_VAL <= '0' & shift_right(unsigned(SH_A), to_integer(unsigned(SH_B)));
+	SRA_VAL <= '0' & unsigned(shift_right(signed(SH_A), to_integer(unsigned(SH_B))));
   
   -- complete the arithmetic and logic 
   -- numeric_std defines +, -, bitwise logic, etc. on unsigned type

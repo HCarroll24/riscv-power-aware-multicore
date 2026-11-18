@@ -148,10 +148,10 @@ architecture STRUCTURAL of PIPELINE is
 	signal WB_VALUE				:	std_logic_vector(31 downto 0);
 	
 	-- operand isolation signals
-	signal SH_LD	:	std_logic_vector(2 downto 0);
+	signal SH_LD		:	std_logic;
 	signal SH_FLUSH	:	std_logic;
-	signal ID_EX_SLL_A, ID_EX_SRL_A, ID_EX_SRA_A	:	std_logic_vector(31 downto 0);
-	signal ID_EX_SLL_B, ID_EX_SRL_B, ID_EX_SRA_B	:	std_logic_vector(4 downto 0);
+	signal ID_EX_SH_A	:	std_logic_vector(31 downto 0);
+	signal ID_EX_SH_B	:	std_logic_vector(4 downto 0);
 begin
 	-- Fetch stage block
 	FETCH_BLOCK	:	entity work.FETCH
@@ -276,12 +276,10 @@ begin
 			
 	-- ISOLATE true : load only on that shifter's own instruction, hold otherwise
 	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/SRC2 (original design)
-	SH_LD(0)	<=	CORE_EN and SHIFT_EN_ID(0) and not IDEX_FLUSH when ISOLATE else CORE_EN;
-	SH_LD(1)	<=	CORE_EN and SHIFT_EN_ID(1) and not IDEX_FLUSH when ISOLATE else CORE_EN;
-	SH_LD(2)	<=	CORE_EN and SHIFT_EN_ID(2) and not IDEX_FLUSH when ISOLATE else CORE_EN;
+	SH_LD	<=	CORE_EN and SHIFT_EN_ID and not IDEX_FLUSH when ISOLATE else CORE_EN;
 	SH_FLUSH	<=	'0' when ISOLATE else IDEX_FLUSH;
 	
-	IDEX_SLL_A	:	entity work.REGN
+	IDEX_SH_A	:	entity work.REGN
 		generic map(
 			WIDTH	=>	32)
 		port map(
@@ -290,9 +288,9 @@ begin
 			LD		=>	SH_LD(0),
 			FLUSH	=>	SH_FLUSH,
 			D		=>	SRC1,
-			Q		=>	ID_EX_SLL_A);
+			Q		=>	ID_EX_SH_A);
 			
-	IDEX_SLL_B	:	entity work.REGN
+	IDEX_SH_B	:	entity work.REGN
 		generic map(
 			WIDTH	=>	5)
 		port map(
@@ -301,51 +299,7 @@ begin
 			LD		=>	SH_LD(0),
 			FLUSH	=>	SH_FLUSH,
 			D		=>	SRC2(4 downto 0),
-			Q		=>	ID_EX_SLL_B);
-			
-	IDEX_SRL_A	:	entity work.REGN
-		generic map(
-			WIDTH	=>	32)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD(1),
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC1,
-			Q		=>	ID_EX_SRL_A);
-	
-	IDEX_SRL_B	:	entity work.REGN
-		generic map(
-			WIDTH	=>	5)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD(1),
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC2(4 downto 0),
-			Q		=>	ID_EX_SRL_B);
-			
-	IDEX_SRA_A	:	entity work.REGN
-		generic map(
-			WIDTH	=>	32)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD(2),
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC1,
-			Q		=>	ID_EX_SRA_A);
-			
-	IDEX_SRA_B	:	entity work.REGN
-		generic map(
-			WIDTH	=>	5)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD(2),
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC2(4 downto 0),
-			Q		=>	ID_EX_SRA_B);
+			Q		=>	ID_EX_SH_B);
 			
 	-- ID/EX Pipeline Registers
 	IDEX_SRC1	:	entity work.REGN

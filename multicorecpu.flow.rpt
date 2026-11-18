@@ -1,6 +1,6 @@
 Flow report for multicorecpu
-Thu Nov 12 00:18:40 2026
-Quartus Prime Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+Mon Nov 16 21:12:21 2026
+Quartus Prime Version 25.1.0 Build 129 03/26/2025 Patches 0.36 SC Pro Edition
 
 
 ---------------------
@@ -39,7 +39,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------+
 ; Flow Summary                                              ;
 +-------------+---------------------------------------------+
-; Flow Status ; Synthesis Failed - Thu Nov 12 00:18:40 2026 ;
+; Flow Status ; Synthesis Failed - Mon Nov 16 21:12:21 2026 ;
 +-------------+---------------------------------------------+
 
 
@@ -48,7 +48,7 @@ on the Quartus Prime software download page.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/12/2026 00:18:40 ;
+; Start date & time ; 11/16/2026 21:12:20 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; multicorecpu        ;
 +-------------------+---------------------+
@@ -83,7 +83,7 @@ on the Quartus Prime software download page.
 ------------
 ; Flow Log ;
 ------------
-quartus_syn multicorecpu -c multicorecpu
+quartus_syn --read_settings_files=on --write_settings_files=off multicorecpu -c multicorecpu
 
 
 

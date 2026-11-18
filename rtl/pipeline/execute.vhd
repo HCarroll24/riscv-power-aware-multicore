@@ -49,12 +49,8 @@ port(
 	ID_EX_WD4SEL			:	in		std_logic_vector(1 downto 0);
 	ID_EX_PREDICT_TAKEN	:	in		std_logic;
 	CORE_EN					:	in		std_logic;
-	ID_EX_SLL_A				:	in		std_logic_vector(31 downto 0);
-	ID_EX_SLL_B				:	in		std_logic_vector(4 downto 0);
-	ID_EX_SRL_A				:	in		std_logic_vector(31 downto 0);
-	ID_EX_SRL_B				:	in		std_logic_vector(4 downto 0);
-	ID_EX_SRA_A				:	in		std_logic_vector(31 downto 0);
-	ID_EX_SRA_B				:	in		std_logic_vector(4 downto 0);
+	ID_EX_SH_A				:	in		std_logic_vector(31 downto 0);
+	ID_EX_SH_B				:	in		std_logic_vector(4 downto 0);
 	ALU_F						:	out	std_logic_vector(31 downto 0);
 	EX_WB_VALUE				:	out	std_logic_vector(31 downto 0);
 	REDIRECT_PC				:	out	std_logic_vector(31 downto 0);
@@ -80,12 +76,8 @@ begin
 			A	=>	ID_EX_SRC1,
 			B	=>	ID_EX_SRC2,
 			S	=>	ID_EX_ALUSEL,
-			SLL_A	=>	ID_EX_SLL_A,
-			SLL_B	=>	ID_EX_SLL_B,
-			SRL_A	=>	ID_EX_SRL_A,
-			SRL_B	=>	ID_EX_SRL_B,
-			SRA_A	=>	ID_EX_SRA_A,
-			SRA_B	=>	ID_EX_SRA_B,
+			SH_A	=>	ID_EX_SH_A,
+			SH_B	=>	ID_EX_SH_B,
 			F	=>	ALU_F_INT);
 	
 	-- Branch comparator, final check to see need to branch or not
