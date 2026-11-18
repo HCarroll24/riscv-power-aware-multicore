@@ -95,7 +95,7 @@ architecture STRUCTURAL of PIPELINE is
 	signal MEMWR					:	std_logic;
 	signal REGWR					:	std_logic;
 	signal IDEX_FLUSH				:	std_logic;
-	signal SHIFT_EN_ID			:	std_logic_vector(2 downto 0);
+	signal SHIFT_EN_ID			:	std_logic;
 	
 	-- ID/EX Register outputs
 	signal ID_EX_SRC1				:	std_logic_vector(31 downto 0);
@@ -285,7 +285,7 @@ begin
 		port map(
 			RST	=>	RST,
 			CLK	=>	CLK,
-			LD		=>	SH_LD(0),
+			LD		=>	SH_LD,
 			FLUSH	=>	SH_FLUSH,
 			D		=>	SRC1,
 			Q		=>	ID_EX_SH_A);
@@ -296,7 +296,7 @@ begin
 		port map(
 			RST	=>	RST,
 			CLK	=>	CLK,
-			LD		=>	SH_LD(0),
+			LD		=>	SH_LD,
 			FLUSH	=>	SH_FLUSH,
 			D		=>	SRC2(4 downto 0),
 			Q		=>	ID_EX_SH_B);

@@ -85,7 +85,7 @@ port(
 	MEMWR					:	out	std_logic;
 	REGWR					:	out	std_logic;
 	IDEX_FLUSH			:	out	std_logic;
-	SHIFT_EN_ID			:	out	std_logic_vector(2 downto 0);
+	SHIFT_EN_ID			:	out	std_logic;
 	BRANCH_COMP_EN		:	out	std_logic
 );
 end entity DECODE;
@@ -137,7 +137,7 @@ begin
 			WD4SEL	=>	WD4SEL,
 			IMMSRC	=>	IMMSRC,
 			ALUSEL	=>	ALUSEL,
-			SHIFT_EN	=>	SHIFT_EN_ID
+			SHIFT_EN	=>	SHIFT_EN_ID,
 			BRANCH_COMP_EN	=>	BRANCH_COMP_EN);
 			
 	-- immediate generation and signals
