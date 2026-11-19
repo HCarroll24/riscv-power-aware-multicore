@@ -149,13 +149,11 @@ architecture STRUCTURAL of PIPELINE is
 	
 	-- operand isolation signals
 	signal SH_LD		:	std_logic;
-	signal SH_FLUSH	:	std_logic;
 	signal ID_EX_SH_A	:	std_logic_vector(31 downto 0);
 	signal ID_EX_SH_B	:	std_logic_vector(4 downto 0);
 	
 	signal BRANCH_COMP_EN_ID	:	std_logic;
 	signal BR_LD		:	std_logic;
-	signal BR_FLUSH	:	std_logic;
 	signal ID_EX_BR_A	:	std_logic_vector(31 downto 0);
 	signal ID_EX_BR_B	:	std_logic_vector(31 downto 0);
 	signal ID_EX_BR_FUNCT3	:	std_logic_vector(2 downto 0);
@@ -282,71 +280,81 @@ begin
 			SHIFT_EN_ID		=>	SHIFT_EN_ID,
 			BRANCH_COMP_EN	=>	BRANCH_COMP_EN_ID);
 			
-	-- ISOLATE true : load only when any shifts are done
-	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/SRC2 (original design)
-	SH_LD	<=	CORE_EN and SHIFT_EN_ID and not IDEX_FLUSH when SH_ISOLATE else CORE_EN;
-	SH_FLUSH	<=	'0' when SH_ISOLATE else IDEX_FLUSH;
-	
-	-- ISOLATE true : load only when a branch advances
-	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/STORE_DATA/FUNCT3
-	BR_LD	<=	CORE_EN and BRANCH_COMP_EN_ID and not IDEX_FLUSH when BR_COMP_ISOLATE else CORE_EN;
-	BR_FLUSH	<=	'0' when BR_COMP_ISOLATE else IDEX_FLUSH;
-	
-	IDEX_SH_A	:	entity work.REGN
-		generic map(
-			WIDTH	=>	32)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD,
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC1,
-			Q		=>	ID_EX_SH_A);
-			
-	IDEX_SH_B	:	entity work.REGN
-		generic map(
-			WIDTH	=>	5)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	SH_LD,
-			FLUSH	=>	SH_FLUSH,
-			D		=>	SRC2(4 downto 0),
-			Q		=>	ID_EX_SH_B);
-			
-	-- ID/EX BR_COMP ISOLATION REGISTERS
-	IDEX_BR_A	:	entity work.REGN
-		generic map(
-			WIDTH	=>	32)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	BR_LD,
-			FLUSH	=>	BR_FLUSH,
-			D		=>	SRC1,
-			Q		=>	ID_EX_BR_A);
-			
-	IDEX_BR_B	:	entity work.REGN
-		generic map(
-			width	=>	32)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	BR_LD,
-			FLUSH	=>	BR_FLUSH,
-			D		=>	STORE_DATA,
-			Q		=>	ID_EX_BR_B);
-		
-	IDEX_BR_FUNCT3	:	entity work.REGN
-		generic map(
-			width	=>	3)
-		port map(
-			RST	=>	RST,
-			CLK	=>	CLK,
-			LD		=>	BR_LD,
-			FLUSH	=>	BR_FLUSH,
-			D		=>	FUNCT3,
-			Q		=>	ID_EX_BR_FUNCT3);
+	-- SHIFTER OPERAND ISOLATION
+	-- SH_ISOLATE true : hold registers load only on a shift, hold otherwise
+	-- SH_ISOLATE false: no extra registers, shifters read ID/EX SRC1/SRC2 (original design)
+	SH_ISO_GEN	:	if SH_ISOLATE generate
+		SH_LD	<=	CORE_EN and SHIFT_EN_ID and not IDEX_FLUSH;
+
+		IDEX_SH_A	:	entity work.REGN
+			generic map(
+				WIDTH	=>	32)
+			port map(
+				RST	=>	RST,
+				CLK	=>	CLK,
+				LD		=>	SH_LD,
+				FLUSH	=>	'0',
+				D		=>	SRC1,
+				Q		=>	ID_EX_SH_A);
+
+		IDEX_SH_B	:	entity work.REGN
+			generic map(
+				WIDTH	=>	5)
+			port map(
+				RST	=>	RST,
+				CLK	=>	CLK,
+				LD		=>	SH_LD,
+				FLUSH	=>	'0',
+				D		=>	SRC2(4 downto 0),
+				Q		=>	ID_EX_SH_B);
+	else generate
+		ID_EX_SH_A	<=	ID_EX_SRC1;
+		ID_EX_SH_B	<=	ID_EX_SRC2(4 downto 0);
+	end generate SH_ISO_GEN;
+
+	-- BRANCH COMPARATOR OPERAND ISOLATION
+	-- BR_COMP_ISOLATE true : hold registers load only on a branch, hold otherwise
+	-- BR_COMP_ISOLATE false: no extra registers, comparator reads ID/EX SRC1/STORE_DATA/FUNCT3
+	BR_ISO_GEN	:	if BR_COMP_ISOLATE generate
+		BR_LD	<=	CORE_EN and BRANCH_COMP_EN_ID and not IDEX_FLUSH;
+
+		IDEX_BR_A	:	entity work.REGN
+			generic map(
+				WIDTH	=>	32)
+			port map(
+				RST	=>	RST,
+				CLK	=>	CLK,
+				LD		=>	BR_LD,
+				FLUSH	=>	'0',
+				D		=>	SRC1,
+				Q		=>	ID_EX_BR_A);
+
+		IDEX_BR_B	:	entity work.REGN
+			generic map(
+				WIDTH	=>	32)
+			port map(
+				RST	=>	RST,
+				CLK	=>	CLK,
+				LD		=>	BR_LD,
+				FLUSH	=>	'0',
+				D		=>	STORE_DATA,
+				Q		=>	ID_EX_BR_B);
+
+		IDEX_BR_FUNCT3	:	entity work.REGN
+			generic map(
+				WIDTH	=>	3)
+			port map(
+				RST	=>	RST,
+				CLK	=>	CLK,
+				LD		=>	BR_LD,
+				FLUSH	=>	'0',
+				D		=>	FUNCT3,
+				Q		=>	ID_EX_BR_FUNCT3);
+	else generate
+		ID_EX_BR_A			<=	ID_EX_SRC1;
+		ID_EX_BR_B			<=	ID_EX_STORE_DATA;
+		ID_EX_BR_FUNCT3	<=	ID_EX_FUNCT3;
+	end generate BR_ISO_GEN;
 			
 	-- ID/EX Pipeline Registers
 	IDEX_SRC1	:	entity work.REGN
