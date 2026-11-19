@@ -19,17 +19,17 @@
 #
 # Quartus Prime
 # Version 25.1.0 Build 129 03/26/2025 Patches 0.36 SC Pro Edition
-# Date created = 09:06:53  November 19, 2026
+# Date created = 10:20:21  November 19, 2026
 #
 # -------------------------------------------------------------------------- #
 
 QUARTUS_VERSION = "25.1"
-DATE = "09:06:53  November 19, 2026"
+DATE = "10:20:21  November 19, 2026"
 
 # Revisions
 
-PROJECT_REVISION = "pw_br"
-PROJECT_REVISION = "pw_sh"
-PROJECT_REVISION = "pw_none"
-PROJECT_REVISION = "pw_both"
 PROJECT_REVISION = "multicorecpu"
+PROJECT_REVISION = "pw_both"
+PROJECT_REVISION = "pw_none"
+PROJECT_REVISION = "pw_sh"
+PROJECT_REVISION = "pw_br"
