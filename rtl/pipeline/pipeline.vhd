@@ -36,7 +36,8 @@ use ieee.numeric_std.all;
 --		DBUS_RDATA		:	whole-word read data returned by the bus (input)
 entity PIPELINE is
 generic(
-	ISOLATE	:	boolean	:=	true);
+	SH_ISOLATE	:	boolean	:=	true;
+	BR_COMP_ISOLATE	:	boolean	:=	true);
 port(
 	CLK				:	in		std_logic;
 	RST				:	in		std_logic;
@@ -115,7 +116,6 @@ architecture STRUCTURAL of PIPELINE is
 	signal ID_EX_REGWR			:	std_logic;
 	signal ID_EX_PREDICT_TAKEN	:	std_logic;
 	signal ID_EX_VALID_INT		:	std_logic;
-	signal ID_EX_SHIFT_EN		:	std_logic_vector(2 downto 0);
 	
 	-- Execute stage outputs
 	signal ALU_F					:	std_logic_vector(31 downto 0);
@@ -152,6 +152,13 @@ architecture STRUCTURAL of PIPELINE is
 	signal SH_FLUSH	:	std_logic;
 	signal ID_EX_SH_A	:	std_logic_vector(31 downto 0);
 	signal ID_EX_SH_B	:	std_logic_vector(4 downto 0);
+	
+	signal BRANCH_COMP_EN_ID	:	std_logic;
+	signal BR_LD		:	std_logic;
+	signal BR_FLUSH	:	std_logic;
+	signal ID_EX_BR_A	:	std_logic_vector(31 downto 0);
+	signal ID_EX_BR_B	:	std_logic_vector(31 downto 0);
+	signal ID_EX_BR_FUNCT3	:	std_logic_vector(2 downto 0);
 begin
 	-- Fetch stage block
 	FETCH_BLOCK	:	entity work.FETCH
@@ -272,12 +279,18 @@ begin
 			MEMWR				=>	MEMWR,
 			REGWR				=>	REGWR,
 			IDEX_FLUSH		=>	IDEX_FLUSH,
-			SHIFT_EN_ID		=>	SHIFT_EN_ID);
+			SHIFT_EN_ID		=>	SHIFT_EN_ID,
+			BRANCH_COMP_EN	=>	BRANCH_COMP_EN_ID);
 			
-	-- ISOLATE true : load only on that shifter's own instruction, hold otherwise
+	-- ISOLATE true : load only when any shifts are done
 	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/SRC2 (original design)
-	SH_LD	<=	CORE_EN and SHIFT_EN_ID and not IDEX_FLUSH when ISOLATE else CORE_EN;
-	SH_FLUSH	<=	'0' when ISOLATE else IDEX_FLUSH;
+	SH_LD	<=	CORE_EN and SHIFT_EN_ID and not IDEX_FLUSH when SH_ISOLATE else CORE_EN;
+	SH_FLUSH	<=	'0' when SH_ISOLATE else IDEX_FLUSH;
+	
+	-- ISOLATE true : load only when a branch advances
+	-- ISOLATE false: same LD/FLUSH as IDEX_SRC1/STORE_DATA/FUNCT3
+	BR_LD	<=	CORE_EN and BRANCH_COMP_EN_ID and not IDEX_FLUSH when BR_COMP_ISOLATE else CORE_EN;
+	BR_FLUSH	<=	'0' when BR_COMP_ISOLATE else IDEX_FLUSH;
 	
 	IDEX_SH_A	:	entity work.REGN
 		generic map(
@@ -300,6 +313,40 @@ begin
 			FLUSH	=>	SH_FLUSH,
 			D		=>	SRC2(4 downto 0),
 			Q		=>	ID_EX_SH_B);
+			
+	-- ID/EX BR_COMP ISOLATION REGISTERS
+	IDEX_BR_A	:	entity work.REGN
+		generic map(
+			WIDTH	=>	32)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	BR_LD,
+			FLUSH	=>	BR_FLUSH,
+			D		=>	SRC1,
+			Q		=>	ID_EX_BR_A);
+			
+	IDEX_BR_B	:	entity work.REGN
+		generic map(
+			width	=>	32)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	BR_LD,
+			FLUSH	=>	BR_FLUSH,
+			D		=>	STORE_DATA,
+			Q		=>	ID_EX_BR_B);
+		
+	IDEX_BR_FUNCT3	:	entity work.REGN
+		generic map(
+			width	=>	3)
+		port map(
+			RST	=>	RST,
+			CLK	=>	CLK,
+			LD		=>	BR_LD,
+			FLUSH	=>	BR_FLUSH,
+			D		=>	FUNCT3,
+			Q		=>	ID_EX_BR_FUNCT3);
 			
 	-- ID/EX Pipeline Registers
 	IDEX_SRC1	:	entity work.REGN
@@ -490,12 +537,11 @@ begin
 			ID_EX_WD4SEL			=>	ID_EX_WD4SEL,
 			ID_EX_PREDICT_TAKEN	=>	ID_EX_PREDICT_TAKEN,
 			CORE_EN					=>	CORE_EN,
-			ID_EX_SLL_A				=>	ID_EX_SLL_A,
-			ID_EX_SLL_B				=>	ID_EX_SLL_B,
-			ID_EX_SRL_A				=>	ID_EX_SRL_A,
-			ID_EX_SRL_B				=>	ID_EX_SRL_B,
-			ID_EX_SRA_A				=>	ID_EX_SRA_A,
-			ID_EX_SRA_B				=>	ID_EX_SRA_B,
+			ID_EX_SH_A				=>	ID_EX_SH_A,
+			ID_EX_SH_B				=>	ID_EX_SH_B,
+			ID_EX_BR_A				=>	ID_EX_BR_A,
+			ID_EX_BR_B				=>	ID_EX_BR_B,
+			ID_EX_BR_FUNCT3		=>	ID_EX_BR_FUNCT3,
 			ALU_F						=>	ALU_F,
 			EX_WB_VALUE				=>	EX_WB_VALUE,
 			REDIRECT_PC				=>	REDIRECT_PC,

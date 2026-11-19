@@ -51,6 +51,9 @@ port(
 	CORE_EN					:	in		std_logic;
 	ID_EX_SH_A				:	in		std_logic_vector(31 downto 0);
 	ID_EX_SH_B				:	in		std_logic_vector(4 downto 0);
+	ID_EX_BR_A				:	in		std_logic_vector(31 downto 0);
+	ID_EX_BR_B				:	in		std_logic_vector(31 downto 0);
+	ID_EX_BR_FUNCT3		:	in		std_logic_vector(2 downto 0);
 	ALU_F						:	out	std_logic_vector(31 downto 0);
 	EX_WB_VALUE				:	out	std_logic_vector(31 downto 0);
 	REDIRECT_PC				:	out	std_logic_vector(31 downto 0);
@@ -83,9 +86,9 @@ begin
 	-- Branch comparator, final check to see need to branch or not
 	BR_COMP	:	entity work.BRANCH_COMP
 		port map(
-			RD1		=>	ID_EX_SRC1,
-			RD2		=>	ID_EX_STORE_DATA,
-			FUNCT3	=>	ID_EX_FUNCT3,
+			RD1		=>	ID_EX_BR_A,
+			RD2		=>	ID_EX_BR_B,
+			FUNCT3	=>	ID_EX_BR_FUNCT3,
 			BRANCH	=>	ID_EX_BRANCH,
 			BR_TAKEN	=>	BR_TAKEN);
 			

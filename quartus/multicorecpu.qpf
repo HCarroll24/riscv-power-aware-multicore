@@ -27,4 +27,5 @@ DATE = "14:10:40  February 27, 2026"
 
 # Revisions
 
+PROJECT_REVISION = "pw_none"
 PROJECT_REVISION = "multicorecpu"

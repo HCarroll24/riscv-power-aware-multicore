@@ -44,3 +44,7 @@ serv_req_info.txt
 *.lst
 *.nuiqu.tcl.history
 *.vcd
+sim/gate_pw_*/
+sim/_rtl_window.do
+sim/_gate_vcd.do
+sim/vcd/logs/

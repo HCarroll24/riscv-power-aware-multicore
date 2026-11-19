@@ -26,7 +26,7 @@ use ieee.std_logic_1164.all;
 --		WD4SEL		:	2-bit select signal to choose bewteen writeback sources
 --		IMMSRC[2:0]	:	immediate format select for imm_gen
 --		ALUSEL[3:0]	:	ALU operation select
---		SHIFT_EN[2:0]	:	one bit per shifter for op isolation
+--		SHIFT_EN[	:	one bit for all three shift instructions
 entity CONTROL_UNIT is
 port(
 	INSTR				:	in std_logic_vector(31 downto 0);
@@ -128,8 +128,7 @@ begin
 					
 	-- SHIFT_EN signal for operand isolation
 	-- Disables shifters depending on need in instruciton
-	-- if not needed disable shifter
-	-- SHIFT_EN[0] -> SLL, SHIFT_EN[1] -> SRL, SHIFT_EN[2] -> SRA
+	-- if not needed disable the shifter.
 	-- Uses ALUSEL to decide
 	SHIFT_EN	<= '1' when ALUSEL = B"0001" else 
 					'1' when ALUSEL = B"0101" else

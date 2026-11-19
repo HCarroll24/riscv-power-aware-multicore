@@ -19,6 +19,9 @@ use ieee.std_logic_1164.all;
 --		LEDR			:	red LEDs, active-low
 --		HEX0..HEX5	:	7-segment displays
 entity MULTICORECPU is
+generic(
+	SH_ISOLATE	:	boolean	:=	true;
+	BR_COMP_ISOLATE	:	boolean	:=	true);
 port(
 	CLK	:	in		std_logic;
 	KEY	:	in		std_logic_vector(3 downto 0);
@@ -92,7 +95,8 @@ begin
 	-- single RV32I core, data bus master
 	SINGLE_CORE	:	entity work.PIPELINE
 		generic map(
-			ISOLATE	=>	true)
+			SH_ISOLATE	=>	SH_ISOLATE,
+			BR_COMP_ISOLATE	=>	BR_COMP_ISOLATE)
 		port map(
 			CLK				=>	CLK,
 			RST				=>	RST,
