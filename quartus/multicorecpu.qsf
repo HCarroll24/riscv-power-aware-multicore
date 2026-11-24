@@ -90,7 +90,6 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top"
 # Obsolete assignment in <Version 25.1> "set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top"
 # Obsolete assignment in <Version 25.1> "set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top"
-set_global_assignment -name IP_FILE single_port_rom.ip
 set_global_assignment -name VHDL_FILE ../rtl/pipeline/fetch.vhd
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
@@ -290,3 +289,5 @@ set_global_assignment -name POWER_INPUT_FILE_NAME ../sim/power_chase.vcd -entity
 set_global_assignment -name POWER_VCD_FILE_START_TIME "230 ns" -entity multicorecpu -section_id power_chase.vcd
 set_global_assignment -name POWER_VCD_FILE_END_TIME "138570 ns" -entity multicorecpu -section_id power_chase.vcd
 set_instance_assignment -name POWER_READ_INPUT_FILE power_chase.vcd -to MULTICORECPU -entity multicorecpu
+set_global_assignment -name IP_FILE irom_core0.ip
+set_global_assignment -name IP_FILE irom_core1.ip

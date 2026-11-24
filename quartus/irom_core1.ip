@@ -14,7 +14,7 @@ refer to the applicable agreement for further details, at
 https://fpgasoftware.intel.com/eula.-->
 <ipxact:component xmlns:altera="http://www.altera.com/XMLSchema/IPXact2014/extensions" xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014">
   <ipxact:vendor>Intel Corporation</ipxact:vendor>
-  <ipxact:library>single_port_rom</ipxact:library>
+  <ipxact:library>irom_core1</ipxact:library>
   <ipxact:name>rom_1port_0</ipxact:name>
   <ipxact:version>20.2.2</ipxact:version>
   <ipxact:busInterfaces>
@@ -290,7 +290,7 @@ https://fpgasoftware.intel.com/eula.-->
   <ipxact:vendorExtensions>
     <altera:entity_info>
       <ipxact:vendor>Intel Corporation</ipxact:vendor>
-      <ipxact:library>single_port_rom</ipxact:library>
+      <ipxact:library>irom_core1</ipxact:library>
       <ipxact:name>rom_1port</ipxact:name>
       <ipxact:version>20.2.2</ipxact:version>
     </altera:entity_info>
@@ -389,7 +389,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="GUI_MAXIMUM_DEPTH" type="string">
           <ipxact:name>GUI_MAXIMUM_DEPTH</ipxact:name>
           <ipxact:displayName>Set the maximum block depth to</ipxact:displayName>
-          <ipxact:value>2048</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="GUI_RAM_BLOCK_TYPE" type="string">
           <ipxact:name>GUI_RAM_BLOCK_TYPE</ipxact:name>
@@ -414,7 +414,7 @@ https://fpgasoftware.intel.com/eula.-->
         <ipxact:parameter parameterId="GUI_OPTIMIZATION_OPTION" type="int">
           <ipxact:name>GUI_OPTIMIZATION_OPTION</ipxact:name>
           <ipxact:displayName>Which timing/power optimization option do you want to use?</ipxact:displayName>
-          <ipxact:value>2</ipxact:value>
+          <ipxact:value>0</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="GUI_MIFfilename" type="string">
           <ipxact:name>GUI_MIFfilename</ipxact:name>

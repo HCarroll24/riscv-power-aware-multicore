@@ -43,6 +43,9 @@ port(
 	TRAIN_PC			:	in 	std_logic_vector(31 downto 0);
 	TRAIN_TAKEN		:	in 	std_logic;
 	CORE_EN			:	in 	std_logic;
+	IBUS_RDATA		:	in		std_logic_vector(31 downto 0);
+	IBUS_ADDR		:	out	std_logic_vector(31 downto 0);
+	IBUS_RE			:	out	std_logic;
 	PC					:	out 	std_logic_vector(31 downto 0);
 	INSTR				:	out	std_logic_vector(31 downto 0);
 	PC_PLUS4			:	out	std_logic_vector(31 downto 0);
@@ -148,14 +151,10 @@ begin
 			B					=>	PC_INT,
 			S					=>	PC_PLUS4_INT);
 			
-	-- instruction memory
-	-- address from next_pc to keep registers inline
-	IROM					:	single_port_rom
-		port map(
-			address			=>	NEXT_PC(13 downto 2),
-			clock				=>	CLK,
-			rden				=>	ROM_RDEN,
-			q					=>	INSTR_INT);
+	-- irom moved to top level
+	IBUS_ADDR	<=	NEXT_PC;
+	IBUS_RE		<=	ROM_RDEN;
+	INSTR_INT	<=	IBUS_RDATA;
 			
 	-- branch history table, trains using pc value
 	BHT					:	entity work.BHT

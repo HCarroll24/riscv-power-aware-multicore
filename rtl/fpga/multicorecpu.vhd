@@ -92,15 +92,60 @@ begin
 		end if;
 	end process core_enable;
 	
+	-- IROMs are different because they are IP not my own vhd files
+	-- IROM for Core 0, Runs count on seven segment displays
+	component irom_core0 is
+	port(
+		address	:	in		std_logic_vector(31 downto 0);
+		clock		:	in		std_logic = '1';
+		rden		:	in		std_logic = '1';
+		q			:	out	std_logic_vector(31 downto 0));
+	end component;
+	
+	-- IROM for Core 1. Runs fibonacci sequence
+	component irom_core1 is
+	port(
+		address	:	in		std_logic_vector(31 downto 0);
+		clock		:	in		std_logic = '1';
+		rden		:	in		std_logic = '1';
+		q			:	out	std_logic_vector(31 downto 0));
+	end component;
+	
 	-- single RV32I core, data bus master
-	SINGLE_CORE	:	entity work.PIPELINE
+	CORE_ONE	:	entity work.PIPELINE
 		generic map(
-			SH_ISOLATE	=>	SH_ISOLATE,
-			BR_COMP_ISOLATE	=>	BR_COMP_ISOLATE)
+			SH_ISOLATE	=> true,
+			BR_COMP_ISOLATE	=>	true)
 		port map(
 			CLK				=>	CLK,
 			RST				=>	RST,
 			CORE_EN			=> CORE_EN,
+			WD3				=>	open,
+			RD_ADDR			=>	open,
+			IF_ID_VALID		=>	open,
+			ID_EX_VALID		=>	open,
+			EX_MEM_VALID	=> open,
+			MEM_WB_VALID	=>	open,
+			MEM_WB_REGWR	=>	open,
+			STALL				=>	open,
+			REDIRECT_EN		=>	open,
+			PREDICT_TAKEN	=>	open,
+			MISPREDICT		=>	open,
+			DBUS_ADDR		=>	DBUS_ADDR,
+			DBUS_BE			=>	DBUS_BE,
+			DBUS_WDATA		=>	DBUS_WDATA,
+			DBUS_WE			=>	DBUS_WE,
+			DBUS_RE			=>	DBUS_RE,
+			DBUS_RDATA		=>	DBUS_RDATA);
+			
+	CORE_TWO	:	entity work.PIPELINE
+		generic map(
+			SH_ISOLATE	=>	true,
+			BR_COMP_ISOLATE	=>	true)
+		port map(
+			CLK		=>	CLK,
+			RST		=>	RST,
+			CORE_EN	=>	CORE_EN,
 			WD3				=>	open,
 			RD_ADDR			=>	open,
 			IF_ID_VALID		=>	open,
@@ -136,7 +181,7 @@ begin
 			RDATA		=>	DBUS_RDATA);
 			
 	-- data memory (16 KiB)
-	DMEM_RAM	:	entity work.DMEM
+	DMEM_RAM_1	:	entity work.DMEM
 		port map(
 			CLK	=>	CLK,
 			A		=>	DBUS_ADDR,
@@ -146,6 +191,16 @@ begin
 			RE		=>	DMEM_RE,
 			Q		=>	DMEM_Q);
 			
+	DMEM_RAM_2	:	entity work.DMEM
+		port map(
+			CLK	=>	CLK,
+			A		=>	DBUS_ADDR,
+			BE		=>	DBUS_BE,
+			WDATA	=>	DBUS_WDATA,
+			WE		=>	DMEM_WE,
+			RE		=>	DMEM_RE,
+			Q		=>	DMEM_Q);
+	
 	-- memory-mapped I/O
 	BOARD_IO	:	entity work.MMIO
 		port map(

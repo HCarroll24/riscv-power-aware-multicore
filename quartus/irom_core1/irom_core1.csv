@@ -1,0 +1,18 @@
+# system info irom_core1 on 2026.11.24.04:01:28
+system_info:
+name,value
+DEVICE,A3CZ135BB18AE7S
+DEVICE_FAMILY,Agilex 3
+GENERATION_ID,0
+#
+#
+# Files generated for irom_core1 on 2026.11.24.04:01:28
+files:
+filepath,kind,attributes,module,is_top
+sim/irom_core1.vhd,VHDL,CONTAINS_INLINE_CONFIGURATION,irom_core1,true
+rom_1port_2022/sim/irom_core1_rom_1port_2022_acunhdi.vhd,VHDL,,irom_core1_rom_1port_2022_acunhdi,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+irom_core1.rom_1port_0,irom_core1_rom_1port_2022_acunhdi

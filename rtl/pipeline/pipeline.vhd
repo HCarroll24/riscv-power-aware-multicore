@@ -58,7 +58,10 @@ port(
 	DBUS_WDATA		:	out	std_logic_vector(31 downto 0);
 	DBUS_WE			:	out	std_logic;
 	DBUS_RE			:	out	std_logic;
-	DBUS_RDATA		:	in		std_logic_vector(31 downto 0));
+	DBUS_RDATA		:	in		std_logic_vector(31 downto 0);
+	IBUS_ADDR		:	out	std_logic_vector(31 downto 0);
+	IBUS_RE			:	out	std_logic;
+	IBUS_RDATA		:	in		std_logic_vector(31 downto 0));
 end entity PIPELINE;
 
 -- architectural description
@@ -170,6 +173,9 @@ begin
 			TRAIN_PC			=>	ID_EX_PC,
 			TRAIN_TAKEN		=>	TRAIN_TAKEN,
 			CORE_EN			=>	CORE_EN,
+			IBUS_RDATA		=>	IBUS_RDATA,
+			IBUS_ADDR		=>	IBUS_ADDR,
+			IBUS_RE			=>	IBUS_RE,
 			PC					=>	PC,
 			INSTR				=>	INSTR,
 			PC_PLUS4			=>	PC_PLUS4,
