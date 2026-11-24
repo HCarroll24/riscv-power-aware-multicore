@@ -41,7 +41,9 @@ port(
 	IMMSRC			:	out std_logic_vector(2 downto 0);
 	ALUSEL			:	out std_logic_vector(3 downto 0);
 	SHIFT_EN			:	out std_logic;
-	BRANCH_COMP_EN	:	out std_logic
+	BRANCH_COMP_EN	:	out std_logic;
+	RD2_EN			:	out std_logic;
+	IMM_EN			:	out std_logic
 );
 end entity CONTROL_UNIT;
 
@@ -140,5 +142,14 @@ begin
 	-- active high enable pin
 	-- uses OPCODE for decision
 	BRANCH_COMP_EN	<=	'1' when OPCODE = B"1100011" else '0';
+	
+	RD2_EN	<=	'1' when OPCODE = B"0110011" else
+					'1' when OPCODE = B"0100011" else
+					'1' when OPCODE = B"1100011" else
+					'0';
+	
+	IMM_EN	<=	'0' when OPCODE = B"0110011" else
+					'0' when OPCODE = B"1100011" else
+					'1';
 	
 end architecture BEHAVIORAL;
