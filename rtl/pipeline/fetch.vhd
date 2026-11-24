@@ -58,17 +58,6 @@ end entity FETCH;
 
 -- architectural description
 architecture STRUCTURAL of FETCH is
-	-- Component Declarations
-	-- One_Port_ROM
-	-- no q output register
-	component single_port_rom is
-	port(
-		address	:	in std_logic_vector(11 downto 0);
-		clock		:	in	std_logic	:=	'1';
-		rden		:	in	std_logic	:= '1';
-		q			:	out std_logic_vector(31 downto 0));
-	end component;
-		
 	-- internal signals
 	-- PC datapath internal signals
 	signal NEXT_PC					:	std_logic_vector(31 downto 0);	-- PCMUX output

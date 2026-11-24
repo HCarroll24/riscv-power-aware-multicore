@@ -43,6 +43,25 @@ architecture STRUCTURAL of MULTICORECPU is
 		ninit_done	:	out	std_logic);
 	end component;
 	
+	-- IROMs are different because they are IP not my own vhd files
+	-- IROM for Core 0, Runs count on seven segment displays
+	component irom_core0 is
+	port(
+		address	:	in		std_logic_vector(31 downto 0);
+		clock		:	in		std_logic = '1';
+		rden		:	in		std_logic = '1';
+		q			:	out	std_logic_vector(31 downto 0));
+	end component;
+	
+	-- IROM for Core 1. Runs fibonacci sequence
+	component irom_core1 is
+	port(
+		address	:	in		std_logic_vector(31 downto 0);
+		clock		:	in		std_logic = '1';
+		rden		:	in		std_logic = '1';
+		q			:	out	std_logic_vector(31 downto 0));
+	end component;
+	
 	-- system reset
 	signal NINIT_DONE	:	std_logic;
 	signal SYSRST_N	:	std_logic;
@@ -64,6 +83,16 @@ architecture STRUCTURAL of MULTICORECPU is
 	signal IO_WE		:	std_logic;
 	signal IO_RE		:	std_logic;
 	signal IO_Q			:	std_logic_vector(31 downto 0);
+	
+	-- signals for separate iroms into top level
+	-- irom0
+	signal IROM0_ADDR	:	std_logic_vector(31 downto 0);
+	signal IROM0_RE	:	std_logic;
+	signal IROM0_RDATA:	std_logic_vector(31 downto 0);
+	--irom1
+	signal IROM1_ADDR	:	std_logic_vector(31 downto 0);
+	signal IROM1_RE	:	std_logic;
+	signal IROM1_RDATA:	std_logic_vector(31 downto 0);
 begin
 	-- device-ready signal from config manager
 	RESET_RELEASE_IP	:	reset_release
@@ -92,27 +121,24 @@ begin
 		end if;
 	end process core_enable;
 	
-	-- IROMs are different because they are IP not my own vhd files
-	-- IROM for Core 0, Runs count on seven segment displays
-	component irom_core0 is
-	port(
-		address	:	in		std_logic_vector(31 downto 0);
-		clock		:	in		std_logic = '1';
-		rden		:	in		std_logic = '1';
-		q			:	out	std_logic_vector(31 downto 0));
-	end component;
+	-- Separate IROMS for the separate cores
+	IROM_ZERO	:	irom_core0
+		port map(
+			address	=>	IROM0_ADDR,
+			clock		=>	CLK,
+			rden		=>	IROM0_RE,
+			q			=>	IROM0_RDATA);
+			
+	IROM_ONE	:	irom_core1
+		port map(
+			address	=>	IROM1_ADDR,
+			clock		=>	CLK,
+			rden		=>	IROM1_RE,
+			q			=>	IROM1_RDATA);
 	
-	-- IROM for Core 1. Runs fibonacci sequence
-	component irom_core1 is
-	port(
-		address	:	in		std_logic_vector(31 downto 0);
-		clock		:	in		std_logic = '1';
-		rden		:	in		std_logic = '1';
-		q			:	out	std_logic_vector(31 downto 0));
-	end component;
 	
 	-- single RV32I core, data bus master
-	CORE_ONE	:	entity work.PIPELINE
+	CORE_ZERO	:	entity work.PIPELINE
 		generic map(
 			SH_ISOLATE	=> true,
 			BR_COMP_ISOLATE	=>	true)
@@ -136,9 +162,12 @@ begin
 			DBUS_WDATA		=>	DBUS_WDATA,
 			DBUS_WE			=>	DBUS_WE,
 			DBUS_RE			=>	DBUS_RE,
-			DBUS_RDATA		=>	DBUS_RDATA);
+			DBUS_RDATA		=>	DBUS_RDATA,
+			IBUS_ADDR		=>	IROM0_ADDR,
+			IBUS_RE			=>	IROM0_RE,
+			IBUS_RDATA		=>	IROM0_RDATA);
 			
-	CORE_TWO	:	entity work.PIPELINE
+	CORE_ONE	:	entity work.PIPELINE
 		generic map(
 			SH_ISOLATE	=>	true,
 			BR_COMP_ISOLATE	=>	true)
@@ -162,7 +191,10 @@ begin
 			DBUS_WDATA		=>	DBUS_WDATA,
 			DBUS_WE			=>	DBUS_WE,
 			DBUS_RE			=>	DBUS_RE,
-			DBUS_RDATA		=>	DBUS_RDATA);
+			DBUS_RDATA		=>	DBUS_RDATA,
+			IBUS_ADDR		=>	IROM1_ADDR,
+			IBUS_RE			=>	IROM1_RE,
+			IBUS_RDATA		=>	IROM1_RDATA);
 			
 	-- address decode and read data mux
 	SYSTEM_BUS	:	entity work.DATA_BUS
@@ -181,7 +213,7 @@ begin
 			RDATA		=>	DBUS_RDATA);
 			
 	-- data memory (16 KiB)
-	DMEM_RAM_1	:	entity work.DMEM
+	DMEM_ZERO	:	entity work.DMEM
 		port map(
 			CLK	=>	CLK,
 			A		=>	DBUS_ADDR,
@@ -191,7 +223,7 @@ begin
 			RE		=>	DMEM_RE,
 			Q		=>	DMEM_Q);
 			
-	DMEM_RAM_2	:	entity work.DMEM
+	DMEM_ONE	:	entity work.DMEM
 		port map(
 			CLK	=>	CLK,
 			A		=>	DBUS_ADDR,
